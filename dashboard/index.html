@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Claw Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f1419;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+header{text-align:center;padding:24px 0;border-bottom:1px solid #2d3748}
+header h1{font-size:1.6rem;font-weight:700;color:#f7fafc}
+header h1 span{color:#3b82f6}
+.meta{display:flex;justify-content:center;gap:12px;margin-top:8px;font-size:.85rem;color:#94a3b8;flex-wrap:wrap}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.7rem;font-weight:600;background:#3b82f6;color:#fff}
+.badge-ver{background:#22c55e33;color:#22c55e}
+.stats-bar{display:flex;justify-content:center;gap:28px;margin-top:12px;flex-wrap:wrap}
+.stat{text-align:center}.stat .num{font-size:1.4rem;font-weight:700;color:#f7fafc}.stat .lbl{font-size:.7rem;color:#64748b;text-transform:uppercase;letter-spacing:1px}
+.tabs{display:flex;gap:0;margin-top:24px;border-bottom:2px solid #2d3748}
+.tab{padding:10px 20px;cursor:pointer;font-size:.9rem;color:#94a3b8;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
+.tab:hover{color:#e2e8f0}.tab.active{color:#3b82f6;border-bottom-color:#3b82f6;font-weight:600}
+.tab-content{display:none}.tab-content.active{display:block}
+section{margin-top:28px}
+section h2{font-size:1.2rem;font-weight:600;color:#f7fafc;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #2d3748}
+.card-grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:768px){.card-grid{grid-template-columns:1fr 1fr}}
+.card{background:#1a2332;border-radius:8px;padding:14px;border-left:4px solid #3b82f6;transition:transform .15s}
+.card:hover{transform:translateY(-1px)}
+.card.blocker{border-left-color:#ef4444}.card.pain{border-left-color:#f97316}.card.friction{border-left-color:#eab308}
+.card h3{font-size:.9rem;font-weight:600;color:#f7fafc;margin-bottom:4px}.card p{font-size:.8rem;color:#94a3b8}
+.sev{display:inline-block;padding:1px 7px;border-radius:6px;font-size:.65rem;font-weight:600;margin-right:4px}
+.sev-blocker{background:#ef444433;color:#ef4444}.sev-pain{background:#f9731633;color:#f97316}.sev-friction{background:#eab30833;color:#eab308}
+.src{display:inline-block;padding:1px 7px;border-radius:6px;font-size:.65rem;background:#2d3748;color:#94a3b8;margin-right:4px}
+.ver{display:inline-block;padding:1px 7px;border-radius:6px;font-size:.65rem;font-weight:600;background:#22c55e22;color:#22c55e;margin-right:4px}
+.ver-old{background:#ef444422;color:#ef4444}
+.sig-s{color:#22c55e}.sig-m{color:#eab308}
+a{color:#3b82f6;text-decoration:none}a:hover{text-decoration:underline}
+.hm{overflow-x:auto;margin:12px 0}.hm table{border-collapse:collapse;width:100%}
+.hm th,.hm td{padding:7px 10px;text-align:center;font-size:.75rem;border:1px solid #2d3748}
+.hm th{background:#1a2332;color:#94a3b8;font-weight:600;text-transform:uppercase;font-size:.65rem}
+.hm td.c{text-align:left;color:#e2e8f0;font-weight:500;background:#1a2332}
+.h0{background:#0f1419}.h1{background:#7f1d1d44}.h2{background:#7f1d1d88}.h3{background:#7f1d1dcc}
+.cs{background:#1a2332;border-radius:8px;padding:14px;margin-bottom:10px}
+.cs h3{font-size:.95rem;color:#f7fafc;margin-bottom:8px;cursor:pointer}
+.cs h3::before{content:'&#9656; ';color:#3b82f6}.cs.open h3::before{content:'&#9662; '}
+.cb{display:none}.cs.open .cb{display:block}
+.pi{padding:8px 0;border-bottom:1px solid #2d374855}.pi:last-child{border-bottom:none}
+.pt{font-size:.8rem;color:#e2e8f0;font-weight:600}
+.pd{font-size:.75rem;color:#94a3b8;margin:3px 0;line-height:1.5}
+.pm{margin-top:3px}
+.tr{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px}
+.tc{min-width:200px;background:#1a2332;border-radius:8px;padding:12px;flex-shrink:0}
+.tc .n{font-size:1.3rem;font-weight:700;color:#3b82f6}.tc h4{font-size:.8rem;color:#f7fafc;margin:3px 0}.tc p{font-size:.7rem;color:#94a3b8}
+.ws{background:#1a233266;border-radius:8px;padding:14px}
+.wi{padding:6px 0;border-bottom:1px solid #2d374833;font-size:.8rem;color:#94a3b8}.wi:last-child{border-bottom:none}.wi strong{color:#e2e8f0}
+.filter-note{background:#1a2332;border-radius:6px;padding:8px 12px;font-size:.75rem;color:#94a3b8;margin-bottom:16px;border-left:3px solid #22c55e}
+.digest-date{font-size:.85rem;color:#64748b;margin-bottom:12px}
+footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-top:1px solid #2d3748;margin-top:30px}
+.time-note{font-size:.7rem;color:#475569;text-align:center;margin-top:6px}
+
+/* Digest styles */
+.digest-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.digest-tab{padding:6px 16px;border-radius:20px;font-size:.8rem;cursor:pointer;background:#1a2332;color:#94a3b8;border:1px solid #2d3748;transition:all .15s}
+.digest-tab:hover{color:#e2e8f0;border-color:#3b82f6}.digest-tab.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.digest-window{display:none}.digest-window.active{display:block}
+.issue-item{background:#1a2332;border-radius:8px;padding:14px;margin-bottom:8px;border-left:4px solid #3b82f6}
+.issue-item.sev-blocker{border-left-color:#ef4444}.issue-item.sev-pain{border-left-color:#f97316}.issue-item.sev-friction{border-left-color:#eab308}.issue-item.sev-wishlist{border-left-color:#8b5cf6}
+.issue-title{font-size:.85rem;font-weight:600;color:#f7fafc;margin-bottom:4px}
+.issue-title a{color:#f7fafc}.issue-title a:hover{color:#3b82f6}
+.issue-desc{font-size:.78rem;color:#94a3b8;line-height:1.5;margin-bottom:6px}
+.issue-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.issue-date{font-size:.68rem;color:#64748b}
+.issue-sev{display:inline-block;padding:1px 7px;border-radius:6px;font-size:.63rem;font-weight:600}
+.issue-sev-blocker{background:#ef444433;color:#ef4444}.issue-sev-pain{background:#f9731633;color:#f97316}.issue-sev-friction{background:#eab30833;color:#eab308}.issue-sev-wishlist{background:#8b5cf633;color:#8b5cf6}
+.issue-src{display:inline-block;padding:1px 7px;border-radius:6px;font-size:.63rem;background:#2d3748;color:#94a3b8}
+.issue-tag{display:inline-block;padding:1px 6px;border-radius:6px;font-size:.6rem;background:#1e293b;color:#64748b}
+.digest-summary{background:#1a2332;border-radius:8px;padding:14px;margin-bottom:20px;border-left:3px solid #3b82f6}
+.digest-summary p{font-size:.82rem;color:#94a3b8;line-height:1.5}
+.digest-summary strong{color:#f7fafc}
+.window-stats{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.ws-item{background:#1a233288;border-radius:8px;padding:10px 16px;text-align:center}
+.ws-item .ws-num{font-size:1.2rem;font-weight:700;color:#3b82f6}.ws-item .ws-lbl{font-size:.65rem;color:#64748b;text-transform:uppercase}
+
+/* Tech Radar styles */
+.radar-stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:24px;padding:16px;background:#1a2332;border-radius:10px}
+.radar-stat{text-align:center;min-width:120px}.radar-stat .rs-num{font-size:1.5rem;font-weight:700;color:#3b82f6}.radar-stat .rs-lbl{font-size:.7rem;color:#64748b;text-transform:uppercase;letter-spacing:1px}
+.paper-card{background:#1a2332;border-radius:8px;padding:16px;margin-bottom:10px;border-left:4px solid #3b82f6;transition:transform .15s}
+.paper-card:hover{transform:translateY(-1px)}
+.paper-card h4{font-size:.9rem;font-weight:600;color:#f7fafc;margin-bottom:4px}
+.paper-card h4 a{color:#f7fafc}.paper-card h4 a:hover{color:#3b82f6}
+.paper-card .paper-summary{font-size:.8rem;color:#94a3b8;margin-bottom:6px;line-height:1.5}
+.paper-card .paper-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.paper-card .paper-date{font-size:.7rem;color:#64748b}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.6rem;font-weight:600;margin-right:3px}
+.tag-fm{background:#3b82f633;color:#3b82f6}
+.tag-manip{background:#22c55e33;color:#22c55e}
+.tag-survey{background:#a855f733;color:#a855f7}
+.tag-llm{background:#f9731633;color:#f97316}
+.tag-humanoid{background:#06b6d433;color:#06b6d4}
+.tag-nvidia{background:#84cc1633;color:#84cc16}
+.tag-multi{background:#ec489933;color:#ec4899}
+.tag-hri{background:#f43f5e33;color:#f43f5e}
+.tag-plan{background:#eab30833;color:#eab308}
+.tag-bench{background:#64748b33;color:#94a3b8}
+.tag-oss{background:#22c55e33;color:#22c55e}
+.tag-learn{background:#818cf833;color:#818cf8}
+.tag-iclr{background:#c084fc33;color:#c084fc}
+.tag-3d{background:#2dd4bf33;color:#2dd4bf}
+.tag-diff{background:#fb718533;color:#fb7185}
+.tag-ros{background:#38bdf833;color:#38bdf8}
+.tag-nl{background:#a78bfa33;color:#a78bfa}
+.tag-mfg{background:#fbbf2433;color:#fbbf24}
+.timeline{position:relative;padding-left:24px;margin-bottom:20px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#2d3748}
+.tl-item{position:relative;margin-bottom:14px;padding:12px 14px;background:#1a2332;border-radius:8px;transition:transform .15s}
+.tl-item:hover{transform:translateY(-1px)}
+.tl-item::before{content:'';position:absolute;left:-20px;top:16px;width:10px;height:10px;border-radius:50%;background:#3b82f6;border:2px solid #0f1419}
+.tl-date{font-size:.7rem;font-weight:600;color:#3b82f6;text-transform:uppercase;letter-spacing:.5px}
+.tl-title{font-size:.85rem;font-weight:600;color:#f7fafc;margin:3px 0}
+.tl-desc{font-size:.78rem;color:#94a3b8;line-height:1.5}
+.social-signal{background:#1a2332;border-radius:8px;padding:14px;margin-bottom:8px;border-left:4px solid #a855f7;transition:transform .15s}
+.social-signal:hover{transform:translateY(-1px)}
+.social-signal p{font-size:.82rem;color:#e2e8f0;line-height:1.5}
+.social-signal .ss-icon{color:#a855f7;margin-right:6px}
+.digest-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.digest-tab{padding:6px 16px;border-radius:20px;font-size:.8rem;cursor:pointer;background:#1a2332;color:#94a3b8;border:1px solid #2d3748;transition:all .15s}
+.digest-tab:hover{color:#e2e8f0;border-color:#3b82f6}.digest-tab.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.digest-window{display:none}.digest-window.active{display:block}
+.issue-item{background:#1a2332;border-radius:8px;padding:14px;margin-bottom:8px;border-left:4px solid #3b82f6}
+.issue-item.sev-blocker{border-left-color:#ef4444}.issue-item.sev-pain{border-left-color:#f97316}.issue-item.sev-friction{border-left-color:#eab308}.issue-item.sev-wishlist{border-left-color:#8b5cf6}
+.issue-title{font-size:.85rem;font-weight:600;color:#f7fafc;margin-bottom:4px}
+.issue-title a{color:#f7fafc}.issue-title a:hover{color:#3b82f6}
+.issue-desc{font-size:.78rem;color:#94a3b8;line-height:1.5;margin-bottom:6px}
+.issue-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.issue-sev{display:inline-block;padding:1px 7px;border-radius:6px;font-size:.63rem;font-weight:600}
+.issue-sev-blocker{background:#ef444433;color:#ef4444}.issue-sev-pain{background:#f9731633;color:#f97316}.issue-sev-friction{background:#eab30833;color:#eab308}.issue-sev-wishlist{background:#8b5cf633;color:#8b5cf6}
+.issue-src{display:inline-block;padding:1px 7px;border-radius:6px;font-size:.63rem;background:#2d3748;color:#94a3b8}
+.issue-tag{display:inline-block;padding:1px 6px;border-radius:6px;font-size:.6rem;background:#1e293b;color:#64748b}
+.issue-date{font-size:.68rem;color:#64748b}
+.digest-summary{background:#1a2332;border-radius:8px;padding:14px;margin-bottom:20px;border-left:3px solid #3b82f6}
+.digest-summary p{font-size:.82rem;color:#94a3b8;line-height:1.5}
+.digest-summary strong{color:#f7fafc}
+.window-stats{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.ws-item{background:#1a233288;border-radius:8px;padding:10px 16px;text-align:center}
+.ws-item .ws-num{font-size:1.2rem;font-weight:700;color:#3b82f6}.ws-item .ws-lbl{font-size:.65rem;color:#64748b;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>&#x1f980; <span>PM Claw</span> &#8212; Physical AI Intelligence</h1>
+<div class="meta"><span>&#x1f4c5; 2026-03-28</span><span class="badge">First Sweep</span><span class="badge badge-ver">Isaac Sim &#x2265;5.1</span></div>
+<div class="stats-bar">
+<div class="stat"><div class="num">38</div><div class="lbl">Problems</div></div>
+<div class="stat"><div class="num">8</div><div class="lbl">Sources</div></div>
+<div class="stat"><div class="num">6mo</div><div class="lbl">Window</div></div>
+</div>
+<div class="time-note">Oct 2025 &#8211; Mar 2026 | Isaac Sim &#x2265;5.1 prioritized</div>
+</header>
+
+<div class="tabs">
+<div class="tab active" onclick="switchTab('overview')">&#x1f4ca; Overview</div>
+<div class="tab" onclick="switchTab('digest')">&#x1f4e5; Daily Digest</div>
+<div class="tab" onclick="switchTab('ecosystem')">&#x1f30d; Ecosystem</div>
+<div class="tab" onclick="switchTab('techradar')">&#x1f52c; Tech Radar</div>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<div id="tab-overview" class="tab-content active">
+<div class="filter-note">&#x2705; Filtered to Oct 2025&#8211;Mar 2026. Pre-5.1 items flagged <span class="ver ver-old">&lt;5.1</span></div>
+
+<section>
+<h2>&#x1f3af; Executive Summary</h2>
+<div class="card-grid">
+<div class="card blocker"><h3>1. Isaac Lab DX is the #1 pain point</h3><p>Multiple Reddit posts (59+ upvotes) call Isaac Lab "unusable." Confusing docs, broken tutorials, CUDA errors. Affects 5.1 and 6.0 users alike.</p></div>
+<div class="card pain"><h3>2. Isaac Sim 5.1/6.0 stability issues</h3><p>GUI crashes on RTX 4090 (5.1), segfaults on RTX 5080 (5.1), LiDAR StableIDMap bugs (6.0), SICK sensor empty topics (5.1). New hardware + new versions = new pain.</p></div>
+<div class="card pain"><h3>3. Sim-to-real remains THE fundamental gap</h3><p>Survey catalogs reality gap. Static friction under-randomized. a16z: "deployment gap never been wider."</p></div>
+<div class="card friction"><h3>4. Ecosystem fragmentation confusion</h3><p>Newton 1.0, MuJoCo Warp 250-475x, Isaac Lab 3.0 EA. Users don't know which tool to use.</p></div>
+<div class="card pain"><h3>5. No "ImageNet for robotics"</h3><p>Training data bottleneck. Everyone building bespoke synthetic data pipelines.</p></div>
+</div>
+</section>
+
+<section>
+<h2>&#x1f5fa;&#xfe0f; Problem Heatmap</h2>
+<div class="hm"><table>
+<tr><th>Category</th><th>Blocker</th><th>Pain</th><th>Friction</th><th>Total</th></tr>
+<tr><td class="c">&#x1f527; Tooling/DX</td><td class="h2">2</td><td class="h3">4</td><td class="h3">4</td><td>10</td></tr>
+<tr><td class="c">&#x1f41b; 5.1/6.0 Bugs</td><td class="h1">1</td><td class="h3">3</td><td class="h1">1</td><td>5</td></tr>
+<tr><td class="c">&#x1f309; Sim2Real</td><td class="h0">0</td><td class="h3">5</td><td class="h1">1</td><td>6</td></tr>
+<tr><td class="c">&#x1f4f7; Synthetic Data</td><td class="h0">0</td><td class="h2">2</td><td class="h1">1</td><td>3</td></tr>
+<tr><td class="c">&#x1f3d7;&#xfe0f; Env Design</td><td class="h0">0</td><td class="h1">1</td><td class="h2">2</td><td>3</td></tr>
+<tr><td class="c">&#x1f680; Deployment</td><td class="h0">0</td><td class="h2">2</td><td class="h1">1</td><td>3</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>Problems by Category</h2>
+
+<div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Isaac Sim 5.1/6.0 Bugs (5)</h3><div class="cb">
+<div class="pi"><div class="pt"><a href="https://forums.developer.nvidia.com/t/gui-crash-on-rtx-4090-isaac-sim-4-5-0-5-1-0/362307" target="_blank">GUI crash on RTX 4090</a></div><div class="pd">Consistent GUI crashes launching Isaac Sim 5.1.0 on RTX 4090. Works fine on 3090 and PRO 6000 Blackwell. GPU-specific rendering or driver issue, no workaround found.</div><div class="pm"><span class="ver">5.1</span><span class="sev sev-pain">pain</span><span class="src">forum</span> <span style="color:#64748b;font-size:.7rem">Feb 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-crashes-with-segmentation-fault-on-ubuntu-24-04-rtx-5080-driver-580-open/363553" target="_blank">Segfault on RTX 5080 + Ubuntu 24.04</a></div><div class="pd">Isaac Sim 5.1 crashes immediately with segfault on fresh Ubuntu 24.04 + RTX 5080 + driver 580-open. Compatibility gap between new Blackwell consumer GPUs and current build.</div><div class="pm"><span class="ver">5.1</span><span class="sev sev-pain">pain</span><span class="src">forum</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap missing object IDs</a></div><div class="pd">Recording scenes with LidarRTX returns object IDs not in the StableIDMap lookup. Breaks pipelines mapping LiDAR points to scene objects (segmentation, detection ground truth). Affects 6.0.</div><div class="pm"><span class="ver">6.0</span><span class="sev sev-pain">pain</span><span class="src">forum</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://forums.developer.nvidia.com/t/sick-microscan3-profile-5-9-0m-25-0hz-usd-isnt-working-in-nvidia-isaac-sim/362221" target="_blank">SICK microScan3 LiDAR empty ROS2 topics</a></div><div class="pd">Official SICK microScan3 USD asset wired correctly via ROS2 RTX Lidar Helper, but LaserScan topics publish zero data. Blocks industrial safety LiDAR simulation workflows entirely.</div><div class="pm"><span class="ver">5.1</span><span class="sev sev-blocker">blocker</span><span class="src">forum</span> <span style="color:#64748b;font-size:.7rem">Feb 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://forums.developer.nvidia.com/t/isaac-sim-not-running-on-brev/362507" target="_blank">Isaac Sim 5.1 won't start on Brev cloud</a></div><div class="pd">User running 5.1.0 headless on Brev cloud GPU platform via runheadless.sh gets errors on startup. Questions if cloud version of 5.1 has known issues. Friction for cloud-based robotics dev.</div><div class="pm"><span class="ver">5.1</span><span class="sev sev-friction">friction</span><span class="src">forum</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+</div></div>
+
+<div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Tooling / DX (6)</h3><div class="cb">
+<div class="pi"><div class="pt"><a href="https://www.reddit.com/r/reinforcementlearning/comments/1n9cpmn/" target="_blank">Isaac Lab docs fundamentally inadequate</a></div><div class="pd">59-upvote rant. User spent days trying to understand Isaac Lab. Tutorials use different import styles, cartpole env never explained, ManagerBased vs Direct presented without guidance on which to use. Docs show "what" but never "why."</div><div class="pm"><span class="sev sev-blocker">blocker</span><span class="src">reddit</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://www.reddit.com/r/reinforcementlearning/comments/1jnrf18/" target="_blank">"Isaac Lab is 100% unusable"</a></div><div class="pd">26-upvote post. CUDA errors on setup, Python version conflicts, tutorials break partway through. User spent "dozens of hours" and never got a working training run. Comments confirm. Some suggest switching to MuJoCo.</div><div class="pm"><span class="sev sev-blocker">blocker</span><span class="src">reddit</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://forums.developer.nvidia.com/t/2026-feedback-request-from-isaac-sim-users/356628" target="_blank">NVIDIA soliciting user feedback</a></div><div class="pd">Official NVIDIA threads asking what to improve in 2026 + asking devs to share workflows for better docs. They recognize the DX problems. Opportunity window for influencing roadmap.</div><div class="pm"><span class="sev sev-pain">pain</span><span class="src">forum</span> <span style="color:#64748b;font-size:.7rem">Jan 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://github.com/isaac-sim/IsaacLab/issues/4207" target="_blank">Python version not documented</a></div><div class="pd">Isaac Lab requires Python 3.11 but this isn't in install docs. Windows users with 3.12+ get silent failures. Hours wasted debugging a version mismatch.</div><div class="pm"><span class="sev sev-friction">friction</span><span class="src">github</span> <span style="color:#64748b;font-size:.7rem">Feb 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://www.reddit.com/r/reinforcementlearning/comments/1n574bk/" target="_blank">Isaac Sim vs MuJoCo vs Newton vs Brax?</a></div><div class="pd">Widespread confusion about which simulator to use. MuJoCo simpler but less visual, Isaac Sim powerful but painful, Newton just launched but early-stage, Brax fast but limited. No decision framework exists.</div><div class="pm"><span class="sev sev-friction">friction</span><span class="src">reddit</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt">NVIDIA vendor lock-in</div><div class="pd">Recurring complaints: Isaac Sim requires NVIDIA GPUs exclusively. AMD/Intel users locked out. Academic labs can't justify NVIDIA-only hardware when MuJoCo runs on anything.</div><div class="pm"><span class="sev sev-friction">friction</span><span class="src">reddit</span> <span style="color:#64748b;font-size:.7rem">recurring</span></div></div>
+</div></div>
+
+<div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">Sim-to-Real (5)</h3><div class="cb">
+<div class="pi"><div class="pt"><a href="https://arxiv.org/abs/2510.20808" target="_blank">Comprehensive reality gap survey</a></div><div class="pd">Annual Reviews 2026. Catalogs sim-to-real gap across physics fidelity (contact, friction, deformation), visual domain (textures, lighting, noise), and action space (actuator dynamics, latency). No single technique closes it.</div><div class="pm"><span class="sev sev-pain">pain</span><span class="src">arxiv</span> <span style="color:#64748b;font-size:.7rem">Oct 2025</span></div></div>
+<div class="pi"><div class="pt"><a href="https://arxiv.org/abs/2503.01255" target="_blank">Static friction underexplored in DR</a></div><div class="pd">Conventional domain randomization tunes dynamic friction but ignores static friction. On stairs/slopes/uneven ground, policies trained without static friction DR fail in the real world.</div><div class="pm"><span class="sev sev-pain">pain</span><span class="src">arxiv</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://www.reddit.com/r/MachineLearning/comments/1ro7zez/" target="_blank">r/ML: what's actually unsolved?</a></div><div class="pd">42-upvote thread. Practitioners debating if core blocker is physics fidelity, visual gap, or edge cases. Top comments: it's the interaction of all three plus reward shaping. High signal for practitioner confusion.</div><div class="pm"><span class="sev sev-pain">pain</span><span class="src">reddit</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://arxiv.org/html/2602.02402" target="_blank">SoMA: neural sim for deformable objects</a></div><div class="pd">Traditional engines fail for cloth/cables/soft tissue. SoMA reconstructs deformable objects from video as neural spring-mass systems, bypassing hand-tuned params. Promising for manipulation.</div><div class="pm"><span class="sev sev-pain">pain</span><span class="src">arxiv</span> <span style="color:#64748b;font-size:.7rem">Feb 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://www.a16z.news/p/the-physical-ai-deployment-gap" target="_blank">a16z: deployment gap</a></div><div class="pd">"The gap between what's demonstrated at ICRA and what's deployed has never been wider." Key Qs: "how many takes did that demo require?" "what happens when you move the camera 6 inches?" Systemic problem.</div><div class="pm"><span class="sev sev-pain">pain</span><span class="src">blog</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+</div></div>
+
+<div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">Synthetic Data (3)</h3><div class="cb">
+<div class="pi"><div class="pt"><a href="https://www.reddit.com/r/robotics/comments/1o4peai/" target="_blank">No "ImageNet for robotics"</a></div><div class="pd">No standardized large-scale training dataset for robotics. Every team builds bespoke synthetic data pipelines. Comments: harder than vision because you need physics not just pixels.</div><div class="pm"><span class="sev sev-pain">pain</span><span class="src">reddit</span> <span style="color:#64748b;font-size:.7rem">Jan 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://forums.developer.nvidia.com/t/camera-class-from-omni-isaac-sensor-significantly-reduces-sim-performance/306269" target="_blank">Cameras drop FPS 55 to 20</a></div><div class="pd">Adding 3 cameras via omni.isaac.sensor drops FPS from 55 to 20. Overhead in rendering pipeline not physics. Makes multi-camera synthetic data generation impractical at real-time.</div><div class="pm"><span class="ver ver-old">&lt;5.1</span><span class="sev sev-pain">pain</span><span class="src">forum</span> <span style="color:#64748b;font-size:.7rem">Nov 2025</span></div></div>
+<div class="pi"><div class="pt">Synthetic data feedback loop concerns</div><div class="pd">Reddit questioning if synthetic data is "just looping your model's assumptions." Wrong physics or missing edge cases means more synthetic data amplifies bias. Philosophical but practically relevant.</div><div class="pm"><span class="sev sev-friction">friction</span><span class="src">reddit</span> <span style="color:#64748b;font-size:.7rem">Dec 2025</span></div></div>
+</div></div>
+
+<div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">Environment Design (3)</h3><div class="cb">
+<div class="pi"><div class="pt"><a href="https://www.reddit.com/r/reinforcementlearning/comments/1n9cpmn/" target="_blank">ManagerBased vs Direct confusion</a></div><div class="pd">Two env design paradigms with no guidance on tradeoffs. ManagerBased is modular but verbose; Direct is faster but monolithic. Users pick randomly, get stuck, rewrite. Need a decision tree.</div><div class="pm"><span class="sev sev-pain">pain</span><span class="src">reddit</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://github.com/isaac-sim/IsaacLab/issues/4798" target="_blank">Parallel robots snap together</a></div><div class="pd">Spawning multiple robots with fixed joints (e.g. mounting tools) causes robots from different envs to teleport and fuse. Undocumented; requires careful prim path management. Blocks multi-env training with fixtures.</div><div class="pm"><span class="sev sev-friction">friction</span><span class="src">github</span> <span style="color:#64748b;font-size:.7rem">Mar 2026</span></div></div>
+<div class="pi"><div class="pt"><a href="https://github.com/isaac-sim/IsaacLab/issues/4589" target="_blank">USD spatial tendons broken</a></div><div class="pd">Spatial tendons (cable/rope sim) don't work in manager-based workflow due to timing: tendon prim created before physics scene ready. Works in Direct mode. No official fix.</div><div class="pm"><span class="sev sev-friction">friction</span><span class="src">github</span> <span style="color:#64748b;font-size:.7rem">Feb 2026</span></div></div>
+</div></div>
+</section>
+
+<section>
+<h2>Trending (Last 2 Weeks)</h2>
+<div class="tr">
+<div class="tc"><div class="n">1</div><h4>Newton 1.0</h4><p>GTC 2026. MuJoCo Warp 475x. Linux Foundation.</p></div>
+<div class="tc"><div class="n">2</div><h4>Isaac Sim 6.0 EA</h4><p>Multi-physics backends. Early dev release.</p></div>
+<div class="tc"><div class="n">3</div><h4>Isaac Lab 3.0 EA</h4><p>Ties into Newton. Major version bump.</p></div>
+<div class="tc"><div class="n">4</div><h4>LeRobot v0.5</h4><p>Humanoid support. IsaacLab-Arena.</p></div>
+<div class="tc"><div class="n">5</div><h4>"Compute is Data"</h4><p>Jensen, GTC. GPU sim for post-training.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Weak Signals</h2>
+<div class="ws">
+<div class="wi"><strong>PhysTwin / SoMA</strong> - Neural sims for deformable objects from video. Could leapfrog physics sim.</div>
+<div class="wi"><strong>PTC Onshape to Isaac Sim</strong> - Design-to-sim pipeline. Asset pipeline fix.</div>
+<div class="wi"><strong>Cosmos world models</strong> - Synthetic data shifting to learned world models.</div>
+<div class="wi"><strong>Isaac Sim support moving to GitHub</strong> - Forum posts now redirect to GitHub issues.</div>
+</div>
+</section>
+</div>
+
+<div id="tab-digest" class="tab-content">
+<section>
+<h2>&#x1f4e5; Developer Issue Digest</h2>
+<p class="digest-date">Sources: Isaac Forum, IsaacLab GitHub, Isaac Sim GitHub, X, Reddit | Isaac Sim 5.1+ priority</p>
+<div class="digest-tabs">
+<div class="digest-tab" data-window="1d" onclick="switchDigest('1d')">1 Day</div>
+<div class="digest-tab active" data-window="7d" onclick="switchDigest('7d')">7 Days</div>
+<div class="digest-tab" data-window="2w" onclick="switchDigest('2w')">2 Weeks</div>
+<div class="digest-tab" data-window="1m" onclick="switchDigest('1m')">1 Month</div>
+</div>
+
+<!-- 1 DAY -->
+<div id="digest-1d" class="digest-window">
+<div class="window-stats">
+<div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Issues</div></div>
+<div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Blocker</div></div>
+<div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Pain</div></div>
+</div>
+<div class="digest-summary"><p><strong>2 new issues today.</strong> Jetson AGX Thor WebRTC is a blocker for edge deployment workflows. LiDAR StableIDMap bug breaks perception pipelines.</p></div>
+
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/jetson-agx-thor-does-not-support-webrtc-livestreaming-in-isaac-sim-5-1-0/364962" target="_blank">Jetson AGX Thor WebRTC Livestream Not Working</a></div>
+<div class="issue-desc">Headless Isaac Sim 5.1.0 on Jetson AGX Thor cannot serve WebRTC to remote browser. Core edge deployment workflow broken.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">jetson-thor</span><span class="issue-tag">webrtc</span><span class="issue-tag">headless</span><span class="issue-tag">edge</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap Missing Object IDs</a></div>
+<div class="issue-desc">Recording scenes with LidarRTX returns object IDs not in the StableIDMap. Breaks LiDAR segmentation and detection pipelines.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">lidar</span><span class="issue-tag">sensor</span><span class="issue-tag">synth-data</span></div>
+</div>
+</div>
+
+<!-- 7 DAYS (default) -->
+<div id="digest-7d" class="digest-window active">
+<div class="window-stats">
+<div class="ws-item"><div class="ws-num">12</div><div class="ws-lbl">Issues</div></div>
+<div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Blockers</div></div>
+<div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Pain</div></div>
+<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Friction</div></div>
+<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Wishlist</div></div>
+</div>
+<div class="digest-summary"><p><strong>12 issues tracked across 7 days.</strong> Physics explosion bugs dominate &#8212; 3 separate reports of USD imports causing physics instability. Headless/CI pipelines also struggling with datastore lock errors.</p></div>
+
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/sample-ackermann-custom-car-physics-explosion-on-movement/364774" target="_blank">Physics Explosion with Custom Ackermann AMR</a></div>
+<div class="issue-desc">Custom Ackermann car (OnShape parametric design) explodes/flies apart when physics starts in Isaac Sim 5.1.0. Stock F1Tenth.usd works fine.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">physics</span><span class="issue-tag">usd-import</span><span class="issue-tag">ackermann</span></div>
+</div>
+
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/jetson-agx-thor-does-not-support-webrtc-livestreaming-in-isaac-sim-5-1-0/364962" target="_blank">Jetson AGX Thor WebRTC Livestream Not Working</a></div>
+<div class="issue-desc">Headless Isaac Sim 5.1.0 on Jetson AGX Thor cannot serve WebRTC to remote browser. Core edge workflow broken.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">jetson-thor</span><span class="issue-tag">webrtc</span><span class="issue-tag">edge</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/omni-datastore-error/364867" target="_blank">omni.datastore Exclusive Lock Error on Headless</a></div>
+<div class="issue-desc">omni.datastore fails to acquire exclusive lock (256>=256) on DerivedDataCache when running standalone headless. Blocks CI/CD and cloud pipelines.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 26</span><span class="issue-tag">headless</span><span class="issue-tag">datastore</span><span class="issue-tag">ci-cd</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/mecanum-wheel-physics-pivot-mismatch-and-jitter-in-imported-usd/364482" target="_blank">Mecanum Wheel Physics Pivot Mismatch &amp; Jitter</a></div>
+<div class="issue-desc">Mecanum wheel physics show pivot mismatch and jitter after USD import. Joint/physics instability pattern similar to Ackermann issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">physics</span><span class="issue-tag">usd-import</span><span class="issue-tag">mecanum</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap Missing Object IDs</a></div>
+<div class="issue-desc">Recording scenes returns object IDs not in StableIDMap lookup. Breaks LiDAR segmentation pipelines.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">lidar</span><span class="issue-tag">sensor</span><span class="issue-tag">synth-data</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/failed-to-install-ros2-on-igx-orin-dgpu/364784" target="_blank">ROS 2 Install Fails on IGX Orin dGPU</a></div>
+<div class="issue-desc">Installing ROS 2 Humble on IGX Orin after Isaac Sim 5.1 fails. Kernel upgrade fixes ROS 2 but breaks GPU driver. Catch-22 for Nova Carter workflows.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">ros2</span><span class="issue-tag">igx-orin</span><span class="issue-tag">driver</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/live-session-performance-issue-with-1000-transform-updates-per-frame/364689" target="_blank">Live Session Perf Degrades at ~1000 Transforms/Frame</a></div>
+<div class="issue-desc">Performance degrades severely when pushing ~1000 transform updates per frame through Omniverse Live Sessions. Relevant for digital twin and multi-robot sim.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">live-session</span><span class="issue-tag">performance</span><span class="issue-tag">digital-twin</span></div>
+</div>
+
+<div class="issue-item sev-friction">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-add-nucleus-connection-failed/364507" target="_blank">Nucleus Connection Fails Cross-Machine</a></div>
+<div class="issue-desc">Add Nucleus Connection fails from a remote machine on the same network, despite Nucleus web UI being accessible at :8080.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">nucleus</span><span class="issue-tag">networking</span></div>
+</div>
+
+<div class="issue-item sev-friction">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/synthetic-data-generation-for-defects-on-components/364378" target="_blank">Synthetic Data Workflow Gaps for Defect Detection</a></div>
+<div class="issue-desc">User generating synth data for aerospace blade defect detection unclear how to apply defect overlays procedurally in Replicator. Documentation gap.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 22</span><span class="issue-tag">synth-data</span><span class="issue-tag">replicator</span><span class="issue-tag">industrial</span></div>
+</div>
+
+<div class="issue-item sev-wishlist">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/no-dlss-frame-generation-box-in-isaac-sim-render-setting/364813" target="_blank">DLSS Frame Generation Missing from Render Settings</a></div>
+<div class="issue-desc">DLSS Frame Generation checkbox absent from Isaac Sim render settings. Users want it for interactive viewport performance.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">forum</span><span class="issue-date">Mar 26</span><span class="issue-tag">dlss</span><span class="issue-tag">rendering</span></div>
+</div>
+
+<div class="issue-item sev-wishlist">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/omni-ui-webviewwidget/364816" target="_blank">WebViewWidget Revival Request</a></div>
+<div class="issue-desc">Request to revive omni.ui WebViewWidget for embedding web content in Isaac Sim UI panels.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">forum</span><span class="issue-date">Mar 26</span><span class="issue-tag">ui</span><span class="issue-tag">webview</span></div>
+</div>
+
+<div class="issue-item sev-wishlist">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/fluid-simulation-in-isaac-sim/364380" target="_blank">Fluid Simulation &#8212; Realistic Pipe Flow</a></div>
+<div class="issue-desc">User wants realistic fluid dynamics for water flowing through pipes. Current PhysX particle-based fluid is limited. Newton engine may address this.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">forum</span><span class="issue-date">Mar 22</span><span class="issue-tag">fluid</span><span class="issue-tag">physics</span><span class="issue-tag">newton</span></div>
+</div>
+</div>
+
+<!-- 2 WEEKS -->
+<div id="digest-2w" class="digest-window">
+<div class="window-stats">
+<div class="ws-item"><div class="ws-num">16</div><div class="ws-lbl">Issues</div></div>
+<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Blockers</div></div>
+<div class="ws-item"><div class="ws-num">6</div><div class="ws-lbl">Pain</div></div>
+<div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Friction</div></div>
+<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Wishlist</div></div>
+</div>
+<div class="digest-summary"><p><strong>16 issues over 2 weeks.</strong> Blackwell GPUs (RTX 5080, 5090) emerging as a pain cluster &#8212; 2 separate crash/hang reports. USD import &#8594; physics explosion is a systemic pattern across 3+ reports.</p></div>
+
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/4951" target="_blank">TiledCamera Hangs on RTX 5090 (Blackwell sm_120)</a></div>
+<div class="issue-desc">TiledCamera sensor hangs on RTX 5090 Laptop GPU with Isaac Sim 5.1.0. Blackwell compute capability not yet supported.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 11</span><span class="issue-tag">sensor</span><span class="issue-tag">rtx-5090</span><span class="issue-tag">blackwell</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-crashes-with-segmentation-fault-on-ubuntu-24-04-rtx-5080-driver-580-open/363553" target="_blank">Isaac Sim 5.1 Segfault on RTX 5080 + Ubuntu 24.04</a></div>
+<div class="issue-desc">Immediate segfault on fresh Ubuntu 24.04 + RTX 5080 + driver 580-open. Blackwell consumer GPU compatibility gap.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 15</span><span class="issue-tag">crash</span><span class="issue-tag">rtx-5080</span><span class="issue-tag">blackwell</span><span class="issue-tag">driver</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/title-isaac-sim-5-1-0-surface-gripper-not-working-on-custom-urdf-robot-d6joint-errors-physics-explosion/363946" target="_blank">Surface Gripper D6Joint Errors &amp; Physics Explosion</a></div>
+<div class="issue-desc">Pick-and-place with Surface Gripper on custom URDF creates D6Joint errors and physics explosions. Another physics instability from import.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 16</span><span class="issue-tag">gripper</span><span class="issue-tag">physics</span><span class="issue-tag">urdf</span></div>
+</div>
+
+<div class="issue-item sev-friction">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/chatusd-not-working-in-isaac-sim-5-1-0-degraded-function-cannot-be-invoked/363360" target="_blank">ChatUSD "DEGRADED" Error in Isaac Sim 5.1.0</a></div>
+<div class="issue-desc">ChatUSD feature stopped working with "DEGRADED function cannot be invoked" error. Worked in Oct 2025, broken since.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 15</span><span class="issue-tag">chatusd</span><span class="issue-tag">ai</span><span class="issue-tag">degraded</span></div>
+</div>
+
+<p style="text-align:center;padding:12px;color:#475569;font-size:.75rem;font-style:italic">+ 12 issues from the 7-day window above</p>
+</div>
+
+<!-- 1 MONTH -->
+<div id="digest-1m" class="digest-window">
+<div class="window-stats">
+<div class="ws-item"><div class="ws-num">22</div><div class="ws-lbl">Issues</div></div>
+<div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Blockers</div></div>
+<div class="ws-item"><div class="ws-num">9</div><div class="ws-lbl">Pain</div></div>
+<div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Friction</div></div>
+<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Wishlist</div></div>
+</div>
+<div class="digest-summary"><p><strong>22 issues over 1 month. Clear themes:</strong> (1) DX/docs crisis confirmed by 85+ combined Reddit upvotes, (2) Blackwell GPU compatibility gap across RTX 4090/5080/5090, (3) Physics instability with imported USD/URDF assets. Driver updates continue to break things.</p></div>
+
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://www.reddit.com/r/reinforcementlearning/comments/1n9cpmn/" target="_blank">Isaac Lab Docs Fundamentally Inadequate</a></div>
+<div class="issue-desc">59-upvote Reddit rant. Tutorials use different import styles, cartpole never explained, ManagerBased vs Direct with no guidance on which to use. Docs show "what" but never "why."</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">reddit</span><span class="issue-date">Mar 2026</span><span class="issue-tag">docs</span><span class="issue-tag">dx</span><span class="issue-tag">tutorials</span></div>
+</div>
+
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://www.reddit.com/r/reinforcementlearning/comments/1jnrf18/" target="_blank">"Isaac Lab is 100% Unusable"</a></div>
+<div class="issue-desc">26-upvote post. CUDA errors on setup, Python version conflicts, tutorials break partway through. Users spent "dozens of hours" and never got a working training run. Some defecting to MuJoCo.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">reddit</span><span class="issue-date">Mar 2026</span><span class="issue-tag">dx</span><span class="issue-tag">setup</span><span class="issue-tag">unusable</span></div>
+</div>
+
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacSim/issues/537" target="_blank">Crash After Updating NVIDIA Drivers (595.79)</a></div>
+<div class="issue-desc">Isaac Sim fails to detect CUDA devices after driver update to 595.79. Works with 580. Driver compatibility is a recurring theme.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 3</span><span class="issue-tag">driver</span><span class="issue-tag">cuda</span><span class="issue-tag">crash</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/gui-crash-on-rtx-4090-isaac-sim-4-5-0-5-1-0/362307" target="_blank">GUI Crash on RTX 4090</a></div>
+<div class="issue-desc">Consistent GUI crashes on RTX 4090. Works fine on RTX 3090 and PRO 6000 Blackwell. GPU-specific rendering or driver issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Feb 2026</span><span class="issue-tag">crash</span><span class="issue-tag">rtx-4090</span><span class="issue-tag">rendering</span></div>
+</div>
+
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaacsim-crashes-when-importing-a-urdf/362448" target="_blank">Isaac Sim Crashes on URDF Import</a></div>
+<div class="issue-desc">Isaac Sim crashes when importing certain URDF files. Recurring pattern of USD/URDF import instability.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 3</span><span class="issue-tag">urdf</span><span class="issue-tag">crash</span><span class="issue-tag">import</span></div>
+</div>
+
+<div class="issue-item sev-friction">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/4763" target="_blank">Low Frame Rate for Demo Recording (15&#8211;18 FPS)</a></div>
+<div class="issue-desc">Frame rate drops to 15-18 FPS when running record_demos scripts. Impacts data collection workflows.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">github</span><span class="issue-date">Mar 1</span><span class="issue-tag">performance</span><span class="issue-tag">fps</span><span class="issue-tag">recording</span></div>
+</div>
+
+<p style="text-align:center;padding:12px;color:#475569;font-size:.75rem;font-style:italic">+ 16 issues from the 2-week window above</p>
+</div>
+
+</section>
+</div>
+
+
+<div id="tab-ecosystem" class="tab-content">
+<section>
+<h2>Robotics Ecosystem Map</h2>
+<p class="digest-date">50+ companies | NVIDIA Physical AI focus | Mar 2026</p>
+
+<div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Humanoid Robots (10)</h3><div class="cb">
+<div class="pi"><div class="pt"><strong>Figure AI</strong> <span class="ver">$39B</span></div><div class="pd">General-purpose humanoid (Figure 02). Deployed at BMW. NVIDIA 3-computer arch, GTC 2026 stage. $1B+ Series C. Highest-valued humanoid startup.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Agility Robotics</strong> <span class="ver">$2.1B</span></div><div class="pd">Digit humanoid for logistics. Amazon warehouse deployments. NVIDIA 3-computer arch, GTC 2026 stage. $400M Series C.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Apptronik</strong> <span class="ver">$935M+</span></div><div class="pd">Apollo humanoid for manufacturing (Mercedes, GXO). Omniverse digital twins. Google DeepMind partnership too. $520M raised.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Tesla Optimus</strong></div><div class="pd">Internal factory use, external sales 2026. Uses Omniverse but builds own vertical stack. v3 prototype early 2026.</div><div class="pm"><span class="sev sev-friction">complex</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>Boston Dynamics</strong></div><div class="pd">Atlas electric humanoid (production CES 2026). Spot + Stretch deployed. Expanded NVIDIA collab Mar 2025. Also Google DeepMind partner.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">Hyundai</span></div></div>
+<div class="pi"><div class="pt"><strong>1X Technologies</strong> <span class="ver">$10B</span></div><div class="pd">NEO humanoid for home use. Norway/US. OpenAI-backed. Seeking $1B at $10B. Unique consumer focus.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>NEURA Robotics</strong> <span class="ver">$1.5B+</span></div><div class="pd">4NE-1 cognitive humanoid. German. Mini at 19,999 EUR for research. Europe's leading humanoid. 1B EUR from Tether.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Unitree</strong></div><div class="pd">G1/H1 humanoid, Go2 quadruped. Low-cost leader ($16K G1). Uses Isaac Sim. LeRobot v0.5 support. Massive hobbyist adoption.</div><div class="pm"><span class="sev sev-friction">customer</span><span class="src">China</span></div></div>
+<div class="pi"><div class="pt"><strong>Agibot</strong></div><div class="pd">Humanoid for manufacturing. ByteDance-backed. Targeting thousands of units 2025-2026.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">China</span></div></div>
+<div class="pi"><div class="pt"><strong>Fourier Intelligence</strong></div><div class="pd">GR-2 humanoid for rehab + industrial. GR00T adopter. Medical + industrial dual focus.</div><div class="pm"><span class="sev sev-friction">customer</span><span class="src">China</span></div></div>
+</div></div>
+
+<div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Robot Brains / Foundation Models (7)</h3><div class="cb">
+<div class="pi"><div class="pt"><strong>Skild AI</strong> <span class="ver">$14B</span></div><div class="pd">"Universal brain" spanning legged/wheeled/humanoid. CMU spinout. NVIDIA invested $1.4B round (Jan 2026). Uses Isaac Lab + Cosmos. Foxconn deal.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Physical Intelligence</strong> <span class="ver">$11B</span></div><div class="pd">General-purpose robot policy models. Independent. $600M Series B (Nov 2025). Raising $1B more. 2 years old.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>FieldAI</strong> <span class="ver">$2B</span></div><div class="pd">Risk-aware models for construction/oil&gas. NVIDIA Ventures invested. Uses Isaac Lab + Cosmos. Bezos + Khosla backing.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Google DeepMind</strong></div><div class="pd">Gemini Robotics + MuJoCo. Alternative stack (Gemini+MuJoCo vs GR00T+Isaac). Partnered with Boston Dynamics + Apptronik.</div><div class="pm"><span class="sev sev-pain">competitor</span><span class="src">big tech</span></div></div>
+<div class="pi"><div class="pt"><strong>NVIDIA GR00T</strong></div><div class="pd">N1.7 + N2 preview. "2x task generalization vs alternatives" at GTC 2026.</div><div class="pm"><span class="sev sev-blocker">self</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>Covariant AI</strong></div><div class="pd">Pick-and-place AI brain. Acquired by Amazon. Powers warehouse AI.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">acquired</span></div></div>
+<div class="pi"><div class="pt"><strong>LeRobot (HuggingFace)</strong></div><div class="pd">Open-source robot learning. v0.5 humanoid support. IsaacLab-Arena integration.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">open source</span></div></div>
+</div></div>
+
+<div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Industrial Giants (GTC 2026)</h3><div class="cb">
+<div class="pi"><div class="pt"><strong>FANUC</strong></div><div class="pd">World's largest industrial robot maker. ~1M installed. Integrating Omniverse + Isaac. GTC 2026 stage.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>ABB Robotics</strong></div><div class="pd">Global #2. Omniverse integration for commissioning. GTC 2026.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>YASKAWA</strong></div><div class="pd">Motoman series. Omniverse + Isaac. GTC 2026 stage.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>KUKA</strong></div><div class="pd">Owned by Midea (China). Omniverse libraries. GTC 2026.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>Universal Robots</strong></div><div class="pd">Cobot market leader. GTC 2026. Teradyne subsidiary.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">public</span></div></div>
+<div class="pi" style="padding:8px 0;color:#64748b;font-size:.75rem;font-style:italic">2M+ installed robots worldwide across these companies (NVIDIA GTC 2026)</div>
+</div></div>
+
+<div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">Simulation Competitors (5)</h3><div class="cb">
+<div class="pi"><div class="pt"><strong>Genesis AI</strong></div><div class="pd">Generative physics engine. Claims 43M FPS. Open-source. Direct Isaac Sim threat.</div><div class="pm"><span class="sev sev-pain">competitor</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>MuJoCo (DeepMind)</strong></div><div class="pd">Free, open-source. RL research standard. MuJoCo Warp 475x now in Newton.</div><div class="pm"><span class="sev sev-pain">competitor</span><span class="src">open source</span></div></div>
+<div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Synthetic Data &amp; 3D Assets (10)</h3><div class="cb">
+<div class="pi"><div class="pt"><strong>Lightwheel AI</strong></div><div class="pd">SimReady 3D assets, synthetic + egocentric human data, and evaluation platforms for Embodied AI. 2,000+ robotics assets. Uses MimicGen + DexMimicGen with Isaac Sim to scale teleoperated data 100-1000x. Official NVIDIA case study partner.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>Palatial</strong></div><div class="pd">Pivoted from architecture viz to sim-ready 3D asset generation for robotics. Generates assets with physics metadata (mass, bounce, friction) for training/validation. Cornell/Tesla pedigree. Solving the "combinatorial nightmare" of CAD-to-sim conversion.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>Bifrost AI</strong></div><div class="pd">World models for robotics data. Generate diverse synthetic environments in minutes for training + testing. Stress-test AI against edge cases in simulation. Focus on maritime, industrial, and autonomous systems.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>NVIDIA Cosmos</strong></div><div class="pd">World foundation models (Predict 2.5, Transfer 2.5). Physically-based synthetic data gen + robot policy evaluation. Open on Hugging Face. Used by FieldAI + Skild AI.</div><div class="pm"><span class="sev sev-blocker">self</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>NVIDIA Edify SimReady</strong></div><div class="pd">Generative AI model that auto-labels existing 3D assets with physics/material attributes. Processes 1,000 objects in minutes vs 40+ hours manually. Part of Omniverse stack.</div><div class="pm"><span class="sev sev-blocker">self</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>Rendered.ai</strong></div><div class="pd">Physics-first synthetic data PaaS. Specializes in hard sensor modalities: radar, SAR, thermal, hyperspectral, RGB. NVIDIA Omniverse integration. Serves defense + industrial.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>SKY ENGINE AI</strong></div><div class="pd">Synthetic Data Cloud for industrial/warehouse robotics. Pixel-perfect annotations. Supports RGB, IR, LiDAR, depth, hyperspectral. Gartner recognized.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>Applied Intuition</strong> <span class="ver">$6B+</span></div><div class="pd">Simulation + synthetic data for autonomous vehicles + robotics. Started in AV, expanding to general robotics. $6B+ valuation. Major player in AV sim, increasingly relevant to physical AI.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Datagen</strong></div><div class="pd">High-fidelity synthetic data for computer vision. $72M raised (largest synth data round). Covers retail, robotics, autonomous. SynthEngyne platform.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Serve Robotics</strong></div><div class="pd">Delivery robot company using Isaac Sim synthetic data. Generates thousands of simulated scenarios, combines with real data. NVIDIA blog featured case study.</div><div class="pm"><span class="sev sev-pain">customer</span><span class="src">growth</span></div></div>
+</div></div>
+
+<div class="pi"><div class="pt"><strong>Gazebo</strong></div><div class="pd">Legacy ROS standard. Declining for RL. Still used for ROS integration.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">open source</span></div></div>
+<div class="pi"><div class="pt"><strong>World Labs</strong></div><div class="pd">Fei-Fei Li. Spatial intelligence / 3D world gen. GTC 2026 partner.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">startup</span></div></div>
+</div></div>
+
+<div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">Warehouse / Manufacturing (6)</h3><div class="cb">
+<div class="pi"><div class="pt"><strong>Amazon Robotics</strong></div><div class="pd">750K+ robots. Omniverse digital twins + Isaac Sim. Largest robot fleet in the world.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">big tech</span></div></div>
+<div class="pi"><div class="pt"><strong>Foxconn</strong></div><div class="pd">iPhone manufacturer going robotic. Omniverse factory twins. Skild AI deal.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>Symbotic</strong></div><div class="pd">AI warehouse automation. Walmart customer. $31.3B market cap.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>Locus Robotics</strong></div><div class="pd">13,000+ AMRs, 300+ facilities. Pre-IPO.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>KION Group</strong></div><div class="pd">Forklifts. Omniverse Blueprint for warehouse twins. Jetson forklifts.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">public</span></div></div>
+<div class="pi"><div class="pt"><strong>Toyota / Caterpillar / TSMC</strong></div><div class="pd">Manufacturing digital twins via Omniverse. GTC 2026.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">public</span></div></div>
+</div></div>
+</section>
+
+<section>
+<h2>NVIDIA Partnership Tiers</h2>
+<div class="hm"><table>
+<tr><th>Tier</th><th>Companies</th><th>Relationship</th></tr>
+<tr><td class="c" style="background:#22c55e22;color:#22c55e;font-weight:700">Tier 1: Deep</td><td>Skild AI, FieldAI, Figure, Agility, Amazon, FANUC, ABB, YASKAWA, KUKA, Foxconn, Lightwheel AI</td><td>NVIDIA invested or co-building</td></tr>
+<tr><td class="c" style="background:#3b82f622;color:#3b82f6;font-weight:700">Tier 2: Active</td><td>Apptronik, Boston Dynamics, UR, Toyota, TSMC, KION, Siemens, PTC, World Labs, Rendered.ai, Serve Robotics</td><td>Using stack in production</td></tr>
+<tr><td class="c" style="background:#eab30822;color:#eab308;font-weight:700">Tier 3: Users</td><td>Unitree, Fourier, Palatial, Bifrost, SKY ENGINE AI, Applied Intuition, Datagen, hundreds of startups</td><td>Isaac Sim/Lab for training</td></tr>
+<tr><td class="c" style="background:#ef444422;color:#ef4444;font-weight:700">Competitors</td><td>Google DeepMind, Genesis AI, Physical Intelligence, Tesla</td><td>Alternative stacks</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>Key Observations</h2>
+<div class="card-grid">
+<div class="card blocker"><h3>NVIDIA = Android of robotics</h3><p>Full stack: sim (Isaac) + training (Cosmos) + models (GR00T) + edge (Jetson). No one else end-to-end.</p></div>
+<div class="card pain"><h3>Big 4 industrial signed on</h3><p>FANUC, ABB, YASKAWA, KUKA integrating Omniverse. 2M+ installed robots. Massive moat.</p></div>
+<div class="card pain"><h3>Robot brain = hottest</h3><p>Skild ($14B), PI ($11B), FieldAI ($2B). "Brain" is winner-take-most layer.</p></div>
+<div class="card friction"><h3>China ships, West develops</h3><p>China: 1000s of units at $16K. West: pilot stage. Cost gap real. West has AI lead.</p></div>
+</div>
+</section>
+</div>
+
+<div id="tab-techradar" class="tab-content">
+
+<!-- Weekly Stats Bar -->
+<section>
+<h2>&#x1f52c; Tech Radar &#8212; Week of Mar 22&#8211;29, 2026</h2>
+<div class="radar-stats">
+<div class="radar-stat"><div class="rs-num">~250+</div><div class="rs-lbl">ArXiv cs.RO Papers</div></div>
+<div class="radar-stat"><div class="rs-num">4</div><div class="rs-lbl">Major Partnerships</div></div>
+<div class="radar-stat"><div class="rs-num">6</div><div class="rs-lbl">New Products/Tools</div></div>
+<div class="radar-stat"><div class="rs-num">3</div><div class="rs-lbl">Funding Rounds</div></div>
+</div>
+</section>
+
+<!-- Key ArXiv Papers -->
+<section>
+<h2>&#x1f4c4; Key ArXiv Papers &#8212; Week of Mar 22&#8211;29, 2026</h2>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/abs/2603.22264" target="_blank">UniDex: Universal Dexterous Hand Control</a></h4>
+<div class="paper-summary">Universal dexterous hand control from egocentric human videos. VLA model achieves 81% task progress across 8 hand types.</div>
+<div class="paper-meta">
+<span class="paper-date">Mar 23, 2026</span>
+<span class="tag tag-manip">dexterous manipulation</span>
+<span class="tag tag-fm">VLA</span>
+<span class="tag tag-fm">foundation model</span>
+</div>
+</div>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/abs/2503.14734" target="_blank">GR00T N1: NVIDIA Open Foundation Model for Humanoid Robots</a></h4>
+<div class="paper-summary">NVIDIA&#8217;s open foundation model for humanoid robots. Dual-system VLA architecture: vision-language (System 2) + diffusion transformer (System 1). Open-source.</div>
+<div class="paper-meta">
+<span class="paper-date">Mar 18, 2026 (updated)</span>
+<span class="tag tag-humanoid">humanoid</span>
+<span class="tag tag-fm">foundation model</span>
+<span class="tag tag-nvidia">NVIDIA</span>
+</div>
+</div>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/abs/2603.23898" target="_blank">Multi-Robot Collaboration Survey</a></h4>
+<div class="paper-summary">Taxonomy distinguishing cooperation, coordination, and collaboration in multi-robot systems. Reviews frameworks and future directions.</div>
+<div class="paper-meta">
+<span class="paper-date">Mar 25, 2026</span>
+<span class="tag tag-multi">multi-robot</span>
+<span class="tag tag-survey">survey</span>
+</div>
+</div>
+<div class="paper-card">
+<h4>CoViLLM: Human-Robot Collaborative Assembly via LLMs</h4>
+<div class="paper-summary">Human-robot collaborative assembly using LLMs for manufacturing. Accepted ASME MSEC 2026.</div>
+<div class="paper-meta">
+<span class="paper-date">Mar 27, 2026</span>
+<span class="tag tag-llm">LLM</span>
+<span class="tag tag-mfg">manufacturing</span>
+<span class="tag tag-hri">HRI</span>
+</div>
+</div>
+<div class="paper-card">
+<h4>Spatially Grounded Long-Horizon Task Planning</h4>
+<div class="paper-summary">AI benchmark for robots planning and completing chores in real world environments.</div>
+<div class="paper-meta">
+<span class="paper-date">Mar 29, 2026</span>
+<span class="tag tag-plan">task planning</span>
+<span class="tag tag-bench">benchmark</span>
+</div>
+</div>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/abs/2602.22818" target="_blank">LeRobot v0.5: Open-Source Robot Learning</a></h4>
+<div class="paper-summary">Open-source library for end-to-end robot learning. Humanoid support + IsaacLab-Arena. Published at ICLR 2026.</div>
+<div class="paper-meta">
+<span class="paper-date">Feb 26, 2026</span>
+<span class="tag tag-oss">open-source</span>
+<span class="tag tag-learn">robot learning</span>
+<span class="tag tag-iclr">ICLR</span>
+</div>
+</div>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/abs/2603.22275" target="_blank">Repurposing Geometric Foundation Models</a></h4>
+<div class="paper-summary">Multi-view diffusion using geometric foundation models for 3D generation.</div>
+<div class="paper-meta">
+<span class="paper-date">Mar 23, 2026</span>
+<span class="tag tag-3d">3D</span>
+<span class="tag tag-diff">diffusion</span>
+<span class="tag tag-fm">foundation model</span>
+</div>
+</div>
+<div class="paper-card">
+<h4>ROS-LLM <span style="font-weight:400;font-size:.75rem;color:#94a3b8">(Nature Machine Intelligence)</span></h4>
+<div class="paper-summary">Open-source system letting non-experts control robots with natural language, learn new skills from demonstrations.</div>
+<div class="paper-meta">
+<span class="paper-date">Mar 2026</span>
+<span class="tag tag-ros">ROS</span>
+<span class="tag tag-llm">LLM</span>
+<span class="tag tag-nl">natural language</span>
+</div>
+</div>
+</section>
+
+<!-- Industry Moves -->
+<section>
+<h2>&#x1f3ed; Industry Moves &#8212; Mar 22&#8211;29, 2026</h2>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-date">Mar 29</div>
+<div class="tl-title">Jensen Huang: &#8220;We&#8217;ve Already Achieved AGI&#8221;</div>
+<div class="tl-desc">Jensen Huang tells Lex Fridman he thinks &#8220;we&#8217;ve already achieved AGI.&#8221; Redefines the benchmark as reasoning + tool use, not sentience.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 28&#8211;29</div>
+<div class="tl-title">Anthropic Leaks Reveal &#8220;Claude Mythos&#8221;</div>
+<div class="tl-desc">New tier above Opus described as &#8220;step change in capabilities.&#8221; Cybersecurity stocks drop 3&#8211;7% on implied autonomous agent concerns.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 25</div>
+<div class="tl-title">Figure AI Humanoid at White House AI Summit</div>
+<div class="tl-desc">Figure AI humanoid robot hosted at White House AI summit by Melania Trump. Physical AI goes mainstream political. <a href="https://www.cnbc.com" target="_blank">CNBC</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 25</div>
+<div class="tl-title">OpenAI Kills Sora, Reveals &#8220;Spud,&#8221; Raises $10B</div>
+<div class="tl-desc">Sora video app + API shut down; Disney $1B deal dead. Sam Altman relinquishes safety oversight, reveals new model &#8220;Spud.&#8221; Raises another $10B.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 25</div>
+<div class="tl-title">SimWorld Studio Launched</div>
+<div class="tl-desc">Chat with Claude Code to build interactive physical worlds. Open-source tool for rapid sim environment creation.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 25</div>
+<div class="tl-title">Drift Launched &#8212; &#8220;Claude Code for Robotics Simulations&#8221;</div>
+<div class="tl-desc">AI-native robotics simulation tool. Natural language &#8594; simulation environments. Significant community buzz.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 24</div>
+<div class="tl-title">Google DeepMind + Agile Robots Partnership</div>
+<div class="tl-desc">Gemini Robotics foundation models paired with Agile Robots&#8217; industrial hardware. DeepMind deepens physical AI presence. <a href="https://techcrunch.com" target="_blank">TechCrunch</a> / <a href="https://www.cnbc.com" target="_blank">CNBC</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 24</div>
+<div class="tl-title">Amazon Acquires Fauna Robotics</div>
+<div class="tl-desc">Amazon enters consumer humanoid market through acquisition. Beyond warehouse &#8594; home robotics. <a href="https://bloomberg.com" target="_blank">Bloomberg</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 24</div>
+<div class="tl-title">Arm Unveils AGI CPU</div>
+<div class="tl-desc">First in-house chip in 35 years. 136-core, 3nm. Meta as launch customer. Arm moves from licensing to silicon.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 24</div>
+<div class="tl-title">NVIDIA GR00T N2 Preview</div>
+<div class="tl-desc">&#8220;World action model&#8221; architecture claims 2x task generalization vs leading VLAs. <a href="https://engineering.com" target="_blank">engineering.com</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 24</div>
+<div class="tl-title">Bessemer: 50 Startups Transforming Physical AI</div>
+<div class="tl-desc">Bessemer Venture Partners releases comprehensive landscape map of Physical AI startup ecosystem.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 24</div>
+<div class="tl-title">Neura Robotics + Qualcomm Partnership</div>
+<div class="tl-desc">IQ10 processor for humanoid robots. Edge AI silicon meets European humanoid hardware.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 22</div>
+<div class="tl-title">NVIDIA GTC 2026 Continues</div>
+<div class="tl-desc">GR00T-H for healthcare robots, Isaac for Healthcare platform, Rheo blueprint for humanoid manipulation.</div>
+</div>
+</div>
+</section>
+
+<!-- X / Social Signals -->
+<section>
+<h2>&#x1d54f; / Social Signals</h2>
+<div class="social-signal">
+<p><span class="ss-icon">&#x1f4e2;</span> <strong>Andrej Karpathy</strong> signal-boosts LiteLLM supply chain attack &#8212; 97M monthly downloads compromised. Major security wake-up call for AI tooling.</p>
+</div>
+<div class="social-signal">
+<p><span class="ss-icon">&#x1f4ca;</span> <strong>ARC-AGI-3 benchmark:</strong> Every frontier model scores under 1% on tasks 100% of humans solve first try. Gemini 3.1 Pro leads at 0.37%. Humbling reality check.</p>
+</div>
+<div class="social-signal">
+<p><span class="ss-icon">&#x1f525;</span> <strong>Simulator wars:</strong> Robotics community debates MuJoCo vs Isaac Sim vs Newton vs Genesis &#8212; no consensus on &#8220;one simulator to rule them all.&#8221; Fragmentation continues.</p>
+</div>
+<div class="social-signal">
+<p><span class="ss-icon">&#x1f680;</span> <strong>&#8220;Claude Code for robotics&#8221;</strong> (Drift) generates significant buzz. AI-native simulation tools seen as next wave of developer tooling.</p>
+</div>
+<div class="social-signal">
+<p><span class="ss-icon">&#x1f4b0;</span> <strong>Physical AI VCs increasingly active</strong> &#8212; Bessemer, a16z, Khosla all publishing landscape maps this week. Capital flowing into embodied AI.</p>
+</div>
+</section>
+
+</div>
+
+<footer><p>Ziggy - PM Claw - Oct 2025 to Mar 2026 - Isaac Sim 5.1+ priority - Daily pull 7 AM PT</p></footer>
+</div>
+<script>
+function switchTab(name){
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+document.querySelector('.tab[onclick*="'+name+'"]').classList.add('active');
+document.getElementById('tab-'+name).classList.add('active');
+}
+function switchDigest(w){
+document.querySelectorAll('.digest-tab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.digest-window').forEach(t=>t.classList.remove('active'));
+document.querySelector('.digest-tab[data-window="'+w+'"]').classList.add('active');
+document.getElementById('digest-'+w).classList.add('active');
+}
+</script>
+</body>
+</html>
