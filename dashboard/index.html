@@ -149,9 +149,9 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="container">
 <header>
 <h1>&#x1f980; <span>PM Claw</span> &#8212; Physical AI Intelligence</h1>
-<div class="meta"><span>&#x1f4c5; 2026-03-28</span><span class="badge">First Sweep</span><span class="badge badge-ver">Isaac Sim &#x2265;5.1</span></div>
+<div class="meta"><span>&#x1f4c5; 2026-03-31</span><span class="badge">Daily Update</span><span class="badge badge-ver">Isaac Sim &#x2265;5.1</span></div>
 <div class="stats-bar">
-<div class="stat"><div class="num">38</div><div class="lbl">Problems</div></div>
+<div class="stat"><div class="num">30</div><div class="lbl">JSONL Entries</div></div>
 <div class="stat"><div class="num">8</div><div class="lbl">Sources</div></div>
 <div class="stat"><div class="num">6mo</div><div class="lbl">Window</div></div>
 </div>
@@ -270,35 +270,54 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <!-- 1 DAY -->
 <div id="digest-1d" class="digest-window">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Issues</div></div>
+<div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Issues</div></div>
 <div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Blocker</div></div>
-<div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Pain</div></div>
+<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Friction</div></div>
+<div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Wishlist</div></div>
 </div>
-<div class="digest-summary"><p><strong>2 new issues today.</strong> Jetson AGX Thor WebRTC is a blocker for edge deployment workflows. LiDAR StableIDMap bug breaks perception pipelines.</p></div>
+<div class="digest-summary"><p><strong>5 new issues today (Mar 31).</strong> VSCode integration broken on 5.1, viewport flickering on 4.5, air-gapped deployment blocker, Nucleus connection failures, PID controller feature request for aerial robotics.</p></div>
+
+<div class="issue-item sev-friction">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/vscode-link-address-error-and-unable-to-launch-vs-code-error-code-1/365144" target="_blank">VSCode Link Address Error &#8212; Cannot Launch from Isaac Sim</a></div>
+<div class="issue-desc">VSCode works from terminal but cannot be launched from Isaac Sim 5.1.0 on Ubuntu 24.04 + RTX 4090. IDE integration broken.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 31</span><span class="issue-tag">vscode</span><span class="issue-tag">ide</span><span class="issue-tag">5.1</span></div>
+</div>
+
+<div class="issue-item sev-friction">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/viewport-flickering-issue-in-isaac-sim-after-recent-use/365140" target="_blank">[PRE-5.1] Viewport Flickering in Isaac Sim 4.5 (Windows)</a></div>
+<div class="issue-desc">Viewport flickering started recently. Doesn&#8217;t affect core functionality but visually distracting. Windows + Isaac Sim 4.5.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 31</span><span class="issue-tag">viewport</span><span class="issue-tag">flickering</span><span class="issue-tag">pre-5.1</span></div>
+</div>
 
 <div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/jetson-agx-thor-does-not-support-webrtc-livestreaming-in-isaac-sim-5-1-0/364962" target="_blank">Jetson AGX Thor WebRTC Livestream Not Working</a></div>
-<div class="issue-desc">Headless Isaac Sim 5.1.0 on Jetson AGX Thor cannot serve WebRTC to remote browser. Core edge deployment workflow broken.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">jetson-thor</span><span class="issue-tag">webrtc</span><span class="issue-tag">headless</span><span class="issue-tag">edge</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/air-gapped-deployment-app-exits-due-to-dependency-solver-failure-omni-flowusd-despite-disabling-registry-sync-in-offline-l20-cluster/365085" target="_blank">[PRE-5.1] Air-Gapped Deployment Fails &#8212; omni.flowusd Dependency Solver</a></div>
+<div class="issue-desc">Isaac Sim 4.5.0 exits on air-gapped L20 cluster due to dependency solver failure for omni.flowusd. Blocks enterprise offline deployments entirely.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">forum</span><span class="issue-date">Mar 30</span><span class="issue-tag">air-gapped</span><span class="issue-tag">enterprise</span><span class="issue-tag">pre-5.1</span></div>
 </div>
 
-<div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap Missing Object IDs</a></div>
-<div class="issue-desc">Recording scenes with LidarRTX returns object IDs not in the StableIDMap. Breaks LiDAR segmentation and detection pipelines.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">lidar</span><span class="issue-tag">sensor</span><span class="issue-tag">synth-data</span></div>
+<div class="issue-item sev-friction">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-add-nucleus-connection-failed/364507" target="_blank">Nucleus &#8220;Add Connection&#8221; Fails Between Networked Machines</a></div>
+<div class="issue-desc">Nucleus Server web UI accessible at :8080 from remote machine, but Isaac Sim Add Nucleus Connection dialog fails.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">nucleus</span><span class="issue-tag">networking</span></div>
+</div>
+
+<div class="issue-item sev-wishlist">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/is-there-a-built-in-inner-loop-pid-velocity-controller-for-multirotor-quadrotor-in-isaac-lab/365068" target="_blank">Request: Built-in PID Velocity Controller for Multirotor</a></div>
+<div class="issue-desc">No built-in inner-loop PID controller for quadrotor RL in Isaac Lab 5.1.0. Users need equivalent to gym-pybullet-drones DSLPIDControl.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">forum</span><span class="issue-date">Mar 29</span><span class="issue-tag">multirotor</span><span class="issue-tag">pid</span><span class="issue-tag">aerial</span></div>
 </div>
 </div>
 
 <!-- 7 DAYS (default) -->
 <div id="digest-7d" class="digest-window active">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">12</div><div class="ws-lbl">Issues</div></div>
-<div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Blockers</div></div>
+<div class="ws-item"><div class="ws-num">14</div><div class="ws-lbl">Issues</div></div>
+<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Blockers</div></div>
 <div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Pain</div></div>
-<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Friction</div></div>
+<div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Friction</div></div>
 <div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Wishlist</div></div>
 </div>
-<div class="digest-summary"><p><strong>12 issues tracked across 7 days.</strong> Physics explosion bugs dominate &#8212; 3 separate reports of USD imports causing physics instability. Headless/CI pipelines also struggling with datastore lock errors.</p></div>
+<div class="digest-summary"><p><strong>14 issues tracked across 7 days (updated Mar 31).</strong> Physics explosion bugs dominate &#8212; 3 separate reports of USD imports causing physics instability. Air-gapped deployment blocker added. Headless/CI pipelines struggling with datastore lock errors.</p></div>
 
 <div class="issue-item sev-blocker">
 <div class="issue-title"><a href="https://forums.developer.nvidia.com/t/sample-ackermann-custom-car-physics-explosion-on-movement/364774" target="_blank">Physics Explosion with Custom Ackermann AMR</a></div>
@@ -744,7 +763,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 
 </div>
 
-<footer><p>Ziggy - PM Claw - Oct 2025 to Mar 2026 - Isaac Sim 5.1+ priority - Daily pull 7 AM PT</p></footer>
+<footer><p>Ziggy - PM Claw - Updated 2026-03-31 - Isaac Sim 5.1+ priority - Daily pull 7 AM PT</p></footer>
 </div>
 <script>
 function switchTab(name){
