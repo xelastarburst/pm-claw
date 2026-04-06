@@ -149,9 +149,9 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="container">
 <header>
 <h1>&#x1f980; <span>PM Claw</span> &#8212; Physical AI Intelligence</h1>
-<div class="meta"><span>&#x1f4c5; 2026-03-31</span><span class="badge">Daily Update</span><span class="badge badge-ver">Isaac Sim &#x2265;5.1</span></div>
+<div class="meta"><span>&#x1f4c5; 2026-04-05</span><span class="badge">Daily Update</span><span class="badge badge-ver">Isaac Sim &#x2265;5.1</span></div>
 <div class="stats-bar">
-<div class="stat"><div class="num">30</div><div class="lbl">JSONL Entries</div></div>
+<div class="stat"><div class="num">35</div><div class="lbl">JSONL Entries</div></div>
 <div class="stat"><div class="num">8</div><div class="lbl">Sources</div></div>
 <div class="stat"><div class="num">6mo</div><div class="lbl">Window</div></div>
 </div>
@@ -267,217 +267,283 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="digest-tab" data-window="1m" onclick="switchDigest('1m')">1 Month</div>
 </div>
 
-<!-- 1 DAY -->
+<!-- 1d -->
 <div id="digest-1d" class="digest-window">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Issues</div></div>
-<div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Blocker</div></div>
-<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Friction</div></div>
-<div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Wishlist</div></div>
+<div class="ws-item"><div class="ws-num">0</div><div class="ws-lbl">Issues</div></div>
 </div>
-<div class="digest-summary"><p><strong>5 new issues today (Mar 31).</strong> VSCode integration broken on 5.1, viewport flickering on 4.5, air-gapped deployment blocker, Nucleus connection failures, PID controller feature request for aerial robotics.</p></div>
+<div class="digest-summary"><p><strong>0 issues tracked (Apr 04 &#8211; Apr 05, 2026).</strong></p></div>
 
-<div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/vscode-link-address-error-and-unable-to-launch-vs-code-error-code-1/365144" target="_blank">VSCode Link Address Error &#8212; Cannot Launch from Isaac Sim</a></div>
-<div class="issue-desc">VSCode works from terminal but cannot be launched from Isaac Sim 5.1.0 on Ubuntu 24.04 + RTX 4090. IDE integration broken.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 31</span><span class="issue-tag">vscode</span><span class="issue-tag">ide</span><span class="issue-tag">5.1</span></div>
+
 </div>
 
-<div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/viewport-flickering-issue-in-isaac-sim-after-recent-use/365140" target="_blank">[PRE-5.1] Viewport Flickering in Isaac Sim 4.5 (Windows)</a></div>
-<div class="issue-desc">Viewport flickering started recently. Doesn&#8217;t affect core functionality but visually distracting. Windows + Isaac Sim 4.5.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 31</span><span class="issue-tag">viewport</span><span class="issue-tag">flickering</span><span class="issue-tag">pre-5.1</span></div>
-</div>
-
-<div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/air-gapped-deployment-app-exits-due-to-dependency-solver-failure-omni-flowusd-despite-disabling-registry-sync-in-offline-l20-cluster/365085" target="_blank">[PRE-5.1] Air-Gapped Deployment Fails &#8212; omni.flowusd Dependency Solver</a></div>
-<div class="issue-desc">Isaac Sim 4.5.0 exits on air-gapped L20 cluster due to dependency solver failure for omni.flowusd. Blocks enterprise offline deployments entirely.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">forum</span><span class="issue-date">Mar 30</span><span class="issue-tag">air-gapped</span><span class="issue-tag">enterprise</span><span class="issue-tag">pre-5.1</span></div>
-</div>
-
-<div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-add-nucleus-connection-failed/364507" target="_blank">Nucleus &#8220;Add Connection&#8221; Fails Between Networked Machines</a></div>
-<div class="issue-desc">Nucleus Server web UI accessible at :8080 from remote machine, but Isaac Sim Add Nucleus Connection dialog fails.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">nucleus</span><span class="issue-tag">networking</span></div>
-</div>
-
-<div class="issue-item sev-wishlist">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/is-there-a-built-in-inner-loop-pid-velocity-controller-for-multirotor-quadrotor-in-isaac-lab/365068" target="_blank">Request: Built-in PID Velocity Controller for Multirotor</a></div>
-<div class="issue-desc">No built-in inner-loop PID controller for quadrotor RL in Isaac Lab 5.1.0. Users need equivalent to gym-pybullet-drones DSLPIDControl.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">forum</span><span class="issue-date">Mar 29</span><span class="issue-tag">multirotor</span><span class="issue-tag">pid</span><span class="issue-tag">aerial</span></div>
-</div>
-</div>
-
-<!-- 7 DAYS (default) -->
+<!-- 7d -->
 <div id="digest-7d" class="digest-window active">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">14</div><div class="ws-lbl">Issues</div></div>
-<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Blockers</div></div>
-<div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Pain</div></div>
-<div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Friction</div></div>
-<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Wishlist</div></div>
+<div class="ws-item"><div class="ws-num">8</div><div class="ws-lbl">Issues</div></div><div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Blockers</div></div><div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Pain</div></div><div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Friction</div></div><div class="ws-item"><div class="ws-num">1</div><div class="ws-lbl">Wishlist</div></div>
 </div>
-<div class="digest-summary"><p><strong>14 issues tracked across 7 days (updated Mar 31).</strong> Physics explosion bugs dominate &#8212; 3 separate reports of USD imports causing physics instability. Air-gapped deployment blocker added. Headless/CI pipelines struggling with datastore lock errors.</p></div>
+<div class="digest-summary"><p><strong>8 issues tracked (Mar 29 &#8211; Apr 05, 2026).</strong> Blockers: Multi-GPU distributed training fails with Newton p, RayCasterCamera depth sensor returns all NaN value, [PRE-5.1] Air-gapped deployment fails — omni.flowu.</p></div>
 
 <div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/sample-ackermann-custom-car-physics-explosion-on-movement/364774" target="_blank">Physics Explosion with Custom Ackermann AMR</a></div>
-<div class="issue-desc">Custom Ackermann car (OnShape parametric design) explodes/flies apart when physics starts in Isaac Sim 5.1.0. Stock F1Tenth.usd works fine.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">physics</span><span class="issue-tag">usd-import</span><span class="issue-tag">ackermann</span></div>
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5132" target="_blank">Multi-GPU distributed training fails with Newton physics backend</a></div>
+<div class="issue-desc">torch.distributed.run with Newton backend fails on multi-GPU due to hardcoded cuda:0 in Warp/PyTorch allocations. 4 root causes: NewtonManager device, ScopedCapture device, missing device in set_joint_position_target, AppLauncher argv cleanup. Also blocks consumer GPUs without P2P.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 31</span><span class="issue-tag">newton</span><span class="issue-tag">multi-gpu</span><span class="issue-tag">distributed-training</span><span class="issue-tag">warp</span></div>
 </div>
-
 <div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/jetson-agx-thor-does-not-support-webrtc-livestreaming-in-isaac-sim-5-1-0/364962" target="_blank">Jetson AGX Thor WebRTC Livestream Not Working</a></div>
-<div class="issue-desc">Headless Isaac Sim 5.1.0 on Jetson AGX Thor cannot serve WebRTC to remote browser. Core edge workflow broken.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">jetson-thor</span><span class="issue-tag">webrtc</span><span class="issue-tag">edge</span></div>
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5131" target="_blank">RayCasterCamera depth sensor returns all NaN values</a></div>
+<div class="issue-desc">RayCasterCamera outputs NaN for all data types. Other RayCaster sensors work. Debug vis shows no rays hitting terrain.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 31</span><span class="issue-tag">raycaster</span><span class="issue-tag">camera</span><span class="issue-tag">depth</span><span class="issue-tag">nan</span></div>
 </div>
-
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/air-gapped-deployment-app-exits-due-to-dependency-solver-failure-omni-flowusd-despite-disabling-registry-sync-in-offline-l20-cluster/365085" target="_blank">[PRE-5.1] Air-gapped deployment fails — omni.flowusd dependency solver crash (4.5.0)</a></div>
+<div class="issue-desc">Isaac Sim 4.5.0 exits on air-gapped L20 cluster due to dependency solver failure for omni.flowusd. Registry sync disabled but app still fails. Blocks enterprise offline deployments.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 30</span><span class="issue-tag">air-gapped</span><span class="issue-tag">enterprise</span><span class="issue-tag">deployment</span><span class="issue-tag">L20</span></div>
+</div>
 <div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/omni-datastore-error/364867" target="_blank">omni.datastore Exclusive Lock Error on Headless</a></div>
-<div class="issue-desc">omni.datastore fails to acquire exclusive lock (256>=256) on DerivedDataCache when running standalone headless. Blocks CI/CD and cloud pipelines.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 26</span><span class="issue-tag">headless</span><span class="issue-tag">datastore</span><span class="issue-tag">ci-cd</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-gui-crash-access-violation-on-rtx-5070-ti-blackwell-fixed-by-driver-downgrade-to-591-74/365335" target="_blank">Isaac Sim 5.1 GUI crash on RTX 5070 Ti Blackwell — access violation in omni.kit.window.preferences</a></div>
+<div class="issue-desc">Isaac Sim 5.1.0 crashes ~20s after GUI startup with access violation on RTX 5070 Ti Laptop (12GB) with driver 595.79 on Windows 11. Headless works. Downgrading to 591.74 resolves. NVIDIA confirmed validated driver is 580.88; Vulkan rendering path flagged as known Blackwell issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Apr 01</span><span class="issue-tag">blackwell</span><span class="issue-tag">rtx-5070-ti</span><span class="issue-tag">driver</span><span class="issue-tag">vulkan</span></div>
 </div>
-
-<div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/mecanum-wheel-physics-pivot-mismatch-and-jitter-in-imported-usd/364482" target="_blank">Mecanum Wheel Physics Pivot Mismatch &amp; Jitter</a></div>
-<div class="issue-desc">Mecanum wheel physics show pivot mismatch and jitter after USD import. Joint/physics instability pattern similar to Ackermann issue.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">physics</span><span class="issue-tag">usd-import</span><span class="issue-tag">mecanum</span></div>
-</div>
-
-<div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap Missing Object IDs</a></div>
-<div class="issue-desc">Recording scenes returns object IDs not in StableIDMap lookup. Breaks LiDAR segmentation pipelines.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">lidar</span><span class="issue-tag">sensor</span><span class="issue-tag">synth-data</span></div>
-</div>
-
-<div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/failed-to-install-ros2-on-igx-orin-dgpu/364784" target="_blank">ROS 2 Install Fails on IGX Orin dGPU</a></div>
-<div class="issue-desc">Installing ROS 2 Humble on IGX Orin after Isaac Sim 5.1 fails. Kernel upgrade fixes ROS 2 but breaks GPU driver. Catch-22 for Nova Carter workflows.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">ros2</span><span class="issue-tag">igx-orin</span><span class="issue-tag">driver</span></div>
-</div>
-
-<div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/live-session-performance-issue-with-1000-transform-updates-per-frame/364689" target="_blank">Live Session Perf Degrades at ~1000 Transforms/Frame</a></div>
-<div class="issue-desc">Performance degrades severely when pushing ~1000 transform updates per frame through Omniverse Live Sessions. Relevant for digital twin and multi-robot sim.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">live-session</span><span class="issue-tag">performance</span><span class="issue-tag">digital-twin</span></div>
-</div>
-
 <div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-add-nucleus-connection-failed/364507" target="_blank">Nucleus Connection Fails Cross-Machine</a></div>
-<div class="issue-desc">Add Nucleus Connection fails from a remote machine on the same network, despite Nucleus web UI being accessible at :8080.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">nucleus</span><span class="issue-tag">networking</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/vscode-link-address-error-and-unable-to-launch-vs-code-error-code-1/365144" target="_blank">VSCode integration broken in Isaac Sim 5.1.0</a></div>
+<div class="issue-desc">Cannot open VSCode through Isaac Sim. VS Code debugger reports link address error.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 31</span><span class="issue-tag">vscode</span><span class="issue-tag">debugger</span><span class="issue-tag">integration</span></div>
 </div>
-
 <div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/synthetic-data-generation-for-defects-on-components/364378" target="_blank">Synthetic Data Workflow Gaps for Defect Detection</a></div>
-<div class="issue-desc">User generating synth data for aerospace blade defect detection unclear how to apply defect overlays procedurally in Replicator. Documentation gap.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 22</span><span class="issue-tag">synth-data</span><span class="issue-tag">replicator</span><span class="issue-tag">industrial</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/2026-03-30-0232-warning-omni-graph-core-plugin-could-not-find-node-type-interface-for-omni-graph-nodes-readprimlocaltransform/365051" target="_blank">OmniGraph ReadPrimLocalTransform node type not found</a></div>
+<div class="issue-desc">Warning when adding ReadPrimLocalTransform node in OmniGraph. Node type interface not found.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 30</span><span class="issue-tag">omnigraph</span><span class="issue-tag">node-type</span><span class="issue-tag">missing</span></div>
 </div>
-
+<div class="issue-item sev-friction">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/viewport-flickering-issue-in-isaac-sim-after-recent-use/365140" target="_blank">[PRE-5.1] Viewport flickering in Isaac Sim 4.5 (Windows)</a></div>
+<div class="issue-desc">Viewport flickering started March 23. Windows, Isaac Sim 4.5.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 31</span><span class="issue-tag">viewport</span><span class="issue-tag">flickering</span><span class="issue-tag">windows</span><span class="issue-tag">pre-5.1</span></div>
+</div>
 <div class="issue-item sev-wishlist">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/no-dlss-frame-generation-box-in-isaac-sim-render-setting/364813" target="_blank">DLSS Frame Generation Missing from Render Settings</a></div>
-<div class="issue-desc">DLSS Frame Generation checkbox absent from Isaac Sim render settings. Users want it for interactive viewport performance.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">forum</span><span class="issue-date">Mar 26</span><span class="issue-tag">dlss</span><span class="issue-tag">rendering</span></div>
-</div>
-
-<div class="issue-item sev-wishlist">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/omni-ui-webviewwidget/364816" target="_blank">WebViewWidget Revival Request</a></div>
-<div class="issue-desc">Request to revive omni.ui WebViewWidget for embedding web content in Isaac Sim UI panels.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">forum</span><span class="issue-date">Mar 26</span><span class="issue-tag">ui</span><span class="issue-tag">webview</span></div>
-</div>
-
-<div class="issue-item sev-wishlist">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/fluid-simulation-in-isaac-sim/364380" target="_blank">Fluid Simulation &#8212; Realistic Pipe Flow</a></div>
-<div class="issue-desc">User wants realistic fluid dynamics for water flowing through pipes. Current PhysX particle-based fluid is limited. Newton engine may address this.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">forum</span><span class="issue-date">Mar 22</span><span class="issue-tag">fluid</span><span class="issue-tag">physics</span><span class="issue-tag">newton</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/is-there-a-built-in-inner-loop-pid-velocity-controller-for-multirotor-quadrotor-in-isaac-lab/365068" target="_blank">Request: built-in PID velocity controller for multirotor in Isaac Lab</a></div>
+<div class="issue-desc">Request for inner-loop PID controller for Crazyflie CF2X quadrotor RL. No equivalent to gym-pybullet-drones DSLPIDControl.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 30</span><span class="issue-tag">multirotor</span><span class="issue-tag">pid</span><span class="issue-tag">controller</span><span class="issue-tag">quadrotor</span></div>
 </div>
 </div>
 
-<!-- 2 WEEKS -->
+<!-- 2w -->
 <div id="digest-2w" class="digest-window">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">16</div><div class="ws-lbl">Issues</div></div>
-<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Blockers</div></div>
-<div class="ws-item"><div class="ws-num">6</div><div class="ws-lbl">Pain</div></div>
-<div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Friction</div></div>
-<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Wishlist</div></div>
+<div class="ws-item"><div class="ws-num">29</div><div class="ws-lbl">Issues</div></div><div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Blockers</div></div><div class="ws-item"><div class="ws-num">12</div><div class="ws-lbl">Pain</div></div><div class="ws-item"><div class="ws-num">6</div><div class="ws-lbl">Friction</div></div><div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Wishlist</div></div>
 </div>
-<div class="digest-summary"><p><strong>16 issues over 2 weeks.</strong> Blackwell GPUs (RTX 5080, 5090) emerging as a pain cluster &#8212; 2 separate crash/hang reports. USD import &#8594; physics explosion is a systemic pattern across 3+ reports.</p></div>
+<div class="digest-summary"><p><strong>29 issues tracked (Mar 22 &#8211; Apr 05, 2026).</strong> Blockers: Physics Explosion with Custom Ackermann AMR on Mov, Jetson AGX Thor WebRTC Livestream Not Working, Multi-GPU distributed training fails with Newton p.</p></div>
 
 <div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/4951" target="_blank">TiledCamera Hangs on RTX 5090 (Blackwell sm_120)</a></div>
-<div class="issue-desc">TiledCamera sensor hangs on RTX 5090 Laptop GPU with Isaac Sim 5.1.0. Blackwell compute capability not yet supported.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 11</span><span class="issue-tag">sensor</span><span class="issue-tag">rtx-5090</span><span class="issue-tag">blackwell</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/sample-ackermann-custom-car-physics-explosion-on-movement/364774" target="_blank">Physics Explosion with Custom Ackermann AMR on Movement</a></div>
+<div class="issue-desc">Custom Ackermann car (OnShape parametric design) explodes/flies apart when physics simulation starts in Isaac Sim 5.1.0. Stock F1Tenth.usd works; issue with imported custom USD + ROS bridge.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">physics</span><span class="issue-tag">usd-import</span><span class="issue-tag">ackermann</span><span class="issue-tag">ros</span></div>
 </div>
-
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/jetson-agx-thor-does-not-support-webrtc-livestreaming-in-isaac-sim-5-1-0/364962" target="_blank">Jetson AGX Thor WebRTC Livestream Not Working</a></div>
+<div class="issue-desc">Headless Isaac Sim 5.1.0 on Jetson AGX Thor cannot serve WebRTC livestream to remote browser. Core workflow for headless-on-edge use cases.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">jetson-thor</span><span class="issue-tag">webrtc</span><span class="issue-tag">headless</span><span class="issue-tag">edge</span></div>
+</div>
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5132" target="_blank">Multi-GPU distributed training fails with Newton physics backend</a></div>
+<div class="issue-desc">torch.distributed.run with Newton backend fails on multi-GPU due to hardcoded cuda:0 in Warp/PyTorch allocations. 4 root causes: NewtonManager device, ScopedCapture device, missing device in set_joint_position_target, AppLauncher argv cleanup. Also blocks consumer GPUs without P2P.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 31</span><span class="issue-tag">newton</span><span class="issue-tag">multi-gpu</span><span class="issue-tag">distributed-training</span><span class="issue-tag">warp</span></div>
+</div>
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/pull/5088" target="_blank">Newton collision pipeline NaN divergence on mesh terrain (float32 precision)</a></div>
+<div class="issue-desc">MuJoCo Warp float32 causes solver divergence in ~1/4000 envs with elliptic friction cone on mesh terrain. Zero contact margin from USD import causes GJK failure. Buffer overflow silently drops contacts. Multiple workarounds required.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 23</span><span class="issue-tag">newton</span><span class="issue-tag">mujoco-warp</span><span class="issue-tag">float32</span><span class="issue-tag">mesh-terrain</span></div>
+</div>
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5131" target="_blank">RayCasterCamera depth sensor returns all NaN values</a></div>
+<div class="issue-desc">RayCasterCamera outputs NaN for all data types. Other RayCaster sensors work. Debug vis shows no rays hitting terrain.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 31</span><span class="issue-tag">raycaster</span><span class="issue-tag">camera</span><span class="issue-tag">depth</span><span class="issue-tag">nan</span></div>
+</div>
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5115" target="_blank">Sim2Sim transfer inconsistency with armature parameter</a></div>
+<div class="issue-desc">Non-zero armature values cause severe discrepancy between Isaac Lab play mode and Isaac Sim deployment. Agent stable in training but oscillates in deployment. Setting armature=0 eliminates gap.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 27</span><span class="issue-tag">sim2sim</span><span class="issue-tag">armature</span><span class="issue-tag">transfer</span><span class="issue-tag">fidelity</span></div>
+</div>
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/air-gapped-deployment-app-exits-due-to-dependency-solver-failure-omni-flowusd-despite-disabling-registry-sync-in-offline-l20-cluster/365085" target="_blank">[PRE-5.1] Air-gapped deployment fails — omni.flowusd dependency solver crash (4.5.0)</a></div>
+<div class="issue-desc">Isaac Sim 4.5.0 exits on air-gapped L20 cluster due to dependency solver failure for omni.flowusd. Registry sync disabled but app still fails. Blocks enterprise offline deployments.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 30</span><span class="issue-tag">air-gapped</span><span class="issue-tag">enterprise</span><span class="issue-tag">deployment</span><span class="issue-tag">L20</span></div>
+</div>
 <div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-crashes-with-segmentation-fault-on-ubuntu-24-04-rtx-5080-driver-580-open/363553" target="_blank">Isaac Sim 5.1 Segfault on RTX 5080 + Ubuntu 24.04</a></div>
-<div class="issue-desc">Immediate segfault on fresh Ubuntu 24.04 + RTX 5080 + driver 580-open. Blackwell consumer GPU compatibility gap.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 15</span><span class="issue-tag">crash</span><span class="issue-tag">rtx-5080</span><span class="issue-tag">blackwell</span><span class="issue-tag">driver</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/omni-datastore-error/364867" target="_blank">omni.datastore Exclusive Lock Error on Headless Standalone</a></div>
+<div class="issue-desc">omni.datastore fails to acquire exclusive lock (256&gt;=256) on DerivedDataCache when running python.sh standalone headless. Blocks CI/CD and cloud pipelines.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 26</span><span class="issue-tag">headless</span><span class="issue-tag">datastore</span><span class="issue-tag">standalone</span><span class="issue-tag">ci-cd</span></div>
 </div>
-
 <div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/title-isaac-sim-5-1-0-surface-gripper-not-working-on-custom-urdf-robot-d6joint-errors-physics-explosion/363946" target="_blank">Surface Gripper D6Joint Errors &amp; Physics Explosion</a></div>
-<div class="issue-desc">Pick-and-place with Surface Gripper on custom URDF creates D6Joint errors and physics explosions. Another physics instability from import.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 16</span><span class="issue-tag">gripper</span><span class="issue-tag">physics</span><span class="issue-tag">urdf</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/mecanum-wheel-physics-pivot-mismatch-and-jitter-in-imported-usd/364482" target="_blank">Mecanum Wheel Physics Pivot Mismatch and Jitter in Imported USD</a></div>
+<div class="issue-desc">Mecanum wheel physics show pivot mismatch and jitter after USD import. Joint/physics instability pattern similar to Ackermann issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">physics</span><span class="issue-tag">usd-import</span><span class="issue-tag">mecanum</span><span class="issue-tag">jitter</span></div>
 </div>
-
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap Missing Object IDs</a></div>
+<div class="issue-desc">When recording scenes with LidarRTX, some assets return object IDs not in the StableIDMap. Breaks perception pipelines relying on consistent ID mapping.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">lidar</span><span class="issue-tag">sensor</span><span class="issue-tag">synth-data</span><span class="issue-tag">segmentation</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/failed-to-install-ros2-on-igx-orin-dgpu/364784" target="_blank">ROS 2 Install Fails on IGX Orin dGPU — Kernel/Driver Conflict</a></div>
+<div class="issue-desc">Installing ROS 2 Humble on IGX Orin after Isaac Sim 5.1 fails. Kernel upgrade fixes ROS 2 but breaks GPU driver. Catch-22 for Nova Carter workflow.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">ros2</span><span class="issue-tag">igx-orin</span><span class="issue-tag">nova-carter</span><span class="issue-tag">driver</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/live-session-performance-issue-with-1000-transform-updates-per-frame/364689" target="_blank">Live Session Performance Degrades with ~1000 Transform Updates/Frame</a></div>
+<div class="issue-desc">Performance degrades severely when pushing ~1000 transform updates per frame through Omniverse Live Sessions. Relevant for digital twin and multi-robot sim.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">live-session</span><span class="issue-tag">performance</span><span class="issue-tag">digital-twin</span><span class="issue-tag">transforms</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/sample-ackermann-custom-car-physics-explosion-on-movement/364774" target="_blank">Physics explosion with custom Ackermann vehicle in Isaac Sim 5.1.0</a></div>
+<div class="issue-desc">Custom OnShape Ackermann car explodes on physics start. Sample F1Tenth works fine. Likely import/joint config issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">physics</span><span class="issue-tag">ackermann</span><span class="issue-tag">import</span><span class="issue-tag">onshape</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/mecanum-wheel-physics-pivot-mismatch-and-jitter-in-imported-usd/364482" target="_blank">Mecanum wheel physics pivot mismatch and jitter in imported USD</a></div>
+<div class="issue-desc">Imported USD mecanum wheels have pivot alignment issues causing physics jitter.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">physics</span><span class="issue-tag">mecanum</span><span class="issue-tag">import</span><span class="issue-tag">jitter</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap missing object_ids</a></div>
+<div class="issue-desc">Recording scenes with LidarRTX produces object IDs not in StableIDMap for some assets.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">lidar</span><span class="issue-tag">stableidmap</span><span class="issue-tag">recording</span><span class="issue-tag">object-id</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5116" target="_blank">URDF-to-USD converter produces non-instanceable primitives (VRAM explosion)</a></div>
+<div class="issue-desc">URDF with simple collision primitives converts to USD using more VRAM than mesh collisions. Instancing not applied.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">github</span><span class="issue-date">Mar 27</span><span class="issue-tag">urdf</span><span class="issue-tag">usd</span><span class="issue-tag">vram</span><span class="issue-tag">instancing</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/jetson-agx-thor-does-not-support-webrtc-livestreaming-in-isaac-sim-5-1-0/364962" target="_blank">Jetson AGX Thor WebRTC livestreaming broken in Isaac Sim 5.1.0</a></div>
+<div class="issue-desc">Headless Isaac Sim 5.1.0 on Jetson AGX Thor cannot stream GUI via WebRTC to remote machine.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 28</span><span class="issue-tag">jetson</span><span class="issue-tag">thor</span><span class="issue-tag">webrtc</span><span class="issue-tag">headless</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/failed-to-install-ros2-on-igx-orin-dgpu/364784" target="_blank">ROS 2 install fails on IGX Orin with Isaac Sim 5.1</a></div>
+<div class="issue-desc">Installing ROS 2 on IGX Orin after Isaac Sim 5.1 breaks GPU driver. Kernel upgrade for ROS 2 kills graphics.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">ros2</span><span class="issue-tag">igx-orin</span><span class="issue-tag">driver</span><span class="issue-tag">kernel</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-gui-crash-access-violation-on-rtx-5070-ti-blackwell-fixed-by-driver-downgrade-to-591-74/365335" target="_blank">Isaac Sim 5.1 GUI crash on RTX 5070 Ti Blackwell — access violation in omni.kit.window.preferences</a></div>
+<div class="issue-desc">Isaac Sim 5.1.0 crashes ~20s after GUI startup with access violation on RTX 5070 Ti Laptop (12GB) with driver 595.79 on Windows 11. Headless works. Downgrading to 591.74 resolves. NVIDIA confirmed validated driver is 580.88; Vulkan rendering path flagged as known Blackwell issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Apr 01</span><span class="issue-tag">blackwell</span><span class="issue-tag">rtx-5070-ti</span><span class="issue-tag">driver</span><span class="issue-tag">vulkan</span></div>
+</div>
 <div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/chatusd-not-working-in-isaac-sim-5-1-0-degraded-function-cannot-be-invoked/363360" target="_blank">ChatUSD "DEGRADED" Error in Isaac Sim 5.1.0</a></div>
-<div class="issue-desc">ChatUSD feature stopped working with "DEGRADED function cannot be invoked" error. Worked in Oct 2025, broken since.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">forum</span><span class="issue-date">Mar 15</span><span class="issue-tag">chatusd</span><span class="issue-tag">ai</span><span class="issue-tag">degraded</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-add-nucleus-connection-failed/364507" target="_blank">Nucleus Connection Fails Cross-Machine</a></div>
+<div class="issue-desc">Add Nucleus Connection fails when connecting Isaac Sim from a remote machine on the same network, despite Nucleus web UI being accessible at :8080.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">nucleus</span><span class="issue-tag">networking</span><span class="issue-tag">multi-machine</span></div>
+</div>
+<p style="text-align:center;padding:12px;color:#475569;font-size:.75rem;font-style:italic">+ 9 more issues not shown</p>
 </div>
 
-<p style="text-align:center;padding:12px;color:#475569;font-size:.75rem;font-style:italic">+ 12 issues from the 7-day window above</p>
-</div>
-
-<!-- 1 MONTH -->
+<!-- 1m -->
 <div id="digest-1m" class="digest-window">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">22</div><div class="ws-lbl">Issues</div></div>
-<div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Blockers</div></div>
-<div class="ws-item"><div class="ws-num">9</div><div class="ws-lbl">Pain</div></div>
-<div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Friction</div></div>
-<div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Wishlist</div></div>
+<div class="ws-item"><div class="ws-num">31</div><div class="ws-lbl">Issues</div></div><div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Blockers</div></div><div class="ws-item"><div class="ws-num">12</div><div class="ws-lbl">Pain</div></div><div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Friction</div></div><div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Wishlist</div></div>
 </div>
-<div class="digest-summary"><p><strong>22 issues over 1 month. Clear themes:</strong> (1) DX/docs crisis confirmed by 85+ combined Reddit upvotes, (2) Blackwell GPU compatibility gap across RTX 4090/5080/5090, (3) Physics instability with imported USD/URDF assets. Driver updates continue to break things.</p></div>
+<div class="digest-summary"><p><strong>31 issues tracked (Mar 06 &#8211; Apr 05, 2026).</strong> Blockers: Physics Explosion with Custom Ackermann AMR on Mov, Jetson AGX Thor WebRTC Livestream Not Working, Multi-GPU distributed training fails with Newton p.</p></div>
 
 <div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://www.reddit.com/r/reinforcementlearning/comments/1n9cpmn/" target="_blank">Isaac Lab Docs Fundamentally Inadequate</a></div>
-<div class="issue-desc">59-upvote Reddit rant. Tutorials use different import styles, cartpole never explained, ManagerBased vs Direct with no guidance on which to use. Docs show "what" but never "why."</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">reddit</span><span class="issue-date">Mar 2026</span><span class="issue-tag">docs</span><span class="issue-tag">dx</span><span class="issue-tag">tutorials</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/sample-ackermann-custom-car-physics-explosion-on-movement/364774" target="_blank">Physics Explosion with Custom Ackermann AMR on Movement</a></div>
+<div class="issue-desc">Custom Ackermann car (OnShape parametric design) explodes/flies apart when physics simulation starts in Isaac Sim 5.1.0. Stock F1Tenth.usd works; issue with imported custom USD + ROS bridge.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">physics</span><span class="issue-tag">usd-import</span><span class="issue-tag">ackermann</span><span class="issue-tag">ros</span></div>
 </div>
-
 <div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://www.reddit.com/r/reinforcementlearning/comments/1jnrf18/" target="_blank">"Isaac Lab is 100% Unusable"</a></div>
-<div class="issue-desc">26-upvote post. CUDA errors on setup, Python version conflicts, tutorials break partway through. Users spent "dozens of hours" and never got a working training run. Some defecting to MuJoCo.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">reddit</span><span class="issue-date">Mar 2026</span><span class="issue-tag">dx</span><span class="issue-tag">setup</span><span class="issue-tag">unusable</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/jetson-agx-thor-does-not-support-webrtc-livestreaming-in-isaac-sim-5-1-0/364962" target="_blank">Jetson AGX Thor WebRTC Livestream Not Working</a></div>
+<div class="issue-desc">Headless Isaac Sim 5.1.0 on Jetson AGX Thor cannot serve WebRTC livestream to remote browser. Core workflow for headless-on-edge use cases.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">jetson-thor</span><span class="issue-tag">webrtc</span><span class="issue-tag">headless</span><span class="issue-tag">edge</span></div>
 </div>
-
 <div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacSim/issues/537" target="_blank">Crash After Updating NVIDIA Drivers (595.79)</a></div>
-<div class="issue-desc">Isaac Sim fails to detect CUDA devices after driver update to 595.79. Works with 580. Driver compatibility is a recurring theme.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 3</span><span class="issue-tag">driver</span><span class="issue-tag">cuda</span><span class="issue-tag">crash</span></div>
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5132" target="_blank">Multi-GPU distributed training fails with Newton physics backend</a></div>
+<div class="issue-desc">torch.distributed.run with Newton backend fails on multi-GPU due to hardcoded cuda:0 in Warp/PyTorch allocations. 4 root causes: NewtonManager device, ScopedCapture device, missing device in set_joint_position_target, AppLauncher argv cleanup. Also blocks consumer GPUs without P2P.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 31</span><span class="issue-tag">newton</span><span class="issue-tag">multi-gpu</span><span class="issue-tag">distributed-training</span><span class="issue-tag">warp</span></div>
 </div>
-
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/pull/5088" target="_blank">Newton collision pipeline NaN divergence on mesh terrain (float32 precision)</a></div>
+<div class="issue-desc">MuJoCo Warp float32 causes solver divergence in ~1/4000 envs with elliptic friction cone on mesh terrain. Zero contact margin from USD import causes GJK failure. Buffer overflow silently drops contacts. Multiple workarounds required.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 23</span><span class="issue-tag">newton</span><span class="issue-tag">mujoco-warp</span><span class="issue-tag">float32</span><span class="issue-tag">mesh-terrain</span></div>
+</div>
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5131" target="_blank">RayCasterCamera depth sensor returns all NaN values</a></div>
+<div class="issue-desc">RayCasterCamera outputs NaN for all data types. Other RayCaster sensors work. Debug vis shows no rays hitting terrain.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 31</span><span class="issue-tag">raycaster</span><span class="issue-tag">camera</span><span class="issue-tag">depth</span><span class="issue-tag">nan</span></div>
+</div>
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5115" target="_blank">Sim2Sim transfer inconsistency with armature parameter</a></div>
+<div class="issue-desc">Non-zero armature values cause severe discrepancy between Isaac Lab play mode and Isaac Sim deployment. Agent stable in training but oscillates in deployment. Setting armature=0 eliminates gap.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 27</span><span class="issue-tag">sim2sim</span><span class="issue-tag">armature</span><span class="issue-tag">transfer</span><span class="issue-tag">fidelity</span></div>
+</div>
+<div class="issue-item sev-blocker">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/air-gapped-deployment-app-exits-due-to-dependency-solver-failure-omni-flowusd-despite-disabling-registry-sync-in-offline-l20-cluster/365085" target="_blank">[PRE-5.1] Air-gapped deployment fails — omni.flowusd dependency solver crash (4.5.0)</a></div>
+<div class="issue-desc">Isaac Sim 4.5.0 exits on air-gapped L20 cluster due to dependency solver failure for omni.flowusd. Registry sync disabled but app still fails. Blocks enterprise offline deployments.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 30</span><span class="issue-tag">air-gapped</span><span class="issue-tag">enterprise</span><span class="issue-tag">deployment</span><span class="issue-tag">L20</span></div>
+</div>
 <div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/gui-crash-on-rtx-4090-isaac-sim-4-5-0-5-1-0/362307" target="_blank">GUI Crash on RTX 4090</a></div>
-<div class="issue-desc">Consistent GUI crashes on RTX 4090. Works fine on RTX 3090 and PRO 6000 Blackwell. GPU-specific rendering or driver issue.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Feb 2026</span><span class="issue-tag">crash</span><span class="issue-tag">rtx-4090</span><span class="issue-tag">rendering</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/omni-datastore-error/364867" target="_blank">omni.datastore Exclusive Lock Error on Headless Standalone</a></div>
+<div class="issue-desc">omni.datastore fails to acquire exclusive lock (256&gt;=256) on DerivedDataCache when running python.sh standalone headless. Blocks CI/CD and cloud pipelines.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 26</span><span class="issue-tag">headless</span><span class="issue-tag">datastore</span><span class="issue-tag">standalone</span><span class="issue-tag">ci-cd</span></div>
 </div>
-
 <div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaacsim-crashes-when-importing-a-urdf/362448" target="_blank">Isaac Sim Crashes on URDF Import</a></div>
-<div class="issue-desc">Isaac Sim crashes when importing certain URDF files. Recurring pattern of USD/URDF import instability.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">forum</span><span class="issue-date">Mar 3</span><span class="issue-tag">urdf</span><span class="issue-tag">crash</span><span class="issue-tag">import</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/mecanum-wheel-physics-pivot-mismatch-and-jitter-in-imported-usd/364482" target="_blank">Mecanum Wheel Physics Pivot Mismatch and Jitter in Imported USD</a></div>
+<div class="issue-desc">Mecanum wheel physics show pivot mismatch and jitter after USD import. Joint/physics instability pattern similar to Ackermann issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">physics</span><span class="issue-tag">usd-import</span><span class="issue-tag">mecanum</span><span class="issue-tag">jitter</span></div>
 </div>
-
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap Missing Object IDs</a></div>
+<div class="issue-desc">When recording scenes with LidarRTX, some assets return object IDs not in the StableIDMap. Breaks perception pipelines relying on consistent ID mapping.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">lidar</span><span class="issue-tag">sensor</span><span class="issue-tag">synth-data</span><span class="issue-tag">segmentation</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/failed-to-install-ros2-on-igx-orin-dgpu/364784" target="_blank">ROS 2 Install Fails on IGX Orin dGPU — Kernel/Driver Conflict</a></div>
+<div class="issue-desc">Installing ROS 2 Humble on IGX Orin after Isaac Sim 5.1 fails. Kernel upgrade fixes ROS 2 but breaks GPU driver. Catch-22 for Nova Carter workflow.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">ros2</span><span class="issue-tag">igx-orin</span><span class="issue-tag">nova-carter</span><span class="issue-tag">driver</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/live-session-performance-issue-with-1000-transform-updates-per-frame/364689" target="_blank">Live Session Performance Degrades with ~1000 Transform Updates/Frame</a></div>
+<div class="issue-desc">Performance degrades severely when pushing ~1000 transform updates per frame through Omniverse Live Sessions. Relevant for digital twin and multi-robot sim.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">live-session</span><span class="issue-tag">performance</span><span class="issue-tag">digital-twin</span><span class="issue-tag">transforms</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/sample-ackermann-custom-car-physics-explosion-on-movement/364774" target="_blank">Physics explosion with custom Ackermann vehicle in Isaac Sim 5.1.0</a></div>
+<div class="issue-desc">Custom OnShape Ackermann car explodes on physics start. Sample F1Tenth works fine. Likely import/joint config issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">physics</span><span class="issue-tag">ackermann</span><span class="issue-tag">import</span><span class="issue-tag">onshape</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/mecanum-wheel-physics-pivot-mismatch-and-jitter-in-imported-usd/364482" target="_blank">Mecanum wheel physics pivot mismatch and jitter in imported USD</a></div>
+<div class="issue-desc">Imported USD mecanum wheels have pivot alignment issues causing physics jitter.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">physics</span><span class="issue-tag">mecanum</span><span class="issue-tag">import</span><span class="issue-tag">jitter</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/stableidmap-for-lidarrtx-has-missing-object-ids/364919" target="_blank">LidarRTX StableIDMap missing object_ids</a></div>
+<div class="issue-desc">Recording scenes with LidarRTX produces object IDs not in StableIDMap for some assets.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 27</span><span class="issue-tag">lidar</span><span class="issue-tag">stableidmap</span><span class="issue-tag">recording</span><span class="issue-tag">object-id</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5116" target="_blank">URDF-to-USD converter produces non-instanceable primitives (VRAM explosion)</a></div>
+<div class="issue-desc">URDF with simple collision primitives converts to USD using more VRAM than mesh collisions. Instancing not applied.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">github</span><span class="issue-date">Mar 27</span><span class="issue-tag">urdf</span><span class="issue-tag">usd</span><span class="issue-tag">vram</span><span class="issue-tag">instancing</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/jetson-agx-thor-does-not-support-webrtc-livestreaming-in-isaac-sim-5-1-0/364962" target="_blank">Jetson AGX Thor WebRTC livestreaming broken in Isaac Sim 5.1.0</a></div>
+<div class="issue-desc">Headless Isaac Sim 5.1.0 on Jetson AGX Thor cannot stream GUI via WebRTC to remote machine.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 28</span><span class="issue-tag">jetson</span><span class="issue-tag">thor</span><span class="issue-tag">webrtc</span><span class="issue-tag">headless</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/failed-to-install-ros2-on-igx-orin-dgpu/364784" target="_blank">ROS 2 install fails on IGX Orin with Isaac Sim 5.1</a></div>
+<div class="issue-desc">Installing ROS 2 on IGX Orin after Isaac Sim 5.1 breaks GPU driver. Kernel upgrade for ROS 2 kills graphics.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 25</span><span class="issue-tag">ros2</span><span class="issue-tag">igx-orin</span><span class="issue-tag">driver</span><span class="issue-tag">kernel</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-gui-crash-access-violation-on-rtx-5070-ti-blackwell-fixed-by-driver-downgrade-to-591-74/365335" target="_blank">Isaac Sim 5.1 GUI crash on RTX 5070 Ti Blackwell — access violation in omni.kit.window.preferences</a></div>
+<div class="issue-desc">Isaac Sim 5.1.0 crashes ~20s after GUI startup with access violation on RTX 5070 Ti Laptop (12GB) with driver 595.79 on Windows 11. Headless works. Downgrading to 591.74 resolves. NVIDIA confirmed validated driver is 580.88; Vulkan rendering path flagged as known Blackwell issue.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Apr 01</span><span class="issue-tag">blackwell</span><span class="issue-tag">rtx-5070-ti</span><span class="issue-tag">driver</span><span class="issue-tag">vulkan</span></div>
+</div>
 <div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/4763" target="_blank">Low Frame Rate for Demo Recording (15&#8211;18 FPS)</a></div>
-<div class="issue-desc">Frame rate drops to 15-18 FPS when running record_demos scripts. Impacts data collection workflows.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">github</span><span class="issue-date">Mar 1</span><span class="issue-tag">performance</span><span class="issue-tag">fps</span><span class="issue-tag">recording</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-add-nucleus-connection-failed/364507" target="_blank">Nucleus Connection Fails Cross-Machine</a></div>
+<div class="issue-desc">Add Nucleus Connection fails when connecting Isaac Sim from a remote machine on the same network, despite Nucleus web UI being accessible at :8080.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 24</span><span class="issue-tag">nucleus</span><span class="issue-tag">networking</span><span class="issue-tag">multi-machine</span></div>
 </div>
-
-<p style="text-align:center;padding:12px;color:#475569;font-size:.75rem;font-style:italic">+ 16 issues from the 2-week window above</p>
+<p style="text-align:center;padding:12px;color:#475569;font-size:.75rem;font-style:italic">+ 11 more issues not shown</p>
 </div>
 
 </section>
