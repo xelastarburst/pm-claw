@@ -132,7 +132,46 @@ python3 scripts/rebuild_dashboard.py
 
 This regenerates the digest tabs from the updated problems.jsonl.
 
-## Step 7: Commit and Push
+## Step 7: Update ALL Dashboard Tabs
+
+The dashboard has 4 tabs that ALL need to stay current. Do NOT just update the digest — update everything.
+
+### 7a. Digest Tab (auto-generated)
+Run `python3 scripts/rebuild_dashboard.py` — this regenerates digest windows from problems.jsonl.
+
+### 7b. Overview Tab
+Update the Executive Summary cards in `dashboard/index.html` to reflect the current top 5 signals based on all tracked issues. Update the Trending section with the week's hottest topics. Update the Problem Heatmap counts.
+
+### 7c. Ecosystem Tab
+Search for new funding rounds, partnerships, acquisitions, and company moves:
+- `robotics AI funding april 2026` (use current month)
+- `humanoid robot startup funding 2026`
+- `physical AI robotics foundation model funding 2026`
+- `NVIDIA robotics partnership 2026`
+
+For each new company or update found:
+- Add new companies to the appropriate section
+- Update valuations/funding for existing companies
+- Update the company count and date in the section header
+- Update the partnership tiers table
+
+### 7d. Tech Radar Tab
+Search for new papers, tools, releases:
+- `arXiv robotics foundation model sim2real 2026` (current month)
+- `robotics simulation new tools releases 2026`
+- `NVIDIA isaac sim newton update 2026`
+
+Update:
+- Key ArXiv Papers section (add new papers at top)
+- Industry Moves timeline (add new events at top)
+- Social Signals (replace with current week's signals)
+- Stats bar (update counts)
+- Header date range
+
+### 7e. Footer
+Update the footer date to today's date.
+
+## Step 8: Commit and Push
 
 ```bash
 git add intel/briefs/daily/YYYY-MM-DD.md intel/problems.jsonl dashboard/index.html
@@ -153,3 +192,4 @@ git push origin main
 - **Signal > noise.** A well-classified issue with 3 sentences is better than a wall of text.
 - **If a source is down or returns no results**, note it in the brief's header and move on. Don't block the whole pipeline.
 - **If you find 0 new issues**, still generate the brief (noting "no new issues found") and rebuild the dashboard (which updates the date).
+- **ALL tabs must be updated every day.** The dashboard is the primary deliverable — stale tabs = stale product.

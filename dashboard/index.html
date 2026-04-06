@@ -172,11 +172,11 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <section>
 <h2>&#x1f3af; Executive Summary</h2>
 <div class="card-grid">
-<div class="card blocker"><h3>1. Isaac Lab DX is the #1 pain point</h3><p>Multiple Reddit posts (59+ upvotes) call Isaac Lab "unusable." Confusing docs, broken tutorials, CUDA errors. Affects 5.1 and 6.0 users alike.</p></div>
-<div class="card pain"><h3>2. Isaac Sim 5.1/6.0 stability issues</h3><p>GUI crashes on RTX 4090 (5.1), segfaults on RTX 5080 (5.1), LiDAR StableIDMap bugs (6.0), SICK sensor empty topics (5.1). New hardware + new versions = new pain.</p></div>
-<div class="card pain"><h3>3. Sim-to-real remains THE fundamental gap</h3><p>Survey catalogs reality gap. Static friction under-randomized. a16z: "deployment gap never been wider."</p></div>
-<div class="card friction"><h3>4. Ecosystem fragmentation confusion</h3><p>Newton 1.0, MuJoCo Warp 250-475x, Isaac Lab 3.0 EA. Users don't know which tool to use.</p></div>
-<div class="card pain"><h3>5. No "ImageNet for robotics"</h3><p>Training data bottleneck. Everyone building bespoke synthetic data pipelines.</p></div>
+<div class="card blocker"><h3>1. Blackwell GPU compatibility is the #1 blocker</h3><p>4 separate crash/hang reports: RTX 5070 Ti GUI crash, RTX 5070 Ti driver crash, RTX 5080 segfault, RTX 5090 TiledCamera hang. NVIDIA's validated driver (580.88) is 2 major versions behind current (595.x).</p></div>
+<div class="card pain"><h3>2. Isaac Lab DX crisis persists</h3><p>85+ Reddit upvotes calling it "unusable." Docs, tutorials, setup all broken. No improvement since March.</p></div>
+<div class="card pain"><h3>3. ROS 2 integration is a minefield</h3><p>Two distinct incompatibilities: IGX Orin kernel conflict AND Jazzy Docker Python 3.12 vs 3.11 mismatch. ROS is table-stakes for robotics.</p></div>
+<div class="card pain"><h3>4. Isaac Sim 6.0 has fundamental import bug</h3><p>Core extension circular import blocks sensors and ROS2Bridge entirely. Anyone evaluating 6.0 hits this immediately.</p></div>
+<div class="card friction"><h3>5. $6.4B+ poured into Physical AI in Q1 2026</h3><p>Mind Robotics ($500M), Rhoda AI ($450M), Physical Intelligence (raising $1B at $11B). Robot brain layer is winner-take-most.</p></div>
 </div>
 </section>
 
@@ -237,11 +237,11 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <section>
 <h2>Trending (Last 2 Weeks)</h2>
 <div class="tr">
-<div class="tc"><div class="n">1</div><h4>Newton 1.0</h4><p>GTC 2026. MuJoCo Warp 475x. Linux Foundation.</p></div>
-<div class="tc"><div class="n">2</div><h4>Isaac Sim 6.0 EA</h4><p>Multi-physics backends. Early dev release.</p></div>
-<div class="tc"><div class="n">3</div><h4>Isaac Lab 3.0 EA</h4><p>Ties into Newton. Major version bump.</p></div>
-<div class="tc"><div class="n">4</div><h4>LeRobot v0.5</h4><p>Humanoid support. IsaacLab-Arena.</p></div>
-<div class="tc"><div class="n">5</div><h4>"Compute is Data"</h4><p>Jensen, GTC. GPU sim for post-training.</p></div>
+<div class="tc"><div class="n">1</div><h4>Newton 1.0 + Cosmos 3</h4><p>GTC 2026. MuJoCo Warp 475x. Linux Foundation.</p></div>
+<div class="tc"><div class="n">2</div><h4>Blackwell GPU Crashes</h4><p>4 reports, systemic. RTX 5070 Ti, 5080, 5090.</p></div>
+<div class="tc"><div class="n">3</div><h4>Isaac Lab 3.0 Beta</h4><p>Multi-backend physics. Newton integration.</p></div>
+<div class="tc"><div class="n">4</div><h4>GR00T N2 Preview</h4><p>2x task generalization vs leading VLAs.</p></div>
+<div class="tc"><div class="n">5</div><h4>Physical AI Funding Boom</h4><p>$6.4B in Q1 2026. 27+ startups funded.</p></div>
 </div>
 </section>
 
@@ -553,7 +553,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div id="tab-ecosystem" class="tab-content">
 <section>
 <h2>Robotics Ecosystem Map</h2>
-<p class="digest-date">50+ companies | NVIDIA Physical AI focus | Mar 2026</p>
+<p class="digest-date">65+ companies | NVIDIA Physical AI focus | Apr 2026</p>
 
 <div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Humanoid Robots (10)</h3><div class="cb">
 <div class="pi"><div class="pt"><strong>Figure AI</strong> <span class="ver">$39B</span></div><div class="pd">General-purpose humanoid (Figure 02). Deployed at BMW. NVIDIA 3-computer arch, GTC 2026 stage. $1B+ Series C. Highest-valued humanoid startup.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
@@ -568,14 +568,17 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="pi"><div class="pt"><strong>Fourier Intelligence</strong></div><div class="pd">GR-2 humanoid for rehab + industrial. GR00T adopter. Medical + industrial dual focus.</div><div class="pm"><span class="sev sev-friction">customer</span><span class="src">China</span></div></div>
 </div></div>
 
-<div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Robot Brains / Foundation Models (7)</h3><div class="cb">
+<div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Robot Brains / Foundation Models (10)</h3><div class="cb">
 <div class="pi"><div class="pt"><strong>Skild AI</strong> <span class="ver">$14B</span></div><div class="pd">"Universal brain" spanning legged/wheeled/humanoid. CMU spinout. NVIDIA invested $1.4B round (Jan 2026). Uses Isaac Lab + Cosmos. Foxconn deal.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
-<div class="pi"><div class="pt"><strong>Physical Intelligence</strong> <span class="ver">$11B</span></div><div class="pd">General-purpose robot policy models. Independent. $600M Series B (Nov 2025). Raising $1B more. 2 years old.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Physical Intelligence</strong> <span class="ver">$11B</span></div><div class="pd">General-purpose robot policy models. Independent. $600M Series B (Nov 2025). Raising $1B more at $11B valuation. 2 years old.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>FieldAI</strong> <span class="ver">$2B</span></div><div class="pd">Risk-aware models for construction/oil&gas. NVIDIA Ventures invested. Uses Isaac Lab + Cosmos. Bezos + Khosla backing.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>Google DeepMind</strong></div><div class="pd">Gemini Robotics + MuJoCo. Alternative stack (Gemini+MuJoCo vs GR00T+Isaac). Partnered with Boston Dynamics + Apptronik.</div><div class="pm"><span class="sev sev-pain">competitor</span><span class="src">big tech</span></div></div>
 <div class="pi"><div class="pt"><strong>NVIDIA GR00T</strong></div><div class="pd">N1.7 + N2 preview. "2x task generalization vs alternatives" at GTC 2026.</div><div class="pm"><span class="sev sev-blocker">self</span><span class="src">public</span></div></div>
 <div class="pi"><div class="pt"><strong>Covariant AI</strong></div><div class="pd">Pick-and-place AI brain. Acquired by Amazon. Powers warehouse AI.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">acquired</span></div></div>
 <div class="pi"><div class="pt"><strong>LeRobot (HuggingFace)</strong></div><div class="pd">Open-source robot learning. v0.5 humanoid support. IsaacLab-Arena integration.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">open source</span></div></div>
+<div class="pi"><div class="pt"><strong>Rhoda AI</strong> <span class="ver">$1.7B</span></div><div class="pd">Video-predictive robot intelligence (FutureVision platform). Trains on hundreds of millions of videos. Direct Video Action models. $450M Series A. Khosla + Temasek backed.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Flexion</strong> <span class="ver">$57M</span></div><div class="pd">Ex-NVIDIA researchers building 'brain' for humanoid robots. RL + VLA + transformer whole-body control. DST Global, NVentures backed. Deploying to factories H1 2026.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>RLWRLD</strong></div><div class="pd">Robotics foundation models for industry. $41M total seed funding. Physical AI specialist.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
 </div></div>
 
 <div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Industrial Giants (GTC 2026)</h3><div class="cb">
@@ -587,7 +590,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="pi" style="padding:8px 0;color:#64748b;font-size:.75rem;font-style:italic">2M+ installed robots worldwide across these companies (NVIDIA GTC 2026)</div>
 </div></div>
 
-<div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">Simulation Competitors (5)</h3><div class="cb">
+<div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">Simulation Competitors (6)</h3><div class="cb">
 <div class="pi"><div class="pt"><strong>Genesis AI</strong></div><div class="pd">Generative physics engine. Claims 43M FPS. Open-source. Direct Isaac Sim threat.</div><div class="pm"><span class="sev sev-pain">competitor</span><span class="src">startup</span></div></div>
 <div class="pi"><div class="pt"><strong>MuJoCo (DeepMind)</strong></div><div class="pd">Free, open-source. RL research standard. MuJoCo Warp 475x now in Newton.</div><div class="pm"><span class="sev sev-pain">competitor</span><span class="src">open source</span></div></div>
 <div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Synthetic Data &amp; 3D Assets (10)</h3><div class="cb">
@@ -605,6 +608,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 
 <div class="pi"><div class="pt"><strong>Gazebo</strong></div><div class="pd">Legacy ROS standard. Declining for RL. Still used for ROS integration.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">open source</span></div></div>
 <div class="pi"><div class="pt"><strong>World Labs</strong></div><div class="pd">Fei-Fei Li. Spatial intelligence / 3D world gen. GTC 2026 partner.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>MuJoCo Playground</strong></div><div class="pd">Open-source framework for robot learning. Zero-shot sim-to-real across quadrupeds, humanoids, hands, arms. RSS 2025 Outstanding Demo.</div><div class="pm"><span class="sev sev-pain">competitor</span><span class="src">open source</span></div></div>
 </div></div>
 
 <div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">Warehouse / Manufacturing (6)</h3><div class="cb">
@@ -615,16 +619,24 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="pi"><div class="pt"><strong>KION Group</strong></div><div class="pd">Forklifts. Omniverse Blueprint for warehouse twins. Jetson forklifts.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">public</span></div></div>
 <div class="pi"><div class="pt"><strong>Toyota / Caterpillar / TSMC</strong></div><div class="pd">Manufacturing digital twins via Omniverse. GTC 2026.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">public</span></div></div>
 </div></div>
+
+<div class="cs"><h3 onclick="this.parentElement.classList.toggle('open')">New Entrants (Q1 2026) (5)</h3><div class="cb">
+<div class="pi"><div class="pt"><strong>Mind Robotics</strong> <span class="ver">$2B</span></div><div class="pd">Rivian spinout. AI-enabled industrial robots. $500M Series A (Accel, a16z). Founded by RJ Scaringe. Deploying at Rivian factories, expanding to external clients end of 2026.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Sunday</strong> <span class="ver">$1.15B</span></div><div class="pd">Household humanoid (Memo). $165M Series B. Coatue, Tiger Global, Benchmark. Consumer robotics focus — laundry, household tasks.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>RoboForce</strong></div><div class="pd">$52M raised. Physical AI robo-labor for industrial tasks. YZi Labs led. Jerry Yang backing.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Anvil Robotics</strong></div><div class="pd">'Legos for robots' — composable, open-source robot hardware platform. $6.5M seed. $1.9K-$10K robots, 2-day delivery from Taiwan. 50+ customers.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>Robosynx</strong></div><div class="pd">Full-stack Isaac Sim developer platform. AI robot generator (URDF from natural language), ROS 2 node builder, Isaac Monitor dashboard. April 2026 launch.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">startup</span></div></div>
+</div></div>
 </section>
 
 <section>
 <h2>NVIDIA Partnership Tiers</h2>
 <div class="hm"><table>
 <tr><th>Tier</th><th>Companies</th><th>Relationship</th></tr>
-<tr><td class="c" style="background:#22c55e22;color:#22c55e;font-weight:700">Tier 1: Deep</td><td>Skild AI, FieldAI, Figure, Agility, Amazon, FANUC, ABB, YASKAWA, KUKA, Foxconn, Lightwheel AI</td><td>NVIDIA invested or co-building</td></tr>
+<tr><td class="c" style="background:#22c55e22;color:#22c55e;font-weight:700">Tier 1: Deep</td><td>Skild AI, FieldAI, Figure, Agility, Amazon, FANUC, ABB, YASKAWA, KUKA, Foxconn, Lightwheel AI, Flexion</td><td>NVIDIA invested or co-building</td></tr>
 <tr><td class="c" style="background:#3b82f622;color:#3b82f6;font-weight:700">Tier 2: Active</td><td>Apptronik, Boston Dynamics, UR, Toyota, TSMC, KION, Siemens, PTC, World Labs, Rendered.ai, Serve Robotics</td><td>Using stack in production</td></tr>
-<tr><td class="c" style="background:#eab30822;color:#eab308;font-weight:700">Tier 3: Users</td><td>Unitree, Fourier, Palatial, Bifrost, SKY ENGINE AI, Applied Intuition, Datagen, hundreds of startups</td><td>Isaac Sim/Lab for training</td></tr>
-<tr><td class="c" style="background:#ef444422;color:#ef4444;font-weight:700">Competitors</td><td>Google DeepMind, Genesis AI, Physical Intelligence, Tesla</td><td>Alternative stacks</td></tr>
+<tr><td class="c" style="background:#eab30822;color:#eab308;font-weight:700">Tier 3: Users</td><td>Unitree, Fourier, Palatial, Bifrost, SKY ENGINE AI, Applied Intuition, Datagen, Mind Robotics, Sunday, RoboForce, Anvil Robotics, Robosynx, hundreds of startups</td><td>Isaac Sim/Lab for training</td></tr>
+<tr><td class="c" style="background:#ef444422;color:#ef4444;font-weight:700">Competitors</td><td>Google DeepMind, Genesis AI, Physical Intelligence, Tesla, MuJoCo Playground</td><td>Alternative stacks</td></tr>
 </table></div>
 </section>
 
@@ -633,7 +645,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="card-grid">
 <div class="card blocker"><h3>NVIDIA = Android of robotics</h3><p>Full stack: sim (Isaac) + training (Cosmos) + models (GR00T) + edge (Jetson). No one else end-to-end.</p></div>
 <div class="card pain"><h3>Big 4 industrial signed on</h3><p>FANUC, ABB, YASKAWA, KUKA integrating Omniverse. 2M+ installed robots. Massive moat.</p></div>
-<div class="card pain"><h3>Robot brain = hottest</h3><p>Skild ($14B), PI ($11B), FieldAI ($2B). "Brain" is winner-take-most layer.</p></div>
+<div class="card pain"><h3>Robot brain = hottest</h3><p>Skild ($14B), PI ($11B), Rhoda ($1.7B), FieldAI ($2B), Flexion ($57M). $6.4B in Q1 2026 alone. Winner-take-most layer.</p></div>
 <div class="card friction"><h3>China ships, West develops</h3><p>China: 1000s of units at $16K. West: pilot stage. Cost gap real. West has AI lead.</p></div>
 </div>
 </section>
@@ -643,18 +655,46 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 
 <!-- Weekly Stats Bar -->
 <section>
-<h2>&#x1f52c; Tech Radar &#8212; Week of Mar 22&#8211;29, 2026</h2>
+<h2>&#x1f52c; Tech Radar &#8212; Week of Mar 29 &#8211; Apr 5, 2026</h2>
 <div class="radar-stats">
 <div class="radar-stat"><div class="rs-num">~250+</div><div class="rs-lbl">ArXiv cs.RO Papers</div></div>
 <div class="radar-stat"><div class="rs-num">4</div><div class="rs-lbl">Major Partnerships</div></div>
-<div class="radar-stat"><div class="rs-num">6</div><div class="rs-lbl">New Products/Tools</div></div>
-<div class="radar-stat"><div class="rs-num">3</div><div class="rs-lbl">Funding Rounds</div></div>
+<div class="radar-stat"><div class="rs-num">8</div><div class="rs-lbl">New Products/Tools</div></div>
+<div class="radar-stat"><div class="rs-num">8</div><div class="rs-lbl">Funding Rounds</div></div>
 </div>
 </section>
 
 <!-- Key ArXiv Papers -->
 <section>
-<h2>&#x1f4c4; Key ArXiv Papers &#8212; Week of Mar 22&#8211;29, 2026</h2>
+<h2>&#x1f4c4; Key ArXiv Papers &#8212; Week of Mar 29 &#8211; Apr 5, 2026</h2>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/abs/2601.09605" target="_blank">MANGO: Sim2Real Image Translation</a></h4>
+<div class="paper-summary">Image translation for viewpoint-robust sim2real transfer. Policies trained with one camera angle work with different real-world placement.</div>
+<div class="paper-meta">
+<span class="paper-date">Apr 2026</span>
+<span class="tag tag-fm">sim2real</span>
+<span class="tag tag-fm">foundation model</span>
+</div>
+</div>
+<div class="paper-card">
+<h4>Cosmos-Predict2.5</h4>
+<div class="paper-summary">Flow-based world foundation model. Unifies Text2World, Image2World, Video2World generation. Cosmos-Transfer2.5 for Sim2Real and Real2Real translation.</div>
+<div class="paper-meta">
+<span class="paper-date">Apr 2026</span>
+<span class="tag tag-nvidia">NVIDIA</span>
+<span class="tag tag-fm">foundation model</span>
+<span class="tag tag-fm">sim2real</span>
+</div>
+</div>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/html/2503.10949" target="_blank">Safe Continual Domain Adaptation</a></h4>
+<div class="paper-summary">Safe policy adaptation after sim2real transfer using continual learning. Addresses catastrophic forgetting in deployed policies.</div>
+<div class="paper-meta">
+<span class="paper-date">Mar 2026</span>
+<span class="tag tag-fm">sim2real</span>
+<span class="tag tag-learn">robot learning</span>
+</div>
+</div>
 <div class="paper-card">
 <h4><a href="https://arxiv.org/abs/2603.22264" target="_blank">UniDex: Universal Dexterous Hand Control</a></h4>
 <div class="paper-summary">Universal dexterous hand control from egocentric human videos. VLA model achieves 81% task progress across 8 hand types.</div>
@@ -737,8 +777,48 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 
 <!-- Industry Moves -->
 <section>
-<h2>&#x1f3ed; Industry Moves &#8212; Mar 22&#8211;29, 2026</h2>
+<h2>&#x1f3ed; Industry Moves &#8212; Mar 29 &#8211; Apr 5, 2026</h2>
 <div class="timeline">
+<div class="tl-item">
+<div class="tl-date">Apr 4</div>
+<div class="tl-title">Robosynx Launches</div>
+<div class="tl-desc">Full-stack Isaac Sim developer platform with AI robot generation, ROS 2 node builder, and live GPU monitoring. Third-party tooling ecosystem growing.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 1</div>
+<div class="tl-title">Replicator Multi-GPU Fix Ships</div>
+<div class="tl-desc">IsaacSim #507 closed. Semantic segmentation annotators no longer produce empty frames on multi-GPU setups. Key fix for production SDG.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 1</div>
+<div class="tl-title">RTX 5070 Ti Blackwell Crash Confirmed</div>
+<div class="tl-desc">Fourth Blackwell GPU crash report. Access violation in omni.kit.window.preferences. Driver downgrade to 591.74 resolves. Vulkan path flagged internally.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 31</div>
+<div class="tl-title">OpenAI Raises $3B from Retail Investors</div>
+<div class="tl-desc">Monster $122B fundraise. OpenAI not yet public but taking retail money.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 27</div>
+<div class="tl-title">Physical Intelligence Discusses $1B Round at $11B</div>
+<div class="tl-desc">Bloomberg: ex-DeepMind robotics startup doubling valuation in 4 months.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 12</div>
+<div class="tl-title">Sunday Raises $165M for Household Humanoid</div>
+<div class="tl-desc">Memo robot for home tasks. $1.15B valuation. Coatue led.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 11</div>
+<div class="tl-title">Mind Robotics $500M Series A</div>
+<div class="tl-desc">Rivian spinout valued at $2B. Accel + a16z co-led. AI industrial robots.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Mar 10</div>
+<div class="tl-title">Rhoda AI Exits Stealth with $450M</div>
+<div class="tl-desc">FutureVision platform: video-predictive robot control. Khosla + Temasek backed.</div>
+</div>
 <div class="tl-item">
 <div class="tl-date">Mar 29</div>
 <div class="tl-title">Jensen Huang: &#8220;We&#8217;ve Already Achieved AGI&#8221;</div>
@@ -811,25 +891,25 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <section>
 <h2>&#x1d54f; / Social Signals</h2>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f4e2;</span> <strong>Andrej Karpathy</strong> signal-boosts LiteLLM supply chain attack &#8212; 97M monthly downloads compromised. Major security wake-up call for AI tooling.</p>
+<p><span class="ss-icon">&#x1f6a8;</span> <strong>Blackwell GPU crisis</strong> &#8212; 4 separate crash reports across RTX 5070 Ti, 5080, 5090. NVIDIA validated driver 2 versions behind. Users buying new hardware can't use Isaac Sim.</p>
 </div>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f4ca;</span> <strong>ARC-AGI-3 benchmark:</strong> Every frontier model scores under 1% on tasks 100% of humans solve first try. Gemini 3.1 Pro leads at 0.37%. Humbling reality check.</p>
+<p><span class="ss-icon">&#x1f4b0;</span> <strong>Physical AI funding explosion</strong> &#8212; $6.4B in Q1 2026 across 27+ startups. Mind Robotics, Rhoda AI, Sunday all hitting unicorn status. Robot brain layer attracts biggest checks.</p>
 </div>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f525;</span> <strong>Simulator wars:</strong> Robotics community debates MuJoCo vs Isaac Sim vs Newton vs Genesis &#8212; no consensus on &#8220;one simulator to rule them all.&#8221; Fragmentation continues.</p>
+<p><span class="ss-icon">&#x1f41b;</span> <strong>Isaac Sim 6.0 Core Extension broken</strong> &#8212; Circular import blocks sensors + ROS2Bridge on 6.0.0. Filed internally. Anyone evaluating Newton backend hits this.</p>
 </div>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f680;</span> <strong>&#8220;Claude Code for robotics&#8221;</strong> (Drift) generates significant buzz. AI-native simulation tools seen as next wave of developer tooling.</p>
+<p><span class="ss-icon">&#x1f525;</span> <strong>ROS 2 + Isaac Sim fragmentation</strong> &#8212; Two distinct incompatibilities (IGX kernel, Jazzy Python version). ROS integration friction drives users to MuJoCo.</p>
 </div>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f4b0;</span> <strong>Physical AI VCs increasingly active</strong> &#8212; Bessemer, a16z, Khosla all publishing landscape maps this week. Capital flowing into embodied AI.</p>
+<p><span class="ss-icon">&#x1f680;</span> <strong>Third-party tooling boom</strong> &#8212; Robosynx, Drift, SimWorld Studio &#8212; ecosystem building tools around Isaac Sim pain points. Validates DX gaps.</p>
 </div>
 </section>
 
 </div>
 
-<footer><p>Ziggy - PM Claw - Updated 2026-03-31 - Isaac Sim 5.1+ priority - Daily pull 7 AM PT</p></footer>
+<footer><p>Ziggy - PM Claw - Updated 2026-04-05 - Isaac Sim 5.1+ priority - Daily pull 7 AM PT</p></footer>
 </div>
 <script>
 function switchTab(name){
