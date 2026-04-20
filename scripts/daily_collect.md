@@ -123,6 +123,40 @@ Append new entries to `intel/problems.jsonl`. Each entry is one JSON object per 
 {"id":"YYYY-MM-DD-001","date":"YYYY-MM-DD","title":"Short title","description":"Detailed description","category":"category","severity":"severity","source":"source-name","source_url":"https://...","signal_strength":"high|medium|low","tags":["tag1","tag2"],"isaac_sim_version":"X.Y.Z"}
 ```
 
+## Step 5.5: Update Leading Indicators (Strategy Tab)
+
+Append today's reading for each of the 9 strategic leading indicators to `intel/indicators.jsonl`. One JSON line per indicator per day. Schema:
+
+```json
+{"date":"YYYY-MM-DD","indicator":"indicator-key","value":N,"source":"source-name","note":"...","query":"query-actually-run"}
+```
+
+The indicator keys (match these exactly — the render script is keyed on them):
+
+| Key | How to update | Type |
+|---|---|---|
+| `blackwell-bug-count` | Search GitHub + forum for open Blackwell-driver-related issues; count | scrapeable |
+| `pi-07-replication-papers` | Search arXiv for "π0.7" / "pi-0.7" / "pi0.7" compositional generalization replication or refutation | scrapeable |
+| `ai-native-sim-tools` | Count known natural-language → Isaac env products (Drift, SimWorld Studio, Robosynx, IsaacLab LLM proposals, new entrants) | scrapeable |
+| `cosmos-downloads` | Check latest NVIDIA blog / newsroom for Cosmos download milestones (updates quarterly; carry forward last value if no new announcement) | public-lagging |
+| `unitree-2026-target` | Check recent Unitree / Bloomberg / humanoid news for updated 2026 shipment guidance | public-lagging |
+| `isaac-vs-mujoco-arxiv` | Search arXiv cs.RO last-30-days; count papers citing "Isaac Sim" vs "MuJoCo"; value = Isaac / (Isaac + MuJoCo) as percentage (0-100) | scrapeable |
+| `lerobot-checkpoints` | Visit huggingface.co/lerobot; count model checkpoints published | scrapeable |
+| `groot-adopter-count` | NVIDIA-INTERNAL: leave `"value":null` unless exec provides number | manual |
+| `newton-vs-physx-usage` | NVIDIA-INTERNAL: leave `"value":null` unless telemetry team provides number | manual |
+
+**Rules:**
+- Always append today's line for every indicator, even if value is null or unchanged. Keeps history continuous.
+- Carry-forward rule: for public-lagging indicators with no new signal, re-log yesterday's value with note `"carried forward"`.
+- If a search returns wildly different results day-over-day due to query randomness, record the exact query used in the `query` field so future runs can normalize.
+
+After appending:
+```bash
+python3 scripts/render_indicators.py
+```
+
+This regenerates the 📡 Indicator Tracker section on the Strategy tab.
+
 ## Step 6: Rebuild Dashboard
 
 Run:
