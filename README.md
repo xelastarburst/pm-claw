@@ -2,7 +2,7 @@
 
 A live intelligence dashboard tracking the NVIDIA Physical AI ecosystem: developer issues, research papers, industry moves, and competitive landscape.
 
-**[→ View the Dashboard](https://xelastarburst.github.io/pm-claw/dashboard/)**
+**[→ View the Dashboard](https://xelastarburst.github.io/pm-claw/)**
 
 ![Dashboard Preview](https://img.shields.io/badge/status-active-22c55e) ![Issues Tracked](https://img.shields.io/badge/issues_tracked-22-f97316) ![Companies](https://img.shields.io/badge/companies-50%2B-3b82f6) ![Papers](https://img.shields.io/badge/arxiv_papers-8-8b5cf6)
 
