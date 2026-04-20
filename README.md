@@ -78,6 +78,24 @@ python3 -m http.server 8888
 
 Or just open `dashboard/index.html` directly in your browser.
 
+## Running the Daily Pipeline
+
+The daily intelligence collection runs locally via Claude Code. Each morning:
+
+```bash
+bash scripts/run_daily.sh
+```
+
+This scrapes all sources (NVIDIA forums, GitHub, Reddit, arXiv, HN), classifies new issues, updates `intel/problems.jsonl`, logs indicators, rebuilds the dashboard, and commits + pushes to `origin/main`.
+
+**Why not a remote cron?** The claude.ai GitHub integration grants read-only access, so remote triggers can clone but not push. Running locally uses your own `gh` auth which has push access. Takes ~30–60 min end-to-end.
+
+**Monthly retrospective:** On the 1st of each month, run:
+```bash
+python3 scripts/generate_retrospective.py
+```
+This writes `intel/retrospectives/YYYY-MM-DRAFT.md`. Review, fill in the Executive Summary + Strategic Reassessment sections, rename without the `DRAFT` suffix, and commit.
+
 ## Focus
 
 - **Isaac Sim 5.1+** prioritized (pre-5.1 issues flagged)
