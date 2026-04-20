@@ -47,7 +47,7 @@ Read scripts/daily_collect.md in this repo — it has the full 8-step spec. Exec
 Overrides:
 - Working directory is $REPO_ROOT.
 - Rotation: derive from today's day-of-week. Always run NVIDIA forum + GitHub + Reddit queries.
-- After Step 5 (append to problems.jsonl), do Step 5.5 (update intel/indicators.jsonl per the spec) THEN run python3 scripts/render_indicators.py.
+- After Step 5 (append to problems.jsonl), do Step 5.5 (update intel/indicators.jsonl per the spec) THEN run python3 scripts/render_indicators.py AND python3 scripts/render_status_board.py (refreshes Digest-tab status board; sentinel-bounded, idempotent).
 - Step 6: python3 scripts/rebuild_dashboard.py.
 - Step 7: update Overview / Ecosystem / Tech Radar / footer tabs in dashboard/index.html. DO NOT modify the Strategy tab (it's human-edited).
 - Step 8: commit with the standard daily-intel format and push to origin/main. Local gh auth is configured and will work.

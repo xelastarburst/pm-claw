@@ -31,6 +31,8 @@ INDICATORS = [
         "direction": "lower-is-better",
         "green_max": 3, "yellow_max": 7,
         "note": "Should trend to zero within 90 days of B1/B4 shipping.",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues?q=is%3Aissue+blackwell",
+        "source_label": "GitHub search",
     },
     {
         "key": "pi-07-replication-papers",
@@ -39,6 +41,8 @@ INDICATORS = [
         "green_max": 0, "yellow_max": 0,  # any value ≥1 triggers B6 decision
         "trigger": "first paper → trigger B6 decision point immediately",
         "note": "First independent replication triggers B6 decision point.",
+        "source_url": "https://arxiv.org/search/?query=compositional+generalization+robot&start=0",
+        "source_label": "arXiv search",
     },
     {
         "key": "ai-native-sim-tools",
@@ -46,42 +50,56 @@ INDICATORS = [
         "direction": "higher-warns",
         "green_max": 4, "yellow_max": 7,
         "note": "Crossing 5+ combined user-base signals B8 urgency → Tier S.",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/5278",
+        "source_label": "IsaacLab #5278",
     },
     {
         "key": "cosmos-downloads",
         "label": "Cosmos Download Count",
         "direction": "higher-is-better",
         "note": "Flat for 2 months → double B5 investment.",
+        "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-major-release-of-cosmos-world-foundation-models-and-physical-ai-data-tools",
+        "source_label": "NVIDIA press",
     },
     {
         "key": "unitree-2026-target",
         "label": "Unitree 2026 Shipment Target",
         "direction": "higher-triggers-acquisition",
         "note": "50K+ combined units → accelerate B9 / B11 / B12.",
+        "source_url": "https://www.bloomberg.com/news/articles/2026-04-15/tesla-s-chinese-robot-rival-ramps-up-global-push-ahead-of-ipo",
+        "source_label": "Bloomberg",
     },
     {
         "key": "isaac-vs-mujoco-arxiv",
         "label": "Isaac vs MuJoCo arXiv Share",
         "direction": "lower-warns",
         "note": "MuJoCo crossing 40% of new robotics papers → Scenario 2 materializing.",
+        "source_url": "https://arxiv.org/list/cs.RO/recent",
+        "source_label": "arXiv cs.RO",
     },
     {
         "key": "lerobot-checkpoints",
         "label": "LeRobot HuggingFace Checkpoints",
         "direction": "higher-triggers-acquisition",
         "note": "Doubling quarterly → deepen B11 sooner.",
+        "source_url": "https://huggingface.co/lerobot",
+        "source_label": "HuggingFace",
     },
     {
         "key": "groot-adopter-count",
         "label": "GR00T Adopter Count (Internal)",
         "direction": "internal-only",
         "note": ">50% of new robotics startups → moat holding. <30% → reframe as platform.",
+        "source_url": None,
+        "source_label": None,
     },
     {
         "key": "newton-vs-physx-usage",
         "label": "Newton vs PhysX Usage (Internal)",
         "direction": "internal-only",
         "note": "Plateau → feature parity gap is the issue; ship B3 faster.",
+        "source_url": None,
+        "source_label": None,
     },
 ]
 
@@ -206,9 +224,15 @@ def render_section(history):
         spark = render_sparkline(entries)
         val_display = fmt_value(last)
         note = meta.get("note", "")
+        src_url = meta.get("source_url")
+        src_label = meta.get("source_label")
+        source_html = (
+            f' <a href="{src_url}" target="_blank" style="color:#00aeef;font-size:.62rem;text-decoration:none;font-family:ui-monospace,Menlo,Consolas,monospace">↗ {src_label}</a>'
+            if src_url else ""
+        )
         rows.append(
             f'<tr>'
-            f'<td class="c"><strong>{meta["label"]}</strong><div style="font-size:.7rem;color:#64748b;margin-top:2px">{note}</div></td>'
+            f'<td class="c"><strong>{meta["label"]}</strong>{source_html}<div style="font-size:.7rem;color:#64748b;margin-top:2px">{note}</div></td>'
             f'<td style="font-weight:700;color:#f7fafc">{val_display}</td>'
             f'<td>{spark}</td>'
             f'<td style="color:{color};font-size:.7rem">{delta}</td>'
