@@ -191,6 +191,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="tab" onclick="switchTab('digest')">&#x1f4e5; Daily Digest</div>
 <div class="tab" onclick="switchTab('ecosystem')">&#x1f30d; Ecosystem</div>
 <div class="tab" onclick="switchTab('techradar')">&#x1f52c; Tech Radar</div>
+<div class="tab" onclick="switchTab('strategy')">&#x1f9ed; Strategy</div>
 </div>
 
 <!-- ===== OVERVIEW ===== -->
@@ -1117,6 +1118,54 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 </div>
 <div class="social-signal">
 <p><span class="ss-icon">&#x1f4c8;</span> <strong>NVIDIA moat thesis shifts to synthetic data</strong> &#8212; Cosmos Transfer-2 + Blueprints + 2M downloads + Figure joining Cosmos. The long-term defense isn't models, it's the training data factory.</p>
+</div>
+</section>
+
+</div>
+
+<div id="tab-strategy" class="tab-content">
+
+<section>
+<h2>&#x1f9ed; NVIDIA Physical AI Strategy &#8212; 1-Year Bet Portfolio</h2>
+<div class="filter-note">Strategic analysis of where NVIDIA should invest over the next 12 months to serve the robotics industry, grounded in PM Claw's accumulated developer-pain, ecosystem, and tech-radar intelligence. Framed as a portfolio of bets, scored and sequenced.</div>
+<p class="digest-date">Vantage: inside NVIDIA &bull; Horizon: Apr 2026 &ndash; Apr 2027 &bull; Last updated: 2026-04-19</p>
+</section>
+
+<section>
+<h2>&#x1f50e; Diagnosis &#8212; Three Uncomfortable Truths</h2>
+<p style="color:#94a3b8;font-size:.85rem;margin-bottom:14px;line-height:1.55">What the dashboard data actually says about NVIDIA's position in physical AI today. Each truth is grounded in tracked evidence &#8212; issues, funding rounds, releases, community posts.</p>
+
+<div class="card-grid" style="grid-template-columns:1fr;gap:14px">
+
+<div class="card blocker">
+<h3>1. The pick is won, but the shovel is leaking.</h3>
+<p>Reference stack (Isaac / Cosmos / GR00T) has real market adoption &#8212; Figure, Agility, Skild AI, FieldAI, Foxconn, ABB, FANUC, YASKAWA, KUKA all deeply integrated. But the <em>developer experience</em> is quietly bleeding credibility: Blackwell-595 crashes now span five consumer GPUs <strong>plus workstation RTX 6000 / A4000</strong>, with NVIDIA's validated driver (580.88) 15+ versions behind Windows' auto-update default. IsaacLab multi-user permissions are broken. WandB + skrl 2.0 silently drop training metrics. USD C++ headers missing from the installer. Reddit threads labeling Isaac Lab "100% unusable" (85+ upvotes) go uncontested. <strong>The gap between reference architecture and daily-use tool is widening &#8212; and MuJoCo, Genesis, and Newton-as-competitor gain researcher mindshare with every unfixed day.</strong></p>
+</div>
+
+<div class="card pain">
+<h3>2. The moat is shifting from models to data factories &#8212; and &#x3c0;0.7 just shortened the runway.</h3>
+<p>GR00T adoption is approaching saturation among Tier 1 partners. The <em>next</em> defensive layer is synthetic data: Cosmos at 2M+ downloads, Transfer-2 launched Apr 14, Figure joining the adopter list (Agility, Foretellix, Skild AI, Uber). But Physical Intelligence's &#x3c0;0.7 (Apr 16, 2026) claims <strong>compositional generalization</strong> &#8212; used an air fryer with two tangentially-related demos. If that replicates, the "collect demo data per task" paradigm collapses and Cosmos's moat shrinks with it. Meanwhile AGIBOT WORLD 2026 and RoboCasa365 (2,500 envs / 600+ demo hours) ship as open alternatives. <strong>NVIDIA's data-moat thesis is in a race against models that need less data.</strong></p>
+</div>
+
+<div class="card friction">
+<h3>3. Hardware democratization is happening on a channel NVIDIA doesn't own.</h3>
+<p>Unitree R1 launched globally on AliExpress at $4,900&#8211;$8,150 (Apr 10&#8211;15). Target: 10&#8211;20K units in 2026 &#8212; roughly <strong>100&times; combined Figure + Tesla + Agility shipments</strong>. Anvil Robotics shipping modular $1.9K&#8211;$10K robots with 2-day Taiwan delivery, 50+ customers already. This creates a bifurcation: hobbyists and academic labs now have fleet-buying power, but Isaac Sim is NVIDIA-GPU-only. A Unitree R1 owner with a gaming laptop cannot run Isaac Sim; they can run MuJoCo. Combined with Truth #1 (Blackwell driver chaos on the very GPUs these users buy), <strong>NVIDIA risks losing the next user generation to the open stack by default.</strong></p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>&#x1f4dd; In Progress &#8212; Coming to this Tab</h2>
+<p style="color:#94a3b8;font-size:.8rem;margin-bottom:12px;line-height:1.55">This strategy doc is being written collaboratively. The Diagnosis above is approved; remaining sections are being drafted and added as each is reviewed.</p>
+<div class="ws">
+<div class="wi"><strong>3. Thesis</strong> &#8212; one-sentence guiding policy the bets serve.</div>
+<div class="wi"><strong>4. Bet Inventory</strong> &#8212; 8&#8211;12 candidate bets across platform / data / vertical / DX / distribution categories.</div>
+<div class="wi"><strong>5. Scoring Rubric</strong> &#8212; each bet scored on conviction &times; timing &times; leverage &times; reversibility.</div>
+<div class="wi"><strong>6. Recommended Portfolio</strong> &#8212; Tab B (in-org top 3 to champion), Tab C (scouting top 3 for future optionality), Tab A appendix (founder-angle: what to acquire, partner with, or preempt).</div>
+<div class="wi"><strong>7. Roadmap</strong> &#8212; 30 / 90 / 180 / 365-day milestones.</div>
+<div class="wi"><strong>8. Scenario Stress-Test</strong> &#8212; 3 plausible futures, which bets survive each.</div>
+<div class="wi"><strong>9. Leading Indicators</strong> &#8212; signals that should trigger portfolio re-weighting.</div>
 </div>
 </section>
 
