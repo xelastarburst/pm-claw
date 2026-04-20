@@ -149,13 +149,13 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="container">
 <header>
 <h1>&#x1f980; <span>PM Claw</span> &#8212; Physical AI Intelligence</h1>
-<div class="meta"><span>&#x1f4c5; 2026-04-13</span><span class="badge">Daily Update</span><span class="badge badge-ver">Isaac Sim &#x2265;5.1</span></div>
+<div class="meta"><span>&#x1f4c5; 2026-04-19</span><span class="badge">Daily Update</span><span class="badge badge-ver">Isaac Sim &#x2265;5.1</span></div>
 <div class="stats-bar">
-<div class="stat"><div class="num">39</div><div class="lbl">JSONL Entries</div></div>
+<div class="stat"><div class="num">44</div><div class="lbl">JSONL Entries</div></div>
 <div class="stat"><div class="num">8</div><div class="lbl">Sources</div></div>
 <div class="stat"><div class="num">6mo</div><div class="lbl">Window</div></div>
 </div>
-<div class="time-note">Oct 2025 &#8211; Mar 2026 | Isaac Sim &#x2265;5.1 prioritized</div>
+<div class="time-note">Oct 2025 &#8211; Apr 2026 | Isaac Sim &#x2265;5.1 prioritized</div>
 </header>
 
 <div class="tabs">
@@ -167,16 +167,17 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 
 <!-- ===== OVERVIEW ===== -->
 <div id="tab-overview" class="tab-content active">
-<div class="filter-note">&#x2705; Filtered to Oct 2025&#8211;Mar 2026. Pre-5.1 items flagged <span class="ver ver-old">&lt;5.1</span></div>
+<div class="filter-note">&#x2705; Filtered to Oct 2025&#8211;Apr 2026. Pre-5.1 items flagged <span class="ver ver-old">&lt;5.1</span></div>
 
 <section>
 <h2>&#x1f3af; Executive Summary</h2>
 <div class="card-grid">
-<div class="card blocker"><h3>1. Blackwell GPU compatibility is the #1 blocker</h3><p>4 separate crash/hang reports: RTX 5070 Ti GUI crash, RTX 5070 Ti driver crash, RTX 5080 segfault, RTX 5090 TiledCamera hang. NVIDIA's validated driver (580.88) is 2 major versions behind current (595.x).</p></div>
-<div class="card pain"><h3>2. Isaac Lab DX crisis persists</h3><p>85+ Reddit upvotes calling it "unusable." Docs, tutorials, setup all broken. No improvement since March.</p></div>
-<div class="card pain"><h3>3. ROS 2 integration is a minefield</h3><p>Two distinct incompatibilities: IGX Orin kernel conflict AND Jazzy Docker Python 3.12 vs 3.11 mismatch. ROS is table-stakes for robotics.</p></div>
-<div class="card pain"><h3>4. Isaac Sim 6.0 has fundamental import bug</h3><p>Core extension circular import blocks sensors and ROS2Bridge entirely. Anyone evaluating 6.0 hits this immediately.</p></div>
-<div class="card friction"><h3>5. $6.4B+ poured into Physical AI in Q1 2026</h3><p>Mind Robotics ($500M), Rhoda AI ($450M), Physical Intelligence (raising $1B at $11B). Robot brain layer is winner-take-most.</p></div>
+<div class="card blocker"><h3>1. Blackwell-595 driver crash is now the dominant bug pattern</h3><p>5 confirmed Blackwell crashes: RTX 5060 Ti, 5070 Ti, 5080, 5090, PRO 6000 — plus workstation RTX 6000 + A4000. NVIDIA's validated driver (580.88) is 15+ versions behind Windows' auto-pushed 595.x. Fix: downgrade to 591.74 / 580.88.</p></div>
+<div class="card blocker"><h3>2. Physical Intelligence &#x3c0;0.7 claims compositional generalization</h3><p>New TechCrunch-covered model used an air fryer with 2 tangentially-related examples. If it holds, the "collect demo data per task" paradigm collapses &#x2014; huge implication for Cosmos/MimicGen training infra. Company raising at ~$11B.</p></div>
+<div class="card pain"><h3>3. Isaac Lab DX crisis persists</h3><p>85+ Reddit upvotes calling it "unusable." Docs, tutorials, setup all broken. WandB + skrl 2.0.0 now silently drops training metrics. No improvement since March.</p></div>
+<div class="card pain"><h3>4. Newton feature-parity gap is the migration blocker</h3><p>Cloth/deformables only work on PhysX. Users adopting Newton for perf hit a wall; multi-GPU + NaN on mesh terrain still open. Community proposal #5285 asks for Newton deformable API.</p></div>
+<div class="card pain"><h3>5. Isaac Sim 6.0 has fundamental import bug</h3><p>Core extension circular import blocks sensors and ROS2Bridge entirely. Anyone evaluating 6.0 hits this immediately.</p></div>
+<div class="card friction"><h3>6. Humanoid democratization on AliExpress</h3><p>Unitree R1 global launch at $4,900&#x2013;$8,150. Unitree targets 10&#x2013;20K units in 2026 vs ~150 each for Figure/Agility/Tesla. Isaac Sim + LeRobot support = massive user-base expansion.</p></div>
 </div>
 </section>
 
@@ -184,12 +185,13 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <h2>&#x1f5fa;&#xfe0f; Problem Heatmap</h2>
 <div class="hm"><table>
 <tr><th>Category</th><th>Blocker</th><th>Pain</th><th>Friction</th><th>Total</th></tr>
-<tr><td class="c">&#x1f527; Tooling/DX</td><td class="h2">2</td><td class="h3">4</td><td class="h3">4</td><td>10</td></tr>
-<tr><td class="c">&#x1f41b; 5.1/6.0 Bugs</td><td class="h1">1</td><td class="h3">3</td><td class="h1">1</td><td>5</td></tr>
+<tr><td class="c">&#x1f527; Tooling/DX</td><td class="h2">2</td><td class="h3">5</td><td class="h3">4</td><td>11</td></tr>
+<tr><td class="c">&#x1f41b; Crashes/Stability (Blackwell)</td><td class="h1">1</td><td class="h3">5</td><td class="h1">1</td><td>7</td></tr>
 <tr><td class="c">&#x1f309; Sim2Real</td><td class="h0">0</td><td class="h3">5</td><td class="h1">1</td><td>6</td></tr>
 <tr><td class="c">&#x1f4f7; Synthetic Data</td><td class="h0">0</td><td class="h2">2</td><td class="h1">1</td><td>3</td></tr>
-<tr><td class="c">&#x1f3d7;&#xfe0f; Env Design</td><td class="h0">0</td><td class="h1">1</td><td class="h2">2</td><td>3</td></tr>
-<tr><td class="c">&#x1f680; Deployment</td><td class="h0">0</td><td class="h2">2</td><td class="h1">1</td><td>3</td></tr>
+<tr><td class="c">&#x1f3d7;&#xfe0f; Env Design / API</td><td class="h0">0</td><td class="h1">1</td><td class="h2">2</td><td>3</td></tr>
+<tr><td class="c">&#x1f680; Deployment / Integration</td><td class="h0">0</td><td class="h2">2</td><td class="h1">1</td><td>3</td></tr>
+<tr><td class="c">&#x2728; Feature Requests</td><td class="h0">0</td><td class="h0">0</td><td class="h0">0</td><td>6</td></tr>
 </table></div>
 </section>
 
@@ -237,21 +239,24 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <section>
 <h2>Trending (Last 2 Weeks)</h2>
 <div class="tr">
-<div class="tc"><div class="n">1</div><h4>Newton 1.0 + Cosmos 3</h4><p>GTC 2026. MuJoCo Warp 475x. Linux Foundation.</p></div>
-<div class="tc"><div class="n">2</div><h4>Blackwell GPU Crashes</h4><p>4 reports, systemic. RTX 5070 Ti, 5080, 5090.</p></div>
-<div class="tc"><div class="n">3</div><h4>Isaac Lab 3.0 Beta</h4><p>Multi-backend physics. Newton integration.</p></div>
-<div class="tc"><div class="n">4</div><h4>GR00T N2 Preview</h4><p>2x task generalization vs leading VLAs.</p></div>
-<div class="tc"><div class="n">5</div><h4>Physical AI Funding Boom</h4><p>$6.4B in Q1 2026. 27+ startups funded.</p></div>
+<div class="tc"><div class="n">1</div><h4>&#x3c0;0.7 Compositional Generalization</h4><p>Physical Intelligence: robot brain solves untrained tasks. Air fryer w/ 2 examples.</p></div>
+<div class="tc"><div class="n">2</div><h4>Blackwell-595 Crash Pattern</h4><p>5 GPUs confirmed + RTX 6000 workstation. Windows auto-updates are the trigger.</p></div>
+<div class="tc"><div class="n">3</div><h4>Unitree R1 on AliExpress</h4><p>$4,900 humanoid global launch. 10-20K units target for 2026.</p></div>
+<div class="tc"><div class="n">4</div><h4>Cosmos Transfer-2 + Blueprints</h4><p>NVIDIA synthetic data release Apr 14. 2M+ downloads. Figure joins Cosmos.</p></div>
+<div class="tc"><div class="n">5</div><h4>AI-Native Sim Wave</h4><p>LLM env-generation proposal now on official IsaacLab. Drift, SimWorld, Robosynx followed.</p></div>
+<div class="tc"><div class="n">6</div><h4>AUTONOMOUS Conf Launches</h4><p>New Frontier Media physical-AI conf. July 16 SF. Category is big enough to detach.</p></div>
 </div>
 </section>
 
 <section>
 <h2>Weak Signals</h2>
 <div class="ws">
-<div class="wi"><strong>PhysTwin / SoMA</strong> - Neural sims for deformable objects from video. Could leapfrog physics sim.</div>
-<div class="wi"><strong>PTC Onshape to Isaac Sim</strong> - Design-to-sim pipeline. Asset pipeline fix.</div>
-<div class="wi"><strong>Cosmos world models</strong> - Synthetic data shifting to learned world models.</div>
-<div class="wi"><strong>Isaac Sim support moving to GitHub</strong> - Forum posts now redirect to GitHub issues.</div>
+<div class="wi"><strong>Compositional generalization in VLAs</strong> &#x2014; If &#x3c0;0.7 holds up, demo-data-per-task paradigm ends. Watch for replication claims.</div>
+<div class="wi"><strong>Driver auto-update as a blocker</strong> &#x2014; Windows silently pushes 595.x; breaks Isaac Sim. "Pin your driver" becoming a deployment checklist item.</div>
+<div class="wi"><strong>AI-native sim tools</strong> &#x2014; Drift, SimWorld Studio, Robosynx, now an IsaacLab proposal. Natural-language &#x2192; sim env is the new UX expectation.</div>
+<div class="wi"><strong>Newton parity gap</strong> &#x2014; Cloth, soft-body, multi-GPU all PhysX-only. Migration friction compounding.</div>
+<div class="wi"><strong>Hardware democratization</strong> &#x2014; Unitree R1 on AliExpress, Anvil Robotics modular $1.9K robots. "Robot phone" pricing arriving.</div>
+<div class="wi"><strong>Isaac Sim support moving to GitHub</strong> &#x2014; Forum slowing, GitHub issues now primary channel. Update monitoring accordingly.</div>
 </div>
 </section>
 </div>
@@ -272,7 +277,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="window-stats">
 <div class="ws-item"><div class="ws-num">0</div><div class="ws-lbl">Issues</div></div>
 </div>
-<div class="digest-summary"><p><strong>0 issues tracked (Apr 12 &#8211; Apr 13, 2026).</strong></p></div>
+<div class="digest-summary"><p><strong>0 issues tracked (Apr 18 &#8211; Apr 19, 2026).</strong></p></div>
 
 
 </div>
@@ -280,63 +285,72 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <!-- 7d -->
 <div id="digest-7d" class="digest-window active">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">0</div><div class="ws-lbl">Issues</div></div>
+<div class="ws-item"><div class="ws-num">4</div><div class="ws-lbl">Issues</div></div><div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Pain</div></div><div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Wishlist</div></div>
 </div>
-<div class="digest-summary"><p><strong>0 issues tracked (Apr 06 &#8211; Apr 13, 2026).</strong></p></div>
+<div class="digest-summary"><p><strong>4 issues tracked (Apr 12 &#8211; Apr 19, 2026).</strong></p></div>
 
-
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-0-crash-on-windows/366768" target="_blank">Isaac Sim 5.1.0 Windows crash on RTX 6000 + RTX A4000 — gpu.foundation renderer plugin failure</a></div>
+<div class="issue-desc">Two-system report: RTX 6000 + driver 595.79 crashes after startup; RTX A4000 + driver 582.08 crashes during MAVLink handshake / ZMQ. Backtrace points to gpu.foundation.plugin!omni::activity::getInstance → omni.kit.renderer.plugin. Moderator: driver 595.79 R590 branch unvalidated; recommended 580.88. Likely auto Windows driver update culprit.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Apr 16</span><span class="issue-tag">driver-595</span><span class="issue-tag">rtx-6000</span><span class="issue-tag">rtx-a4000</span><span class="issue-tag">windows</span></div>
+</div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5252" target="_blank">IsaacLab WandB logging broken with skrl 2.0.0 — only system metrics, no rewards/losses</a></div>
+<div class="issue-desc">Upgrading to skrl 2.0.0 breaks WandB integration: logging captures only CPU/GPU system metrics, not training rewards/losses. Root cause: skrl&#x27;s TensorBoard integration incompatible with WandB&#x27;s sync mechanism. User provides patch to intercept metrics and redirect to WandB while disabling TB sync. Still OPEN, unassigned.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">github</span><span class="issue-date">Apr 13</span><span class="issue-tag">wandb</span><span class="issue-tag">skrl</span><span class="issue-tag">logging</span><span class="issue-tag">training</span></div>
+</div>
+<div class="issue-item sev-wishlist">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5278" target="_blank">Feature request: LLM pipeline for auto-generating Isaac Lab environments from task descriptions</a></div>
+<div class="issue-desc">Proposal for 2-stage LLM system: Stage 1 physical reasoning → task schema; Stage 2 schema → Isaac Lab Python env code with validation reports. Claims reduces dev time from days to 30-60 min targeted review. Echoes broader AI-native-sim trend (Drift, SimWorld Studio, Robosynx).</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">github</span><span class="issue-date">Apr 15</span><span class="issue-tag">llm</span><span class="issue-tag">env-generation</span><span class="issue-tag">automation</span><span class="issue-tag">proposal</span></div>
+</div>
+<div class="issue-item sev-wishlist">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5285" target="_blank">Feature request: Newton deformable object API for coupled rigid-deformable simulation</a></div>
+<div class="issue-desc">Isaac Lab currently only supports deformables via PhysX. Proposal adds DeformableObject asset type and solver capabilities on Newton backend, enabling cloth folding / soft-item manipulation. 4 contributors engaged. Reflects Newton maturity pressure — users want parity with PhysX feature set.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">github</span><span class="issue-date">Apr 15</span><span class="issue-tag">newton</span><span class="issue-tag">deformable</span><span class="issue-tag">cloth</span><span class="issue-tag">soft-body</span></div>
+</div>
 </div>
 
 <!-- 2w -->
 <div id="digest-2w" class="digest-window">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Issues</div></div><div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Blockers</div></div><div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Pain</div></div><div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Friction</div></div>
+<div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Issues</div></div><div class="ws-item"><div class="ws-num">3</div><div class="ws-lbl">Pain</div></div><div class="ws-item"><div class="ws-num">2</div><div class="ws-lbl">Wishlist</div></div>
 </div>
-<div class="digest-summary"><p><strong>7 issues tracked (Mar 30 &#8211; Apr 13, 2026).</strong> Blockers: Multi-GPU distributed training fails with Newton p, RayCasterCamera depth sensor returns all NaN value.</p></div>
+<div class="digest-summary"><p><strong>5 issues tracked (Apr 05 &#8211; Apr 19, 2026).</strong></p></div>
 
-<div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5132" target="_blank">Multi-GPU distributed training fails with Newton physics backend</a></div>
-<div class="issue-desc">torch.distributed.run with Newton backend fails on multi-GPU due to hardcoded cuda:0 in Warp/PyTorch allocations. 4 root causes: NewtonManager device, ScopedCapture device, missing device in set_joint_position_target, AppLauncher argv cleanup. Also blocks consumer GPUs without P2P.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 31</span><span class="issue-tag">newton</span><span class="issue-tag">multi-gpu</span><span class="issue-tag">distributed-training</span><span class="issue-tag">warp</span></div>
-</div>
-<div class="issue-item sev-blocker">
-<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5131" target="_blank">RayCasterCamera depth sensor returns all NaN values</a></div>
-<div class="issue-desc">RayCasterCamera outputs NaN for all data types. Other RayCaster sensors work. Debug vis shows no rays hitting terrain.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-blocker">blocker</span><span class="issue-src">github</span><span class="issue-date">Mar 31</span><span class="issue-tag">raycaster</span><span class="issue-tag">camera</span><span class="issue-tag">depth</span><span class="issue-tag">nan</span></div>
+<div class="issue-item sev-pain">
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-crashes-on-startup-with-rtx-5060-ti-blackwell-sm-120-rtx-scenedb-plugin-crash/366252" target="_blank">Isaac Sim 5.1 crashes on RTX 5060 Ti Blackwell — rtx.scenedb.plugin access violation (driver 595.79)</a></div>
+<div class="issue-desc">Fifth confirmed Blackwell GPU crash. RTX 5060 Ti (sm_120) on Windows 11 25H2 crashes immediately on startup with access violation in rtx.scenedb.plugin during carbOnPluginStartup. NVIDIA moderator confirmed known issue with 595.xx driver branch on Blackwell. Workaround: downgrade to 591.74. Same fix as 5070 Ti case.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Apr 11</span><span class="issue-tag">blackwell</span><span class="issue-tag">rtx-5060-ti</span><span class="issue-tag">driver-595</span><span class="issue-tag">scenedb</span></div>
 </div>
 <div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-gui-crash-access-violation-on-rtx-5070-ti-blackwell-fixed-by-driver-downgrade-to-591-74/365335" target="_blank">Isaac Sim 5.1 GUI crash on RTX 5070 Ti Blackwell — access violation in omni.kit.window.preferences</a></div>
-<div class="issue-desc">Isaac Sim 5.1.0 crashes ~20s after GUI startup with access violation on RTX 5070 Ti Laptop (12GB) with driver 595.79 on Windows 11. Headless works. Downgrading to 591.74 resolves. NVIDIA confirmed validated driver is 580.88; Vulkan rendering path flagged as known Blackwell issue.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Apr 01</span><span class="issue-tag">blackwell</span><span class="issue-tag">rtx-5070-ti</span><span class="issue-tag">driver</span><span class="issue-tag">vulkan</span></div>
+<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/isaac-sim-5-1-0-crash-on-windows/366768" target="_blank">Isaac Sim 5.1.0 Windows crash on RTX 6000 + RTX A4000 — gpu.foundation renderer plugin failure</a></div>
+<div class="issue-desc">Two-system report: RTX 6000 + driver 595.79 crashes after startup; RTX A4000 + driver 582.08 crashes during MAVLink handshake / ZMQ. Backtrace points to gpu.foundation.plugin!omni::activity::getInstance → omni.kit.renderer.plugin. Moderator: driver 595.79 R590 branch unvalidated; recommended 580.88. Likely auto Windows driver update culprit.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Apr 16</span><span class="issue-tag">driver-595</span><span class="issue-tag">rtx-6000</span><span class="issue-tag">rtx-a4000</span><span class="issue-tag">windows</span></div>
 </div>
 <div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacSim/issues/560" target="_blank">Isaac Sim standalone installer missing USD C++ development headers (pxr/)</a></div>
-<div class="issue-desc">Standalone installer lacks USD C++ development headers (pxr/) and pxrConfig.cmake. Impossible to compile custom USD plugins (ArResolver, custom schemas). Users must build from source or manually patch headers for ABI namespace. Blocks enterprise asset pipelines. 2 comments, still OPEN.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">github</span><span class="issue-date">Apr 01</span><span class="issue-tag">usd</span><span class="issue-tag">headers</span><span class="issue-tag">sdk</span><span class="issue-tag">plugin</span></div>
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5252" target="_blank">IsaacLab WandB logging broken with skrl 2.0.0 — only system metrics, no rewards/losses</a></div>
+<div class="issue-desc">Upgrading to skrl 2.0.0 breaks WandB integration: logging captures only CPU/GPU system metrics, not training rewards/losses. Root cause: skrl&#x27;s TensorBoard integration incompatible with WandB&#x27;s sync mechanism. User provides patch to intercept metrics and redirect to WandB while disabling TB sync. Still OPEN, unassigned.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">github</span><span class="issue-date">Apr 13</span><span class="issue-tag">wandb</span><span class="issue-tag">skrl</span><span class="issue-tag">logging</span><span class="issue-tag">training</span></div>
 </div>
-<div class="issue-item sev-pain">
-<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5158" target="_blank">IsaacSim/IsaacLab multi-user permissions broken on shared workstations</a></div>
-<div class="issue-desc">Five permission problems when multiple users share one PC: extension cache symlinks, log write restrictions, datastore locking, /tmp ownership, Python install access denied. Affects 5.1 + 6.0. Group permissions workaround incomplete. Blocks academic labs and shared enterprise workstations.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">github</span><span class="issue-date">Apr 02</span><span class="issue-tag">multi-user</span><span class="issue-tag">permissions</span><span class="issue-tag">shared-workstation</span><span class="issue-tag">academic</span></div>
+<div class="issue-item sev-wishlist">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5278" target="_blank">Feature request: LLM pipeline for auto-generating Isaac Lab environments from task descriptions</a></div>
+<div class="issue-desc">Proposal for 2-stage LLM system: Stage 1 physical reasoning → task schema; Stage 2 schema → Isaac Lab Python env code with validation reports. Claims reduces dev time from days to 30-60 min targeted review. Echoes broader AI-native-sim trend (Drift, SimWorld Studio, Robosynx).</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">github</span><span class="issue-date">Apr 15</span><span class="issue-tag">llm</span><span class="issue-tag">env-generation</span><span class="issue-tag">automation</span><span class="issue-tag">proposal</span></div>
 </div>
-<div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/vscode-link-address-error-and-unable-to-launch-vs-code-error-code-1/365144" target="_blank">VSCode integration broken in Isaac Sim 5.1.0</a></div>
-<div class="issue-desc">Cannot open VSCode through Isaac Sim. VS Code debugger reports link address error.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 31</span><span class="issue-tag">vscode</span><span class="issue-tag">debugger</span><span class="issue-tag">integration</span></div>
-</div>
-<div class="issue-item sev-friction">
-<div class="issue-title"><a href="https://forums.developer.nvidia.com/t/viewport-flickering-issue-in-isaac-sim-after-recent-use/365140" target="_blank">[PRE-5.1] Viewport flickering in Isaac Sim 4.5 (Windows)</a></div>
-<div class="issue-desc">Viewport flickering started March 23. Windows, Isaac Sim 4.5.</div>
-<div class="issue-meta"><span class="issue-sev issue-sev-friction">friction</span><span class="issue-src">nvidia-forum</span><span class="issue-date">Mar 31</span><span class="issue-tag">viewport</span><span class="issue-tag">flickering</span><span class="issue-tag">windows</span><span class="issue-tag">pre-5.1</span></div>
+<div class="issue-item sev-wishlist">
+<div class="issue-title"><a href="https://github.com/isaac-sim/IsaacLab/issues/5285" target="_blank">Feature request: Newton deformable object API for coupled rigid-deformable simulation</a></div>
+<div class="issue-desc">Isaac Lab currently only supports deformables via PhysX. Proposal adds DeformableObject asset type and solver capabilities on Newton backend, enabling cloth folding / soft-item manipulation. 4 contributors engaged. Reflects Newton maturity pressure — users want parity with PhysX feature set.</div>
+<div class="issue-meta"><span class="issue-sev issue-sev-wishlist">wishlist</span><span class="issue-src">github</span><span class="issue-date">Apr 15</span><span class="issue-tag">newton</span><span class="issue-tag">deformable</span><span class="issue-tag">cloth</span><span class="issue-tag">soft-body</span></div>
 </div>
 </div>
 
 <!-- 1m -->
 <div id="digest-1m" class="digest-window">
 <div class="window-stats">
-<div class="ws-item"><div class="ws-num">34</div><div class="ws-lbl">Issues</div></div><div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Blockers</div></div><div class="ws-item"><div class="ws-num">15</div><div class="ws-lbl">Pain</div></div><div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Friction</div></div><div class="ws-item"><div class="ws-num">5</div><div class="ws-lbl">Wishlist</div></div>
+<div class="ws-item"><div class="ws-num">39</div><div class="ws-lbl">Issues</div></div><div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Blockers</div></div><div class="ws-item"><div class="ws-num">18</div><div class="ws-lbl">Pain</div></div><div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Friction</div></div><div class="ws-item"><div class="ws-num">7</div><div class="ws-lbl">Wishlist</div></div>
 </div>
-<div class="digest-summary"><p><strong>34 issues tracked (Mar 14 &#8211; Apr 13, 2026).</strong> Blockers: Physics Explosion with Custom Ackermann AMR on Mov, Jetson AGX Thor WebRTC Livestream Not Working, Multi-GPU distributed training fails with Newton p.</p></div>
+<div class="digest-summary"><p><strong>39 issues tracked (Mar 20 &#8211; Apr 19, 2026).</strong> Blockers: Physics Explosion with Custom Ackermann AMR on Mov, Jetson AGX Thor WebRTC Livestream Not Working, Multi-GPU distributed training fails with Newton p.</p></div>
 
 <div class="issue-item sev-blocker">
 <div class="issue-title"><a href="https://forums.developer.nvidia.com/t/sample-ackermann-custom-car-physics-explosion-on-movement/364774" target="_blank">Physics Explosion with Custom Ackermann AMR on Movement</a></div>
@@ -438,7 +452,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="issue-desc">Calling move_prim() or MovePrims during extension startup causes segfault. MovePrimCommand re-fetches USD stage without null-checking. If stage isn&#x27;t ready, C++ bindings crash instead of raising Python exception. Fix: defer to StageEventType.ASSETS_LOADED. 3 comments, still OPEN.</div>
 <div class="issue-meta"><span class="issue-sev issue-sev-pain">pain</span><span class="issue-src">github</span><span class="issue-date">Mar 30</span><span class="issue-tag">extension</span><span class="issue-tag">move-prim</span><span class="issue-tag">segfault</span><span class="issue-tag">usd-stage</span></div>
 </div>
-<p style="text-align:center;padding:12px;color:#475569;font-size:.75rem;font-style:italic">+ 14 more issues not shown</p>
+<p style="text-align:center;padding:12px;color:#475569;font-size:.75rem;font-style:italic">+ 19 more issues not shown</p>
 </div>
 
 </section>
@@ -448,7 +462,7 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div id="tab-ecosystem" class="tab-content">
 <section>
 <h2>Robotics Ecosystem Map</h2>
-<p class="digest-date">67+ companies | NVIDIA Physical AI focus | Apr 2026</p>
+<p class="digest-date">68+ companies | NVIDIA Physical AI focus | Apr 19, 2026</p>
 
 <div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Humanoid Robots (10)</h3><div class="cb">
 <div class="pi"><div class="pt"><strong>Figure AI</strong> <span class="ver">$39B</span></div><div class="pd">General-purpose humanoid (Figure 02). Deployed at BMW. NVIDIA 3-computer arch, GTC 2026 stage. $1B+ Series C. Highest-valued humanoid startup.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
@@ -458,14 +472,14 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="pi"><div class="pt"><strong>Boston Dynamics</strong></div><div class="pd">Atlas electric humanoid (production CES 2026). Spot + Stretch deployed. Expanded NVIDIA collab Mar 2025. Also Google DeepMind partner.</div><div class="pm"><span class="sev sev-pain">partner</span><span class="src">Hyundai</span></div></div>
 <div class="pi"><div class="pt"><strong>1X Technologies</strong> <span class="ver">$10B</span></div><div class="pd">NEO humanoid for home use. Norway/US. OpenAI-backed. Seeking $1B at $10B. Unique consumer focus.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>NEURA Robotics</strong> <span class="ver">$1.5B+</span></div><div class="pd">4NE-1 cognitive humanoid. German. Mini at 19,999 EUR for research. Europe's leading humanoid. 1B EUR from Tether.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
-<div class="pi"><div class="pt"><strong>Unitree</strong></div><div class="pd">G1/H1 humanoid, Go2 quadruped. Low-cost leader ($16K G1). Uses Isaac Sim. LeRobot v0.5 support. Massive hobbyist adoption.</div><div class="pm"><span class="sev sev-friction">customer</span><span class="src">China</span></div></div>
+<div class="pi"><div class="pt"><strong>Unitree</strong></div><div class="pd">G1/H1 humanoid, Go2 quadruped. R1 global launch on AliExpress (Apr 10&#x2013;15) at $4,900 (China) / $6,800&#x2013;$8,150 (intl). Targets 10&#x2013;20K units 2026 vs ~150 each Figure/Agility/Tesla. Shanghai IPO prep. Uses Isaac Sim + LeRobot v0.5.</div><div class="pm"><span class="sev sev-friction">customer</span><span class="src">China</span></div></div>
 <div class="pi"><div class="pt"><strong>Agibot</strong></div><div class="pd">Humanoid for manufacturing. ByteDance-backed. Targeting thousands of units 2025-2026.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">China</span></div></div>
 <div class="pi"><div class="pt"><strong>Fourier Intelligence</strong></div><div class="pd">GR-2 humanoid for rehab + industrial. GR00T adopter. Medical + industrial dual focus.</div><div class="pm"><span class="sev sev-friction">customer</span><span class="src">China</span></div></div>
 </div></div>
 
 <div class="cs open"><h3 onclick="this.parentElement.classList.toggle('open')">Robot Brains / Foundation Models (11)</h3><div class="cb">
 <div class="pi"><div class="pt"><strong>Skild AI</strong> <span class="ver">$14B</span></div><div class="pd">"Universal brain" spanning legged/wheeled/humanoid. CMU spinout. NVIDIA invested $1.4B round (Jan 2026). Uses Isaac Lab + Cosmos. Foxconn deal.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
-<div class="pi"><div class="pt"><strong>Physical Intelligence</strong> <span class="ver">$11B</span></div><div class="pd">General-purpose robot policy models. Independent. $600M Series B (Nov 2025). Raising $1B more at $11B valuation. 2 years old.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
+<div class="pi"><div class="pt"><strong>Physical Intelligence</strong> <span class="ver">$11B</span></div><div class="pd">General-purpose robot policy models. &#x3c0;0.7 (Apr 16, 2026) claims compositional generalization &#x2014; solves untrained tasks like operating an air fryer with 2 related examples. Raising at ~$11B (from $5.6B). TechCrunch-covered.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>FieldAI</strong> <span class="ver">$2B</span></div><div class="pd">Risk-aware models for construction/oil&gas. NVIDIA Ventures invested. Uses Isaac Lab + Cosmos. Bezos + Khosla backing.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>Google DeepMind</strong></div><div class="pd">Gemini Robotics + MuJoCo. Alternative stack (Gemini+MuJoCo vs GR00T+Isaac). Partnered with Boston Dynamics + Apptronik.</div><div class="pm"><span class="sev sev-pain">competitor</span><span class="src">big tech</span></div></div>
 <div class="pi"><div class="pt"><strong>NVIDIA GR00T</strong></div><div class="pd">N1.7 + N2 preview. "2x task generalization vs alternatives" at GTC 2026.</div><div class="pm"><span class="sev sev-blocker">self</span><span class="src">public</span></div></div>
@@ -520,7 +534,8 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <div class="pi"><div class="pt"><strong>Mind Robotics</strong> <span class="ver">$2B</span></div><div class="pd">Rivian spinout. AI-enabled industrial robots. $500M Series A (Accel, a16z). Founded by RJ Scaringe. Deploying at Rivian factories, expanding to external clients end of 2026.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>Sunday</strong> <span class="ver">$1.15B</span></div><div class="pd">Household humanoid (Memo). $165M Series B. Coatue, Tiger Global, Benchmark. Consumer robotics focus — laundry, household tasks.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>RoboForce</strong></div><div class="pd">$52M raised. Physical AI robo-labor for industrial tasks. YZi Labs led. Jerry Yang backing.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
-<div class="pi"><div class="pt"><strong>Anvil Robotics</strong></div><div class="pd">'Legos for robots' — composable, open-source robot hardware platform. $6.5M seed. $1.9K-$10K robots, 2-day delivery from Taiwan. 50+ customers.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>Anvil Robotics</strong> <span class="ver">$5.5M seed</span></div><div class="pd">'Legos for robots' — composable, open-source robot hardware platform. $5.5M seed confirmed (Matter Venture Partners + Humba Ventures led). $1.9K-$10K robots, 2-day Taiwan delivery. 50+ customers. Hardware democratization at the builder layer.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">startup</span></div></div>
+<div class="pi"><div class="pt"><strong>Path Robotics</strong></div><div class="pd">Obsidian physical-AI welding model. Rove launched Apr 16, 2026 &#8212; quadruped + welding AI for shipyards, heavy construction, large fabrication. Moves welding from fixed cells to the field. Physical AI in "parts too big to bring to the robot" category.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>Robosynx</strong></div><div class="pd">Full-stack Isaac Sim developer platform. AI robot generator (URDF from natural language), ROS 2 node builder, Isaac Monitor dashboard. April 2026 launch.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">startup</span></div></div>
 <div class="pi"><div class="pt"><strong>Noble Machines</strong></div><div class="pd">Ex-SpaceX/Apple/NASA team. Industrial general-purpose robots. 95% sim-to-real with NVIDIA Isaac pipelines. Deployed to Fortune 500 in &lt;18 months. Adopting GR00T N models. 27kg payloads, 5-hour battery.</div><div class="pm"><span class="sev sev-blocker">deep partner</span><span class="src">growth</span></div></div>
 <div class="pi"><div class="pt"><strong>UniX AI</strong></div><div class="pd">Chinese startup. Panther series household robot &#8212; cooks, cleans, organizes. Multi-step autonomy. Testing in real homes and service environments. April 2026 unveil.</div><div class="pm"><span class="sev sev-friction">neutral</span><span class="src">China</span></div></div>
@@ -553,18 +568,56 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 
 <!-- Weekly Stats Bar -->
 <section>
-<h2>&#x1f52c; Tech Radar &#8212; Week of Apr 6 &#8211; Apr 13, 2026</h2>
+<h2>&#x1f52c; Tech Radar &#8212; Week of Apr 13 &#8211; Apr 19, 2026</h2>
 <div class="radar-stats">
-<div class="radar-stat"><div class="rs-num">~250+</div><div class="rs-lbl">ArXiv cs.RO Papers</div></div>
-<div class="radar-stat"><div class="rs-num">4</div><div class="rs-lbl">Major Partnerships</div></div>
-<div class="radar-stat"><div class="rs-num">8</div><div class="rs-lbl">New Products/Tools</div></div>
-<div class="radar-stat"><div class="rs-num">8</div><div class="rs-lbl">Funding Rounds</div></div>
+<div class="radar-stat"><div class="rs-num">~280+</div><div class="rs-lbl">ArXiv cs.RO Papers</div></div>
+<div class="radar-stat"><div class="rs-num">3</div><div class="rs-lbl">Major Releases</div></div>
+<div class="radar-stat"><div class="rs-num">6</div><div class="rs-lbl">New Products/Launches</div></div>
+<div class="radar-stat"><div class="rs-num">4</div><div class="rs-lbl">Funding Rounds</div></div>
 </div>
 </section>
 
 <!-- Key ArXiv Papers -->
 <section>
-<h2>&#x1f4c4; Key ArXiv Papers &#8212; Week of Apr 6 &#8211; Apr 13, 2026</h2>
+<h2>&#x1f4c4; Key ArXiv Papers &#8212; Week of Apr 13 &#8211; Apr 19, 2026</h2>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/abs/2604.15289" target="_blank">Abstract Sim2Real through Approximate Information States (ASTRA)</a></h4>
+<div class="paper-summary">Formalizes abstract sim2real: train in a coarse simulator, transfer to the real robot. ASTRA learns a correction function over the abstract simulator. Both sim2sim and sim2real experiments show successful transfer even under morphological variation.</div>
+<div class="paper-meta">
+<span class="paper-date">Apr 16, 2026</span>
+<span class="tag tag-manip">sim2real</span>
+<span class="tag tag-learn">robot learning</span>
+</div>
+</div>
+<div class="paper-card">
+<h4><a href="https://arxiv.org/abs/2512.11047" target="_blank">WholeBodyVLA: Unified Latent VLA for Whole-Body Loco-Manipulation</a></h4>
+<div class="paper-summary">ICLR 2026. Unified framework for humanoid loco-manipulation. Validated on AgiBot X2 humanoid &#8212; outperforms prior baselines by 21.3%. Moves VLA from per-limb to whole-body latent control.</div>
+<div class="paper-meta">
+<span class="paper-date">Apr 15, 2026</span>
+<span class="tag tag-humanoid">humanoid</span>
+<span class="tag tag-fm">VLA</span>
+<span class="tag tag-iclr">ICLR</span>
+</div>
+</div>
+<div class="paper-card">
+<h4>UMI-3D: Universal Manipulation Interface Extended to 3D Spatial Perception</h4>
+<div class="paper-summary">Stanford's UMI teleop format extended beyond vision-limited to full 3D spatial perception. Broadens the open-source manipulation dataset pipeline.</div>
+<div class="paper-meta">
+<span class="paper-date">Apr 14&#8211;16, 2026</span>
+<span class="tag tag-3d">3D</span>
+<span class="tag tag-manip">manipulation</span>
+<span class="tag tag-oss">open-source</span>
+</div>
+</div>
+<div class="paper-card">
+<h4>Evolvable Embodied Agent for Robotic Manipulation</h4>
+<div class="paper-summary">IJCNN 2026. Long-short-term reflection + optimization for manipulation &#8212; self-improving policies. LLM-agent techniques creeping into physical manipulation.</div>
+<div class="paper-meta">
+<span class="paper-date">Apr 15, 2026</span>
+<span class="tag tag-manip">manipulation</span>
+<span class="tag tag-llm">LLM-agent</span>
+</div>
+</div>
 <div class="paper-card">
 <h4><a href="https://arxiv.org/abs/2602.19359" target="_blank">Vid2Sid: VLM-in-the-Loop Sim2Real Parameter Optimization</a></h4>
 <div class="paper-summary">Foundation model perception + VLM optimizer analyzes paired sim-real videos, diagnoses mismatches, and proposes physics parameter updates with natural language rationales. Automates manual sim-to-real tuning.</div>
@@ -695,8 +748,68 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 
 <!-- Industry Moves -->
 <section>
-<h2>&#x1f3ed; Industry Moves &#8212; Apr 6 &#8211; Apr 13, 2026</h2>
+<h2>&#x1f3ed; Industry Moves &#8212; Apr 13 &#8211; Apr 19, 2026</h2>
 <div class="timeline">
+<div class="tl-item">
+<div class="tl-date">Apr 18</div>
+<div class="tl-title">145M Autonomous Machines Forecast by 2035</div>
+<div class="tl-desc">Highways Today industry report: physical AI projected to drive 145M autonomous devices across construction, manufacturing, logistics, and infrastructure by 2035. <a href="https://highways.today/2026/04/18/145m-autonomous-machines/" target="_blank">highways.today</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 16</div>
+<div class="tl-title">Physical Intelligence &#x3c0;0.7 Claims Compositional Generalization</div>
+<div class="tl-desc">Robot brain solves untrained tasks: used an air fryer with only 2 tangentially-related training examples. Generalist model combines web-scale pretraining + real-time verbal coaching. Company valued at $5.6B, raising at ~$11B. If holds, collapses "collect demo data per task" paradigm. <a href="https://techcrunch.com/2026/04/16/physical-intelligence-a-hot-robotics-startup-says-its-new-robot-brain-can-figure-out-tasks-it-was-never-taught/" target="_blank">TechCrunch</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 16</div>
+<div class="tl-title">Path Robotics Launches Rove &#8212; Mobile Welding AI</div>
+<div class="tl-desc">Pairs Obsidian physical-AI welding model with a quadruped for shipyards, heavy construction, large fabrication. Moves welding beyond fixed cells. New category: "parts too big to bring to the robot." <a href="https://www.roboticstomorrow.com/news/2026/04/16/path-robotics-launches-rove-bringing-mobility-to-welding-automation-powered-by-physical-ai/26428/" target="_blank">RoboticsTomorrow</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 16</div>
+<div class="tl-title">AUTONOMOUS Conference Launches (July 16 SF)</div>
+<div class="tl-desc">Frontier Media debuts single-day physical-AI conference: 500+ senior practitioners, 4 tracks (frontier intelligence, humanoid moment, real-world deployment, investment). Category now big enough to detach from generic AI/robotics circuit.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 15</div>
+<div class="tl-title">Unitree Prepares Shanghai IPO Amid Global Push</div>
+<div class="tl-desc">Bloomberg: Unitree expanding global humanoid sales ahead of Shanghai IPO. Targets 10&#x2013;20K units in 2026 vs ~150 each for Tesla/Figure/Agility. China ships, West pilots. <a href="https://www.bloomberg.com/news/articles/2026-04-15/tesla-s-chinese-robot-rival-ramps-up-global-push-ahead-of-ipo" target="_blank">Bloomberg</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 15</div>
+<div class="tl-title">IsaacLab Proposals: LLM Env-Gen + Newton Deformables</div>
+<div class="tl-desc">Two feature proposals land on official IsaacLab GitHub. #5278: LLM pipeline for auto-generating Isaac Lab envs from task descriptions. #5285: Newton deformable object API for cloth/soft-body. AI-native sim wave reaches NVIDIA's own repo.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 14</div>
+<div class="tl-title">NVIDIA Cosmos Transfer-2 + Omniverse Blueprints Release</div>
+<div class="tl-desc">Cosmos WFMs hit 2M+ downloads. Two new Omniverse+Cosmos Blueprints for controllable synthetic data gen. Agility, Figure, Foretellix, Skild AI, Uber named first adopters. NVIDIA doubles down on synthetic data as moat. <a href="https://nvidianews.nvidia.com/news/nvidia-announces-major-release-of-cosmos-world-foundation-models-and-physical-ai-data-tools" target="_blank">NVIDIA</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 13</div>
+<div class="tl-title">IsaacLab WandB+skrl 2.0.0 Logging Broken (#5252)</div>
+<div class="tl-desc">Silent metric loss bug lands on IsaacLab GitHub. Upgrading to skrl 2.0.0 causes WandB to capture only system metrics, not training rewards/losses. Two most common RL stack components now broken in combination.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 11</div>
+<div class="tl-title">Fifth Blackwell GPU Crash: RTX 5060 Ti</div>
+<div class="tl-desc">rtx.scenedb.plugin access violation on RTX 5060 Ti with driver 595.79. NVIDIA moderator confirms 595.xx branch is a known issue on Blackwell. Pattern now covers 5060 Ti, 5070 Ti, 5080, 5090, PRO 6000 + workstation RTX 6000 / A4000.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 10</div>
+<div class="tl-title">Unitree R1 Hits AliExpress at $4,900</div>
+<div class="tl-desc">Global humanoid launch via e-commerce: US, EU, Japan, Singapore. China price $4,370; international $6,800&#x2013;$8,150 with duties. Hobbyists and academic labs can now buy humanoids on the same channel as phone cases. <a href="https://www.gizmochina.com/2026/04/10/unitree-r1-global-launch-online-humanoid-robot/" target="_blank">Gizmochina</a></div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 9</div>
+<div class="tl-title">Syncere: Autonomous Laundry-Folding Floor Lamp</div>
+<div class="tl-desc">Palo Alto startup integrates high-fidelity robotic arm into a sculptural floor lamp. Consumer design + autonomous manipulation. Form-factor experimentation continues for home robotics.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">Apr 7&#8211;14</div>
+<div class="tl-title">AGIBOT + Longcheer: World-First Humanoid-Led Production Line</div>
+<div class="tl-desc">AI Week: first mass-production line led by humanoids deployed at Longcheer. AGIBOT launches zero-code platform targeting engineering-team bottlenecks in humanoid rollouts. Manufacturing is the first commercial-scale humanoid category in China.</div>
+</div>
 <div class="tl-item">
 <div class="tl-date">Apr 13</div>
 <div class="tl-title">KUKA &#8220;Automation 2.0&#8221; &#8212; Intent-Based Industrial AI</div>
@@ -899,25 +1012,28 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 <section>
 <h2>&#x1d54f; / Social Signals</h2>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f6a8;</span> <strong>Blackwell GPU crisis</strong> &#8212; 4 separate crash reports across RTX 5070 Ti, 5080, 5090. NVIDIA validated driver 2 versions behind. Users buying new hardware can't use Isaac Sim.</p>
+<p><span class="ss-icon">&#x1f9e0;</span> <strong>Compositional generalization is here (maybe)</strong> &#8212; Physical Intelligence &#x3c0;0.7 solving untrained tasks with 2 demo examples. If replication holds, "collect data per task" paradigm ends overnight. Biggest signal of the week.</p>
 </div>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f4b0;</span> <strong>Physical AI funding explosion</strong> &#8212; $6.4B in Q1 2026 across 27+ startups. Mind Robotics, Rhoda AI, Sunday all hitting unicorn status. Robot brain layer attracts biggest checks.</p>
+<p><span class="ss-icon">&#x1f6a8;</span> <strong>Blackwell-595 crash now definitive</strong> &#8212; 5 consumer GPUs (5060 Ti, 5070 Ti, 5080, 5090, PRO 6000) + RTX 6000 workstation. Windows auto-update silently pushes broken drivers. Pin your driver or rollback to 580.88 / 591.74.</p>
 </div>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f41b;</span> <strong>Isaac Sim 6.0 Core Extension broken</strong> &#8212; Circular import blocks sensors + ROS2Bridge on 6.0.0. Filed internally. Anyone evaluating Newton backend hits this.</p>
+<p><span class="ss-icon">&#x1f916;</span> <strong>Humanoid democratization via e-commerce</strong> &#8212; Unitree R1 on AliExpress at $4,900&#x2013;$8,150. Anvil Robotics modular $1.9K robots. Hobbyists + academic labs now have fleet-buying power.</p>
 </div>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f525;</span> <strong>ROS 2 + Isaac Sim fragmentation</strong> &#8212; Two distinct incompatibilities (IGX kernel, Jazzy Python version). ROS integration friction drives users to MuJoCo.</p>
+<p><span class="ss-icon">&#x2728;</span> <strong>AI-native sim wave hits official IsaacLab</strong> &#8212; LLM env-generation proposal (#5278) now on NVIDIA's repo, not just third-party tools. Natural-language &#x2192; env code is becoming the default UX.</p>
 </div>
 <div class="social-signal">
-<p><span class="ss-icon">&#x1f680;</span> <strong>Third-party tooling boom</strong> &#8212; Robosynx, Drift, SimWorld Studio &#8212; ecosystem building tools around Isaac Sim pain points. Validates DX gaps.</p>
+<p><span class="ss-icon">&#x1f517;</span> <strong>Newton parity gap is the migration blocker</strong> &#8212; Cloth, soft-body, multi-GPU still PhysX-only. Community proposal #5285 explicitly asks for Newton deformables. Speed alone doesn't sell a migration.</p>
+</div>
+<div class="social-signal">
+<p><span class="ss-icon">&#x1f4c8;</span> <strong>NVIDIA moat thesis shifts to synthetic data</strong> &#8212; Cosmos Transfer-2 + Blueprints + 2M downloads + Figure joining Cosmos. The long-term defense isn't models, it's the training data factory.</p>
 </div>
 </section>
 
 </div>
 
-<footer><p>Ziggy - PM Claw - Updated 2026-04-13 - Isaac Sim 5.1+ priority - Daily pull 7 AM PT</p></footer>
+<footer><p>Ziggy - PM Claw - Updated 2026-04-19 - Isaac Sim 5.1+ priority - Daily pull 7 AM PT</p></footer>
 </div>
 <script>
 function switchTab(name){
