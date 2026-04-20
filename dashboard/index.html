@@ -1168,10 +1168,74 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 </section>
 
 <section>
+<h2>&#x1f3b2; Bet Inventory &#8212; 12 Candidate Bets</h2>
+<p style="color:#94a3b8;font-size:.85rem;margin-bottom:16px;line-height:1.55">Each bet is grounded in specific dashboard evidence &#8212; tracked GitHub issues, funding rounds, releases, or community signals. Scoring + ranking lands in Section 5.</p>
+
+<h3 style="color:#ef4444;font-size:1rem;margin:18px 0 10px 0">&#x1f527; Pillar 1 &mdash; Retention (fix the shovel)</h3>
+<div class="card-grid" style="grid-template-columns:1fr;gap:10px">
+<div class="card blocker">
+<h3>B1 &bull; Blackwell driver validation sprint</h3>
+<p>Ship a validated 595.x-branch driver within 90 days; pin drivers in the Isaac Sim installer; publish a driver-compatibility matrix updated weekly. <strong>Evidence:</strong> 5+ confirmed crashes across RTX 5060 Ti, 5070 Ti, 5080, 5090, PRO 6000, RTX 6000 workstation, RTX A4000. Validated driver (580.88) is 15+ versions behind Windows' auto-update default.</p>
+</div>
+<div class="card blocker">
+<h3>B2 &bull; Isaac Lab DX SWAT team</h3>
+<p>Staff a 3&ndash;5 person team focused on killing the top 10 open issues by severity this quarter: multi-user permissions (#5158), WandB + skrl 2.0 logging (#5252), USD C++ headers (#560), VSCode integration, RayCasterCamera NaN (#5131), Sim2Sim armature discrepancy (#5115), ROS 2 Jazzy Python mismatch. <strong>Evidence:</strong> 4 Reddit threads with 85+ upvotes calling Isaac Lab "100% unusable"; NVIDIA-run feedback thread from January has no published response.</p>
+</div>
+<div class="card blocker">
+<h3>B3 &bull; Newton parity sprint</h3>
+<p>Deformable object API (cloth, soft-body), multi-GPU training, and NaN-stable mesh contact solver before Q3 &mdash; the three things keeping PhysX users from migrating. <strong>Evidence:</strong> Newton deformable proposal (#5285), multi-GPU training failure (#5132), NaN divergence on mesh terrain (PR #5088). Newton speed advantage doesn't pay for missing features.</p>
+</div>
+<div class="card blocker">
+<h3>B4 &bull; Silent-driver-update recovery kit</h3>
+<p>CLI tool that detects Windows auto-pushed 595.x drivers, offers one-click rollback to validated 591.74 / 580.88, and emits telemetry so NVIDIA sees the silent-update rate. Ship as part of Isaac Sim installer. <strong>Evidence:</strong> Moderator confirmation on forum 366768 that auto-updates are the root cause; current workaround requires users to manually uninstall-and-reinstall drivers.</p>
+</div>
+</div>
+
+<h3 style="color:#3b82f6;font-size:1rem;margin:22px 0 10px 0">&#x1f4c8; Pillar 2 &mdash; Moat (synthetic data factory)</h3>
+<div class="card-grid" style="grid-template-columns:1fr;gap:10px">
+<div class="card">
+<h3>B5 &bull; Cosmos Transfer-2 GA + mid-market adopter program</h3>
+<p>Move beyond Tier 1 lighthouse partners (Figure, Agility, Skild, FieldAI, Uber) into 50+ second-tier robotics companies over 12 months. Concierge onboarding, free compute credits, co-marketing case studies. <strong>Evidence:</strong> Cosmos at 2M+ downloads with Transfer-2 launched Apr 14. Tier 1 saturated; the long tail is where defensible share is won.</p>
+</div>
+<div class="card">
+<h3>B6 &bull; &#x3c0;0.7 response bet</h3>
+<p>Fund an internal team to replicate Physical Intelligence's compositional-generalization claim within 60 days. Decide: preempt-partner, counter-claim with NVIDIA's own result, or acquire to neutralize. <strong>Evidence:</strong> TechCrunch Apr 16 &mdash; air fryer task with 2 tangentially-related demos. If replicable, the "collect data per task" paradigm collapses and Cosmos's moat shrinks. Existential decision.</p>
+</div>
+<div class="card">
+<h3>B7 &bull; "ImageNet for robotics" open benchmark</h3>
+<p>Publish a standardized, open, multi-task robotics benchmark covering manipulation, locomotion, sim2real. Seed it from Cosmos-generated data to make NVIDIA the reference generator. <strong>Evidence:</strong> Longstanding Reddit complaint ("no ImageNet for robotics," 1/2026). RoboCasa365 (2,500 envs / 600+ demo hours) and AGIBOT WORLD 2026 shipped open datasets in Q1; NVIDIA is losing the "define the yardstick" race.</p>
+</div>
+<div class="card">
+<h3>B8 &bull; AI-native env generator</h3>
+<p>Ship (or acquire) a natural-language-to-Isaac-env tool. Options: build on top of the IsaacLab #5278 proposal, acquire Drift / Robosynx / SimWorld Studio, or invest-and-absorb. Must happen in 2026 before a dominant standard forms outside NVIDIA. <strong>Evidence:</strong> Three third-party tools already live (Drift, SimWorld, Robosynx) + IsaacLab proposal #5278. This is the next UX wave for sim.</p>
+</div>
+</div>
+
+<h3 style="color:#22c55e;font-size:1rem;margin:22px 0 10px 0">&#x1f680; Pillar 3 &mdash; Acquisition (democratization wave)</h3>
+<div class="card-grid" style="grid-template-columns:1fr;gap:10px">
+<div class="card" style="border-left-color:#22c55e">
+<h3>B9 &bull; Unitree + Isaac certification program</h3>
+<p>Every Unitree R1 shipped is a potential Isaac user. Ship an official Unitree-validated Isaac Sim SDK; bundle free training credits; run co-branded tutorials; certify R1 and G1 models for GR00T. <strong>Evidence:</strong> Unitree already uses Isaac Sim + LeRobot. R1 global launch targets 10&ndash;20K units in 2026 &mdash; ~100&times; combined Figure + Tesla + Agility shipments.</p>
+</div>
+<div class="card" style="border-left-color:#22c55e">
+<h3>B10 &bull; Jetson-based $5K humanoid reference kit</h3>
+<p>Open-hardware buildable humanoid running entirely on NVIDIA silicon (Jetson Thor for brain, Jetson Orin Nano for limbs). Target academic labs and hobbyists directly; outflank Unitree by owning the &lt; $5K tier with a full NVIDIA stack. <strong>Evidence:</strong> Unitree R1 at $4,900&ndash;$8,150, Anvil Robotics modular $1.9K&ndash;$10K, "Legos for robots" trend. Academic fleet-buying power is the prize.</p>
+</div>
+<div class="card" style="border-left-color:#22c55e">
+<h3>B11 &bull; Deep LeRobot partnership</h3>
+<p>Formalize HuggingFace LeRobot as the open training layer; GR00T as the industrial/production layer. Co-invest engineering on Isaac-LeRobot interop, joint conference presence, shared adopter programs. <strong>Evidence:</strong> LeRobot v0.5 ships with humanoid support + IsaacLab-Arena integration; accepted ICLR 2026. Currently semi-adversarial (HF promotes MuJoCo-first); convert to complementary.</p>
+</div>
+<div class="card" style="border-left-color:#22c55e">
+<h3>B12 &bull; Isaac Sim headless eval on non-NVIDIA hardware</h3>
+<p>Offer a <em>headless evaluation-only</em> mode that runs on AMD / Intel / Apple Silicon for policy validation &mdash; training still requires NVIDIA. Removes the "I can't try it on my laptop" objection without cannibalizing the core HW business. <strong>Evidence:</strong> Recurring Reddit thread: "Isaac Sim requires NVIDIA GPUs exclusively. Academic labs can't justify NVIDIA-only hardware when MuJoCo runs on anything." Every eval-blocked researcher is a net-new MuJoCo user.</p>
+</div>
+</div>
+</section>
+
+<section>
 <h2>&#x1f4dd; In Progress &#8212; Coming to this Tab</h2>
-<p style="color:#94a3b8;font-size:.8rem;margin-bottom:12px;line-height:1.55">Diagnosis and Thesis are approved. Remaining sections are being drafted iteratively and landed as each is reviewed.</p>
+<p style="color:#94a3b8;font-size:.8rem;margin-bottom:12px;line-height:1.55">Diagnosis, Thesis, and Bet Inventory are approved. Remaining sections land as each is reviewed.</p>
 <div class="ws">
-<div class="wi"><strong>4. Bet Inventory</strong> &#8212; 8&#8211;12 candidate bets across platform / data / vertical / DX / distribution categories, grouped under the 3 pillars.</div>
 <div class="wi"><strong>5. Scoring Rubric</strong> &#8212; each bet scored on conviction &times; timing &times; leverage &times; reversibility.</div>
 <div class="wi"><strong>6. Recommended Portfolio</strong> &#8212; Tab B (in-org top 3 to champion), Tab C (scouting top 3 for future optionality), Tab A appendix (founder-angle: what to acquire, partner with, or preempt).</div>
 <div class="wi"><strong>7. Roadmap</strong> &#8212; 30 / 90 / 180 / 365-day milestones.</div>
