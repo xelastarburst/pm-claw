@@ -143,6 +143,34 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 .window-stats{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap}
 .ws-item{background:#1a233288;border-radius:8px;padding:10px 16px;text-align:center}
 .ws-item .ws-num{font-size:1.2rem;font-weight:700;color:#3b82f6}.ws-item .ws-lbl{font-size:.65rem;color:#64748b;text-transform:uppercase}
+
+/* Executive Summary (Tech Radar) */
+.exec-intro{font-size:.82rem;color:#94a3b8;margin-bottom:14px;line-height:1.55}
+.exec-trend{background:#1a2332;border-radius:8px;padding:14px 16px;margin-bottom:10px;border-left:4px solid #3b82f6}
+.exec-trend h3{font-size:.92rem;font-weight:600;color:#f7fafc;margin-bottom:6px;display:flex;align-items:baseline;gap:8px}
+.exec-trend h3 .exec-num{color:#3b82f6;font-size:.78rem;font-weight:700;letter-spacing:.5px}
+.exec-trend p{font-size:.8rem;color:#cbd5e1;line-height:1.55}
+.exec-trend p .ev{color:#94a3b8;font-style:italic}
+.exec-trend.t-brain{border-left-color:#3b82f6}
+.exec-trend.t-data{border-left-color:#84cc16}
+.exec-trend.t-dist{border-left-color:#06b6d4}
+.exec-trend.t-sim{border-left-color:#a855f7}
+.exec-trend.t-lock{border-left-color:#f97316}
+.exec-heat{background:#1a233266;border-radius:8px;padding:14px;margin-bottom:14px}
+.exec-heat h3{font-size:.85rem;font-weight:600;color:#f7fafc;margin-bottom:10px}
+.exec-heat-grid{display:flex;gap:8px;flex-wrap:wrap}
+.heat-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:16px;font-size:.72rem;font-weight:600;border:1px solid transparent}
+.heat-hot{background:#ef444422;color:#fca5a5;border-color:#ef444444}
+.heat-warm{background:#f9731622;color:#fdba74;border-color:#f9731644}
+.heat-mild{background:#eab30822;color:#fcd34d;border-color:#eab30844}
+.heat-cold{background:#64748b22;color:#94a3b8;border-color:#64748b44}
+.heat-chip .heat-dot{display:inline-block;width:8px;height:8px;border-radius:50%}
+.heat-hot .heat-dot{background:#ef4444}.heat-warm .heat-dot{background:#f97316}.heat-mild .heat-dot{background:#eab308}.heat-cold .heat-dot{background:#64748b}
+.heat-legend{display:flex;gap:12px;margin-top:10px;font-size:.65rem;color:#64748b;flex-wrap:wrap}
+.exec-read{background:#1a2332;border-radius:8px;padding:14px 16px;border-left:4px solid #22c55e;margin-bottom:20px}
+.exec-read h3{font-size:.85rem;font-weight:600;color:#f7fafc;margin-bottom:6px}
+.exec-read p{font-size:.82rem;color:#cbd5e1;line-height:1.6}
+.exec-read p strong{color:#f7fafc}
 </style>
 </head>
 <body>
@@ -565,6 +593,67 @@ footer{text-align:center;padding:24px 0;color:#475569;font-size:.75rem;border-to
 </div>
 
 <div id="tab-techradar" class="tab-content">
+
+<!-- Executive Summary -->
+<section>
+<h2>&#x1f52e; Tech Radar Executive Summary &#8212; How Physical AI Is Evolving</h2>
+<p class="exec-intro">A synthesis of this week's signals across papers, funding, industry moves, and developer issues. Not a recap &#8212; a read on where the ground is shifting.</p>
+
+<div class="exec-trend t-brain">
+<h3><span class="exec-num">01</span> Robot brains are eating the data-collection thesis</h3>
+<p>Generalist policies are starting to solve tasks they were never shown. The "collect demos per task" pipeline &#8212; which the entire training-infra market (Cosmos, MimicGen, UMI) was built to industrialize &#8212; is being reframed as a transitional stage, not a permanent moat. Expect rapid revaluation of anything whose value was "more labeled demos faster." <span class="ev">Evidence: Physical Intelligence &#x3c0;0.7 used an air fryer with only 2 tangentially-related examples (TechCrunch, Apr 16); Mimic Robotics reports 10x sample efficiency from video-pretrained action decoders (NRW, Apr 10); UniDex achieves 81% task progress across 8 hand types from egocentric human video (Mar 23).</span></p>
+</div>
+
+<div class="exec-trend t-data">
+<h3><span class="exec-num">02</span> Synthetic data &#8212; not models &#8212; is NVIDIA's real moat</h3>
+<p>With robot-brain startups (PI, Skild, Rhoda) now valued above $10B each and Google shipping Gemini Robotics-ER, the foundation-model layer is commoditizing. NVIDIA's response is to own the layer below: the world-simulator + data-factory that every brain has to train on. Figure, historically a pure GR00T shop, just joined the Cosmos adopter list &#8212; that's the tell. <span class="ev">Evidence: Cosmos WFM hits 2M+ downloads, Cosmos Transfer-2 + two new Omniverse Blueprints shipped Apr 14; Physical AI Data Factory blueprint released at NRW; open training corpora (RoboCasa365, AGIBOT WORLD 2026) landing within days of each other.</span></p>
+</div>
+
+<div class="exec-trend t-dist">
+<h3><span class="exec-num">03</span> Humanoid distribution has gone retail</h3>
+<p>The unit-shipment curve just decoupled from the demo-video curve. A capable humanoid is now a consumer-checkout purchase in Asia, the EU, and the US &#8212; same channel as a phone case. Whoever captures the hobbyist + academic-lab install base sets the de-facto programming API for the next generation (and Isaac Sim/LeRobot are already there for Unitree). The West's 150-unit boutique model is about to meet a 10&#8211;20K-unit commodity fleet. <span class="ev">Evidence: Unitree R1 on AliExpress at $4,900&#8211;$8,150 (Gizmochina, Apr 10); Unitree targets 10&#8211;20K units in 2026 vs ~150 each for Tesla/Figure/Agility (Bloomberg, Apr 15); Anvil Robotics $1.9K&#8211;$10K modular kits with 2-day Taiwan shipping; NEURA 4NE1 Mini at &#8364;19,999.</span></p>
+</div>
+
+<div class="exec-trend t-sim">
+<h3><span class="exec-num">04</span> AI-native sim is becoming the default IDE</h3>
+<p>The interface to a simulator is shifting from URDF + Python to natural language. What started as a third-party category (Drift, SimWorld Studio, Robosynx) has now reached NVIDIA's own repo as a formal proposal. Combined with LLM-driven manipulation planning and ROS-LLM for natural-language robot control, the entire authoring surface of robotics is being retrofitted with a chat box. <span class="ev">Evidence: IsaacLab issue #5278 proposes a 2-stage LLM pipeline for auto-generating Isaac Lab envs from task descriptions (Apr 15); ROS-LLM publishes in Nature Machine Intelligence (Mar); CoViLLM LLM-based assembly accepted at ASME MSEC 2026; Robosynx ships Isaac Sim dev platform with AI robot generation (Apr 4).</span></p>
+</div>
+
+<div class="exec-trend t-lock">
+<h3><span class="exec-num">05</span> Newton's speed doesn't yet pay for its feature gap</h3>
+<p>Newton's raw perf story (MuJoCo Warp, 475x) is real, but migrations are stalling at the feature-parity wall. Users hit Newton for rigid-body training, then need cloth or multi-GPU or a deformable grasp and have to fall back to PhysX &#8212; which defeats the point. Until parity lands, Newton is a second engine, not the engine. This is the sleeper blocker on the whole sim-backend consolidation story. <span class="ev">Evidence: IsaacLab #5285 (community proposal for Newton deformable API, Apr 15); #5132 multi-GPU training fails on Newton (blocker, hardcoded cuda:0); #5088 NaN divergence on mesh terrain in float32; Fluid-sim feature request still open from Mar.</span></p>
+</div>
+</section>
+
+<section>
+<div class="exec-heat">
+<h3>&#x1f525; Where attention is flowing this week</h3>
+<div class="exec-heat-grid">
+<span class="heat-chip heat-hot"><span class="heat-dot"></span>Robot Brains / VLA</span>
+<span class="heat-chip heat-hot"><span class="heat-dot"></span>Synthetic Data</span>
+<span class="heat-chip heat-hot"><span class="heat-dot"></span>Humanoids</span>
+<span class="heat-chip heat-warm"><span class="heat-dot"></span>Manipulation</span>
+<span class="heat-chip heat-warm"><span class="heat-dot"></span>Sim2Real</span>
+<span class="heat-chip heat-warm"><span class="heat-dot"></span>Verticals (warehouse, welding)</span>
+<span class="heat-chip heat-mild"><span class="heat-dot"></span>Sim Backends (Newton/PhysX)</span>
+<span class="heat-chip heat-mild"><span class="heat-dot"></span>Perception / 3D</span>
+<span class="heat-chip heat-mild"><span class="heat-dot"></span>AI-native Tooling</span>
+<span class="heat-chip heat-cold"><span class="heat-dot"></span>Tooling/DX (pain, not investment)</span>
+<span class="heat-chip heat-cold"><span class="heat-dot"></span>Fleet / Middleware</span>
+</div>
+<div class="heat-legend">
+<span><span class="heat-dot" style="background:#ef4444;display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:3px"></span>Hot &#8212; multiple funding + product + research signals</span>
+<span><span class="heat-dot" style="background:#f97316;display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:3px"></span>Warm &#8212; active but consolidating</span>
+<span><span class="heat-dot" style="background:#eab308;display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:3px"></span>Mild &#8212; steady progress</span>
+<span><span class="heat-dot" style="background:#64748b;display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:3px"></span>Cold &#8212; pain without capital flow</span>
+</div>
+</div>
+
+<div class="exec-read">
+<h3>&#x1f9ed; Strategic read</h3>
+<p>The stack is bifurcating. <strong>NVIDIA is abandoning the "own the model" fight and repositioning around the substrate</strong> &#8212; Isaac + Newton + Cosmos + Jetson + the data factory &#8212; while letting a Cambrian set of independent brains (PI, Skild, Gemini Robotics, GR00T, Rhoda) compete above it. That's the Android analogy landing. Meanwhile China is winning the distribution layer by shipping $5K humanoids through e-commerce and running the first real humanoid production line (AGIBOT + Longcheer). The open strategic question for the next 12 months isn't "which robot brain wins" &#8212; that will remain contested and probably multi-polar. It's <strong>who owns the training-data factory and the cheap-hardware distribution channel</strong>. If you're betting on this space, overweight synthetic-data pipelines, open datasets, and whoever gets to 10K+ deployed units first. Underweight pure-model plays that don't control either substrate.</p>
+</div>
+</section>
 
 <!-- Weekly Stats Bar -->
 <section>
