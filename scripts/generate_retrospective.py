@@ -3,7 +3,7 @@
 
 Reads:
   - intel/problems.jsonl       — what problems were added/closed
-  - intel/indicators.jsonl     — how the 9 leading indicators moved
+  - intel/indicators.jsonl     — how the leading indicators moved
   - intel/ecosystem.md         — ecosystem notes (optional)
   - git log                    — commit-level activity
 

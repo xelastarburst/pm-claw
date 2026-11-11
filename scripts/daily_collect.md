@@ -4,7 +4,7 @@ You are the PM Claw collection agent. Your job: scrape all intelligence sources 
 
 ## Working Directory
 
-`/Users/lingq/Documents/PM_claw`
+The repository root: the folder that holds `scripts/`, `intel/` and `dashboard/`. The runner scripts `cd` there before starting.
 
 ## Step 1: Read Current State
 
@@ -125,7 +125,7 @@ Append new entries to `intel/problems.jsonl`. Each entry is one JSON object per 
 
 ## Step 5.5: Update Leading Indicators (Strategy Tab)
 
-Append today's reading for each of the 9 strategic leading indicators to `intel/indicators.jsonl`. One JSON line per indicator per day. Schema:
+Append today's reading for each of the 7 strategic leading indicators to `intel/indicators.jsonl`. One JSON line per indicator per day. Schema:
 
 ```json
 {"date":"YYYY-MM-DD","indicator":"indicator-key","value":N,"source":"source-name","note":"...","query":"query-actually-run"}
@@ -142,8 +142,6 @@ The indicator keys (match these exactly — the render script is keyed on them):
 | `unitree-2026-target` | Check recent Unitree / Bloomberg / humanoid news for updated 2026 shipment guidance | public-lagging |
 | `isaac-vs-mujoco-arxiv` | Search arXiv cs.RO last-30-days; count papers citing "Isaac Sim" vs "MuJoCo"; value = Isaac / (Isaac + MuJoCo) as percentage (0-100) | scrapeable |
 | `lerobot-checkpoints` | Visit huggingface.co/lerobot; count model checkpoints published | scrapeable |
-| `groot-adopter-count` | NVIDIA-INTERNAL: leave `"value":null` unless exec provides number | manual |
-| `newton-vs-physx-usage` | NVIDIA-INTERNAL: leave `"value":null` unless telemetry team provides number | manual |
 
 **Rules:**
 - Always append today's line for every indicator, even if value is null or unchanged. Keeps history continuous.

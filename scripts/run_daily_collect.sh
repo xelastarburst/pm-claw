@@ -5,8 +5,8 @@
 
 set -euo pipefail
 
-REPO_DIR="/Users/lingq/Documents/PM_claw"
-CLAUDE="/Users/lingq/.local/bin/claude"
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+CLAUDE="${CLAUDE:-$HOME/.local/bin/claude}"
 LOG_DIR="$REPO_DIR/logs"
 DATE=$(date +%Y-%m-%d)
 LOG_FILE="$LOG_DIR/collect-$DATE.log"

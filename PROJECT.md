@@ -122,4 +122,4 @@ Each problem entry gets tagged with:
 - Started: 2026-03-28
 - Owner: Ziggy (collection + synthesis) + Xela (review + strategy)
 - Model: NVIDIA Claude Opus 4.6
-- Host: DGX Spark (GB10), spark-0a40
+- Host: DGX Spark (GB10)
